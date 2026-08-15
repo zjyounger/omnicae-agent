@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>seqa</TITLE>
+<META NAME="description" CONTENT="seqa">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node184.html">
+<LINK REL="previous" HREF="node182.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node184.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2980"
+  HREF="node184.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2976"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2970"
+  HREF="node182.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2978"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2981"
+  HREF="node184.html">seqc</A>
+<B> Up:</B> <A NAME="tex2html2977"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2971"
+  HREF="node182.html">send</A>
+ &nbsp; <B>  <A NAME="tex2html2979"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00010117000000000000000"></A><A NAME="seqa"></A>
+<BR>
+seqa
+</H2>
+<PRE>
+   'seqa' &lt;seq&gt; ['nod'|'pnt' &lt;name&gt; .. &lt;=&gt;]|
+                ['afte'|'befo' &lt;name&gt; 'nod'|'pnt' &lt;name&gt;.. &lt;=&gt;]|
+                ['end' 'nod'|'pnt' &lt;name&gt; .. &lt;=&gt;]
+</PRE>
+This keyword is used to create or redefine a set marked as a sequential set. This set is used for spline definitions (see <A HREF="node118.html#line">line</A>). With the command <A HREF="node163.html#qlin">qlin</A> such a sequential set is automatically created. To begin such a set type for example:
+<BR>
+<BR>
+SEQA  Q003     PNT  P004 P005 P006 P00M P00N
+<BR>
+<BR>
+The program will create or overwrite the set Q003. The command will continue in the next line if the sign &rdquo;=&rdquo; is found:
+<BR>
+<BR>
+SEQA  Q003     PNT  P004 P005 P006 =
+<BR>
+P007 P008 P009
+<BR>
+<BR>
+The parameter AFTE will insert additional points after the first specified point in the existing sequence. The parameter BEFO will insert additional points before the first specified point and the parameter END will add additional points to a sequence.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

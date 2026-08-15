@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>txt</TITLE>
+<META NAME="description" CONTENT="txt">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node207.html">
+<LINK REL="previous" HREF="node205.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node207.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html3256"
+  HREF="node207.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3252"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3246"
+  HREF="node205.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3254"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3257"
+  HREF="node207.html">typs</A>
+<B> Up:</B> <A NAME="tex2html3253"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html3247"
+  HREF="node205.html">trfm</A>
+ &nbsp; <B>  <A NAME="tex2html3255"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00010140000000000000000"></A><A NAME="txt"></A>
+<BR>
+txt
+</H2>
+<PRE>
+  'txt' '!'|&lt;set&gt;|&lt;node&gt; -&gt;
+        ['n'|&amp;'v'|&amp;'t'|&amp;'e'|&amp;'f'|&amp;'i'|&amp;'s'|&amp;'l'|&amp;'r'] -&gt;
+        [&lt;dx&gt; &lt;dy&gt;] [&lt;"description"&gt;]
+</PRE>
+Creates node-attached texts, see figure <A HREF="node174.html#qtxtp">8</A>). The texts are generated but not displayed. The commands &rdquo;<A HREF="node145.html#plot">plot</A>&rdquo; and &rdquo;<A HREF="node146.html#plus">plus</A>&rdquo; have to be used for that purpose (the color 'n' is recommended since it is good visible over the white background as well as over the colors of most colormaps). The texts can be deleted with &rdquo;<A HREF="node85.html#del">del</A>&rdquo;. See also &rdquo;<A HREF="node174.html#qtxt">qtxt</A>&rdquo; for the interactive command.
+
+<P>
+The texts comprise of a node-nr and the value and an user defined description. The node-nr can be deselected by providing the key 'n', the value can be deselected with key 'v' and the description with key 't'. The exponential format of the value can be selected with 'e', float with 'f' and integer with 'i'. The left bound position can be defined with 'l', right bound with 'r'. All this flags can be combined.
+
+<P>
+The texts are attached to the nodes stored in a set;
+<BR>
+<BR>
+txt nodset
+<BR>
+<BR>
+or to a single node:
+<BR>
+<BR>
+txt nodenr
+<BR>
+<BR>
+If the <code>!</code> character is used instead of a setname or a node number then a new set with the name &ldquo;-txt&rdquo; will be created and all nodes with attached texts will be stored there and the texts will be redefined:
+<BR>
+<BR>
+txt !
+<BR>
+<BR>
+<P>
+Regard the following examples:
+<BR>
+<BR>
+txt nodset fn
+<BR>
+<BR>
+deselects the node-nr and selects the float format for the value.
+
+<P>
+The text is placed left bound if using the parameter 'l':
+<BR>
+<BR>
+txt nodset l
+<BR>
+<BR>
+An eventually given vector dx,dy is scaled to the left bound position:
+<BR>
+<BR>
+txt nodset l 0.1 0.5
+<BR>
+<BR>
+Using an infinite gradient in the left- or right bound mode
+<BR>
+<BR>
+txt nodset l 0. 0.5
+<BR>
+<BR>
+will place the texts in the upper corner.
+
+<P>
+If not right or left bound the optional dx,dy values define an offset (normalized coordinates) to the actual node position on the screen where the origin is in the lower left corner:
+<BR>
+<BR>
+txt nodset 0.1 0.2
+<BR>
+<BR>
+The offset &ldquo;0 0&rdquo; will bring them back to the node position.
+
+<P>
+The description must be given in quotation marks:
+<BR>
+<BR>
+txt nodenr &ldquo;hello world&rdquo;
+<BR>
+<BR>
+Per default the description is placed at the trailing position. The key 's' shifts it to the front. Be aware that descriptions are persistend and can only be overwritten. To delete descriptions they have to be overwritten with an empty string:
+<BR>
+<BR>
+txt nodenr &ldquo;&rdquo;
+<BR>
+<BR>
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html3256"
+  HREF="node207.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3252"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3246"
+  HREF="node205.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3254"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3257"
+  HREF="node207.html">typs</A>
+<B> Up:</B> <A NAME="tex2html3253"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html3247"
+  HREF="node205.html">trfm</A>
+ &nbsp; <B>  <A NAME="tex2html3255"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

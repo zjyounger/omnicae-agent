@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>Remarks Concerning Duns and Isaac</TITLE>
+<META NAME="description" CONTENT="Remarks Concerning Duns and Isaac">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node268.html">
+<LINK REL="previous" HREF="node266.html">
+<LINK REL="up" HREF="node246.html">
+<LINK REL="next" HREF="node268.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html4026"
+  HREF="node268.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html4022"
+  HREF="node246.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html4016"
+  HREF="node266.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html4024"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html4027"
+  HREF="node268.html">Remarks Concerning ls-dyna</A>
+<B> Up:</B> <A NAME="tex2html4023"
+  HREF="node246.html">Tips and Hints</A>
+<B> Previous:</B> <A NAME="tex2html4017"
+  HREF="node266.html">Remarks Concerning dolfyn</A>
+ &nbsp; <B>  <A NAME="tex2html4025"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001821000000000000000"></A><A NAME="Remarks_Concerning_Duns_and_Isaac"></A>
+<BR>
+Remarks Concerning Duns and Isaac
+</H2>
+If you intent to create a 2D-mesh for the cfd-code duns or isaac you have to watch out that all surfaces are created in the same order. That means that all surfaces must be defined clockwise if you look in z direction. The block-structure can be detected only in this case. You can check the mesh by simply mesh it with linear shell-elements and display them. All elements must be illuminated if looking against z. A later &ldquo;qflp&rdquo; or &ldquo;flip&rdquo; command will not cure wrong oriented surfaces since it only changes the &ldquo;sign&rdquo; in their definition and not the basic edge sequence, which is necessary here. The results of a calculation can be opened by specifying the parameter (-duns2d -duns3d -duns2dl -duns3dl -isaac2d -isaac3d) and the filename without any extention(cgx -isaac2d RAE2822). See also &rdquo;<A HREF="node6.html#Program_Parameters">Program Parameters</A>&rdquo;, &rdquo;<A HREF="node128.html#mesh">mesh</A>&rdquo;, &rdquo;<A HREF="node182.html#send">send</A>&rdquo; and the airfoil-example in the distribution. Please read the comments for duns and isaac in the &ldquo;<A HREF="node182.html#send">send</A>&rdquo; command description. 
+
+<P>
+Be aware that duns and isaac use block meshes which must be created using the set 'all'. So the use of set 'all' together with the parameter 'block' is mandatory when the block structure is needed! Nevertheless the user might only assign an element type to a sub set so that only a part of the geometry will be meshed (see &rdquo;<A HREF="node128.html#mesh">mesh</A>&rdquo;).
+
+<P>
+If the solver-format &rdquo;duns&rdquo; is used then related numbers of surfaces (3D) or lines (2D) will be written to file &ldquo;duns.bou&rdquo;. This information is necessary to apply boundary-conditions to duns. The numbers are used in the connectivity file &ldquo;duns.conn&rdquo; which will be created together with the mesh. The user has to refer this numbers in the &ldquo;duns.script2&rdquo; file when assigning boundary conditions.
+
+<P>
+When using the cgx parameter 'periodic' with the send command it is necessary to deactivate the function 'CHKCUT' in the isaac main.F file:
+<PRE>
+modifications Wittig 13. Jul 21
+main.F 933  // deactivate the coord check to enable periodic boundaries
+c         CALL CHKCUT (IBLK1, IDIM(IBLK1,ILVL), JDIM(IBLK1,ILVL), 
+c     1                KDIM(IBLK1,ILVL), R(IR1),
+c     2                IBLK2, IDIM(IBLK2,ILVL), JDIM(IBLK2,ILVL), 
+c     3                KDIM(IBLK2,ILVL), R(IR2), ICUTS(1,ICUT,ILVL),
+c     4                CUTNAM(ICUT), IERRCD)
+</PRE>
+Otherwhise the performed check would stop the program.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html4026"
+  HREF="node268.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html4022"
+  HREF="node246.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html4016"
+  HREF="node266.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html4024"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html4027"
+  HREF="node268.html">Remarks Concerning ls-dyna</A>
+<B> Up:</B> <A NAME="tex2html4023"
+  HREF="node246.html">Tips and Hints</A>
+<B> Previous:</B> <A NAME="tex2html4017"
+  HREF="node266.html">Remarks Concerning dolfyn</A>
+ &nbsp; <B>  <A NAME="tex2html4025"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

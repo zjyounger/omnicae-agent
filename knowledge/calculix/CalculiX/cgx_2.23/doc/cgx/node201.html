@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>sys</TITLE>
+<META NAME="description" CONTENT="sys">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node202.html">
+<LINK REL="previous" HREF="node200.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node202.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html3196"
+  HREF="node202.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3192"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3186"
+  HREF="node200.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3194"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3197"
+  HREF="node202.html">test</A>
+<B> Up:</B> <A NAME="tex2html3193"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html3187"
+  HREF="node200.html">swep</A>
+ &nbsp; <B>  <A NAME="tex2html3195"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00010135000000000000000"></A><A NAME="sys"></A>
+<BR>
+sys
+</H2>
+<PRE>
+   'sys' &lt;shell-command parameters&gt;
+</PRE>
+This keyword is used to issue any shell command (unix or dos shell). For example to move files created by the 'send' command to certain file names or/and locations and to start the analysis. On certain platforms cgx will not wait for the completition of the command if the '&amp;' key was provided as the last argument of the command. Otherwhise cgx waits until the command was completed.
+<BR>
+<BR>
+WARNING:
+<BR>
+<BR>
+If you use CGX to open an untrusted .fbd file downloaded form the internet, it might delete all your files or do whatever it wants as long as cgx has the necessary rights.
+Even an honest  but carelessly written .fbd file could be destructive if it makes incorrect assumptions about the locations of files. For example, by clearing the contents of a directory to clean up, it might delete important files on someone else's computer.
+
+<P>
+Therefore before you open a foreign command file (usually with the ending .fbd or .fbl) scan for "sys" and evaluate the command line.
+
+<P>
+To activate the &ldquo;sys&rdquo; command permanently add
+<PRE>
+  'allow_sys'
+</PRE>
+in your configuration file ('.cgx' in your home directory).
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

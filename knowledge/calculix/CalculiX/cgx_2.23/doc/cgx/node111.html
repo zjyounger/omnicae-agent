@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>hcpy</TITLE>
+<META NAME="description" CONTENT="hcpy">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node112.html">
+<LINK REL="previous" HREF="node110.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node112.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2116"
+  HREF="node112.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2112"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2106"
+  HREF="node110.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2114"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2117"
+  HREF="node112.html">help</A>
+<B> Up:</B> <A NAME="tex2html2113"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2107"
+  HREF="node110.html">gtol</A>
+ &nbsp; <B>  <A NAME="tex2html2115"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001045000000000000000"></A><A NAME="hcpy"></A>
+<BR>
+hcpy
+</H2>
+<PRE>
+   'hcpy' [['gif'|'png'|'ps'|'tga'] ['name']]|
+          [make [ls]]|[clean]
+</PRE>
+This keyword creates a hardcopy in one of the above formats. Default is tga. Use the program &rdquo;convert&rdquo; to convert to other formats if needed.
+<BR>
+<BR>
+hcpy ps
+<BR>
+<BR>
+will create a ps file with the default name hcpy_<code>&lt;</code>nr<code>&gt;</code>.ps
+<BR>
+<BR>
+hcpy ps name
+<BR>
+<BR>
+will create name.ps
+<BR>
+<BR>
+hcpy make ls
+<BR>
+<BR>
+will bundle all ps files created in one file using the landscape (ls) format. The ls parameter may be omitted. A maximum of six pictures is placed on each page.
+<BR>
+<BR>
+hcpy clean
+<BR>
+<BR>
+will remove all &rdquo;hcpy&rdquo; files. See also the commands &rdquo;<A HREF="node209.html#ulin">ulin</A>&rdquo;, &rdquo;<A HREF="node179.html#rot">rot</A>&rdquo;, &rdquo;<A HREF="node88.html#ds">ds</A>&rdquo;, &rdquo;<A HREF="node123.html#max">max</A>&rdquo;, and &rdquo;<A HREF="node130.html#min">min</A>&rdquo; which might be used in hcpy batch files. These commands should be used in the shown order before using the &rdquo;hcpy&rdquo; command.
+
+<P>
+The command writes the file-name and -nr to the &rdquo;<A HREF="node195.html#stack">stack</A>&rdquo;.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

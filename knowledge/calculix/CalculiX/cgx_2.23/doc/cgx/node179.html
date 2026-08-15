@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>rot</TITLE>
+<META NAME="description" CONTENT="rot">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node180.html">
+<LINK REL="previous" HREF="node178.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node180.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2932"
+  HREF="node180.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2928"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2922"
+  HREF="node178.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2930"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2933"
+  HREF="node180.html">save</A>
+<B> Up:</B> <A NAME="tex2html2929"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2923"
+  HREF="node178.html">rnam</A>
+ &nbsp; <B>  <A NAME="tex2html2931"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00010113000000000000000"></A><A NAME="rot"></A>
+<BR>
+rot
+</H2>
+<PRE>
+   'rot' ['n' &lt;set&gt;|'nodenr'] |
+         [['u'|'d'|'r'|'l'|'c' &lt;angle&gt;]|-&gt;
+          ['x'|'-x'|'y'|'-y'|'z'|'-z']]
+</PRE>
+This keyword is used to rotate the view-direction to the model. For example
+<BR>
+<BR>
+rot u 10
+<BR>
+<BR>
+will rotate the view-direction 10 degrees upwards. The meaning of the other letters is down d, right r, left l, clockwise c. The remaining letters will rotate the view into a pre-defined direction. For example the user will look in x direction after the command
+<BR>
+<BR>
+rot x
+<BR>
+<BR>
+and against the x direction with the command
+<BR>
+<BR>
+rot -x
+<BR>
+<BR>
+and so on.
+
+<P>
+The parameter 'n' is used to rotate the model in a way that the viewing direction is in normal direction at the location of a given node. Either a node-nr or a set with a node can be given:
+<BR>
+<BR>
+rot n nodeset
+<BR>
+<BR>
+Nevertheless the node might be obscured by other parts of the model. This can be checked with the &rdquo;<A HREF="node202.html#test">test</A>&rdquo; command.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

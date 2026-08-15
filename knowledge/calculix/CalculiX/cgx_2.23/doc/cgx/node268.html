@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>Remarks Concerning ls-dyna</TITLE>
+<META NAME="description" CONTENT="Remarks Concerning ls-dyna">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node269.html">
+<LINK REL="previous" HREF="node267.html">
+<LINK REL="up" HREF="node246.html">
+<LINK REL="next" HREF="node269.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html4038"
+  HREF="node269.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html4034"
+  HREF="node246.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html4028"
+  HREF="node267.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html4036"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html4039"
+  HREF="node269.html">Remarks Concerning Nastran</A>
+<B> Up:</B> <A NAME="tex2html4035"
+  HREF="node246.html">Tips and Hints</A>
+<B> Previous:</B> <A NAME="tex2html4029"
+  HREF="node267.html">Remarks Concerning Duns and</A>
+ &nbsp; <B>  <A NAME="tex2html4037"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001822000000000000000"></A><A NAME="Remarks_Concerning_ls-dyna"></A>
+<BR>
+Remarks Concerning ls-dyna
+</H2>
+The cgx is capable to write the following mesh entities to files (see &ldquo;<A HREF="node182.html#send">send</A>&rdquo;, the necessary key-parameters are listed in brackets below):
+
+<UL>
+<LI>Nodes and Elements 
+</LI>
+<LI>The *PART command to link a setname with an element property ID 
+</LI>
+<LI>Node- (*SET_NODE_LIST) and element sets (*SET_SOLID)
+</LI>
+<LI>Surfaces (*SET_SEGMENT)
+</LI>
+</UL>
+The resulting files have to be combined with the help of an editor and extended by material-data and the necessary controll-commands. 
+<PRE>
+# a mesh with sets (here COMP1,COMP2,SPC,SURF)
+# has to be available
+grpa 1 COMP1 dyn
+grpa 2 COMP2 dyn
+send all dyn
+seta SPC#1 n SPC
+seta SURF#2 n SURF
+send SPC#1 dyn nam
+send SURF#2 dyn sur
+# assemble the input file:
+sys echo "*KEYWORD" &gt;| input.dyn
+sys cat COMP1_group1.dyn &gt;&gt; input.dyn
+sys cat COMP2_group2.dyn &gt;&gt; input.dyn
+sys cat all.dyn &gt;&gt; input.dyn
+sys cat SPC#1.nam &gt;&gt; input.dyn
+sys cat SURF2.sur &gt;&gt; input.dyn
+sys echo "*END" &gt;&gt; input.dyn
+</PRE>
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

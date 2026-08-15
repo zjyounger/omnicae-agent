@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "freecad-bridge": {
+      "type": "stdio",
+      "command": "${CLAUDE_PROJECT_DIR:-.}/.venv-mcp/bin/python",
+      "args": ["${CLAUDE_PROJECT_DIR:-.}/bridge/mcp_server.py"],
+      "env": {
+        "CAE_BRIDGE_SOCKET": "${CAE_BRIDGE_SOCKET:-}"
+      }
+    }
+  }
+}

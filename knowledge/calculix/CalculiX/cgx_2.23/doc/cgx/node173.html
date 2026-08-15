@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>qsur</TITLE>
+<META NAME="description" CONTENT="qsur">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node174.html">
+<LINK REL="previous" HREF="node172.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node174.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2860"
+  HREF="node174.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2856"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2850"
+  HREF="node172.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2858"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2861"
+  HREF="node174.html">qtxt</A>
+<B> Up:</B> <A NAME="tex2html2857"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2851"
+  HREF="node172.html">qspl</A>
+ &nbsp; <B>  <A NAME="tex2html2859"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00010107000000000000000"></A><A NAME="qsur"></A>
+<BR>
+qsur
+</H2>
+<PRE>
+   'qsur' &lt;name&gt;(optional) RETURN
+   'w'|'a'|'b'|'l'|'i'|'r'|'1'-'9'|'g'|'q'|'u'|'s'|'S'|'h'|'c'
+</PRE>
+This keyword is used to create or change a surface (see also <A HREF="node109.html#gsur">gsur</A>). The user might specify a name in the command-line or by picking an existing surface with the &rdquo;s&rdquo; key.
+
+<P>
+If the surface is supposed to be meshed with unstructured triangles (element type tr3u or tr6u) it is sufficient to select all lines with the &ldquo;l&rdquo; key (lowercase &ldquo;L&rdquo;). This can be done either in the &ldquo;all&rdquo;-mode (press &ldquo;a&rdquo;) or &ldquo;individual&rdquo;-mode (press &ldquo;i&rdquo;) which is default. Then generate the surface by pressing the &rdquo;g&rdquo; key. Such surfaces allow holes in it. If the surface is not plane it will need to reference an embedded NURBS surface (see &rdquo;<A HREF="node143.html#nurs">nurs</A>&rdquo;) or a shape (see &rdquo;<A HREF="node193.html#shpe">shpe</A>&rdquo;). Despite it is quite an exception it should be noted here that this kind of mesh might be extruded in the 3rd dimension by using the &rdquo;<A HREF="node200.html#swep">swep</A>&rdquo; command to generate penta elements for the cfd solver.
+
+<P>
+For the definition of a regular meshable surface three to five edges must be
+defined. To create a surface move the mouse pointer over the first line of the
+first edge and select it with the &rdquo;1&rdquo; key (number &ldquo;one&rdquo;). If more than one
+line is necessary to define the first edge select the following ones one after
+the other with the &rdquo;1&rdquo; key. Each marked line is listed in the mother
+konsole. If all lines of the first edge are selected select the lines of the
+second edge by pressing the &rdquo;2&rdquo; key, then the third and eventually the
+fourth and fifth. The last selected line must match the first. All lines
+defining an edge will create a combined line (see <A HREF="node116.html#lcmb">lcmb</A>) and
+this combined line will show up in the definition of the surface. Then
+generate the surface by pressing the &rdquo;g&rdquo; key and you might continue with the
+next surface. By default the interior of the surface is defined according to
+Coons [<A
+ HREF="node283.html#Coons">14</A>] which is a blended function. But it can also follow an
+embedded NURBS-surface or a shape. To relate a surface to an existing NURBS
+surface select another surface which already uses the desired NURBS with the
+&rdquo;S&rdquo; key (uppercase) or to reference the shape with the &ldquo;h&rdquo; key. Then
+select the target-surface with &ldquo;s&rdquo;. The target surface is converted to a
+NURBS surface which is necessary to be meshable with unstructured triangles
+(tr3u, tr6u) and to be used to generate tet elements. The selected shape or nurbs will stay selected until cleared with 'c'. In case the NURBS or shape in question is not related to a surface it is necessary to use &rdquo;<A HREF="node171.html#qshp">qshp</A>&rdquo; to select first the NURBS or shape and then the surface which should reference them.  
+
+<P>
+An existing surface might be completly redefined without destroying the definition of related bodies or other geometries. After selecting a surface with the &ldquo;s&rdquo; key the referenced lines might be replaced by selecting new ones. The previous selected lines are not longer referenced.
+
+<P>
+Replace assignments by the blended function with the &rdquo;b&rdquo; key. To quit the command use the &rdquo;q&rdquo; key or use &rdquo;u&rdquo; to undo the last action. 
+
+<P>
+It is also possible to measure distances between two pixels on the screen. Just press the key &rdquo;w&rdquo; on the positions of the two pixels. The distance is calculated in the scale of the displayed geometry. 
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2860"
+  HREF="node174.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2856"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2850"
+  HREF="node172.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2858"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2861"
+  HREF="node174.html">qtxt</A>
+<B> Up:</B> <A NAME="tex2html2857"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2851"
+  HREF="node172.html">qspl</A>
+ &nbsp; <B>  <A NAME="tex2html2859"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

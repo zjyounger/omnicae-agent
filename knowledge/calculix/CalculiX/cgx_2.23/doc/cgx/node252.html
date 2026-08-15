@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>How to write values to a file</TITLE>
+<META NAME="description" CONTENT="How to write values to a file">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node253.html">
+<LINK REL="previous" HREF="node251.html">
+<LINK REL="up" HREF="node246.html">
+<LINK REL="next" HREF="node253.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html3846"
+  HREF="node253.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3842"
+  HREF="node246.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3836"
+  HREF="node251.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3844"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3847"
+  HREF="node253.html">How to generate a</A>
+<B> Up:</B> <A NAME="tex2html3843"
+  HREF="node246.html">Tips and Hints</A>
+<B> Previous:</B> <A NAME="tex2html3837"
+  HREF="node251.html">How to select only</A>
+ &nbsp; <B>  <A NAME="tex2html3845"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION000186000000000000000"></A><A NAME="How_to_write_values_to_a_file"></A>
+<BR>
+How to write values to a file
+</H2>
+When you need to write certain values (results) to a file you may use either the &rdquo;<A HREF="node182.html#send">send</A>&rdquo; command which allows to write results in certain formats or a command file which uses the 'echo' system command in combination with the &ldquo;<A HREF="node211.html#valu">valu</A>&rdquo; command. The following list shows the general structure of such a command file:
+
+<UL>
+<LI>Choose the relevant dataset (menu or ds command)
+</LI>
+<LI>Add the relevant node to a set ('qadd setname' or 'seta setname n number') 
+</LI>
+<LI>Open the stack: stack on
+</LI>
+<LI>Place node-values on the stack: prnt se setname
+</LI>
+<LI>Store the node: valu nod1 pop 
+</LI>
+<LI>Store the value: valu val1 pop 
+</LI>
+<LI>Write to file: sys echo Node nod1 Value val1 <code>&gt;|</code> file.txt
+</LI>
+<LI>Or optionally: sys printf (consult the man page for the format) <code>&gt;|</code> file.txt
+</LI>
+</UL>
+See also &ldquo;<A HREF="node113.html#if">if</A>&rdquo; and &ldquo;<A HREF="node214.html#while">while</A>&rdquo; and see the demo in &ldquo;<A HREF="node280.html#If_and_while_demo">If and while demo</A>&rdquo; on how to work with this commands. They are useful for automatic processing.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

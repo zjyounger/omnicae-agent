@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>area</TITLE>
+<META NAME="description" CONTENT="area">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node69.html">
+<LINK REL="previous" HREF="node67.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node69.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1600"
+  HREF="node69.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1596"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1590"
+  HREF="node67.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1598"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1601"
+  HREF="node69.html">asgn</A>
+<B> Up:</B> <A NAME="tex2html1597"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html1591"
+  HREF="node67.html">anim</A>
+ &nbsp; <B>  <A NAME="tex2html1599"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION000102000000000000000"></A><A NAME="area"></A>
+<BR>
+area
+</H2>
+<PRE>
+   'area' &lt;set&gt;
+</PRE>
+This keyword is used to calculate the area and the center of gravity of a set of shell-elements or surfaces of volume-elements. If a 'dataset' is active then an averaged value is calculated.
+
+<P>
+It averages the nodal values per element and weight it (multipies it) with the area of that element. The sum of all the weighted element-values is then divided by the total area of all regarded elements. The center of gravity is also weighted with the indvidual areas. This works for faces as well. In case the &rdquo;<A HREF="node155.html#qcut">qcut</A>&rdquo; command was used to create a section it is necessary to use the &rdquo;<A HREF="node79.html#comp">comp</A>&rdquo; command to add the related faces to the set '-qcut' which holds the section:
+<BR>
+<BR>
+comp -qcut do
+<BR>
+<BR>
+Then the 'area' command can be used:
+<BR>
+<BR>
+area -qcut
+<BR>
+<BR>
+which produces a listing like that:
+<PRE>
+  AREA:98.437740  CENTER OF GRAVITY: 9.214960 0.663785
+   24.655288 AVERAGE-VALUE:252.453576
+</PRE>
+
+<P>
+The command writes to the &rdquo;<A HREF="node195.html#stack">stack</A>&rdquo;.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

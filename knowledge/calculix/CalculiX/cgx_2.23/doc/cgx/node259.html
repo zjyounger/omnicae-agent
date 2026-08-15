@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>How to map loads</TITLE>
+<META NAME="description" CONTENT="How to map loads">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node260.html">
+<LINK REL="previous" HREF="node258.html">
+<LINK REL="up" HREF="node246.html">
+<LINK REL="next" HREF="node260.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html3930"
+  HREF="node260.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3926"
+  HREF="node246.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3920"
+  HREF="node258.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3928"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3931"
+  HREF="node260.html">How to run cgx</A>
+<B> Up:</B> <A NAME="tex2html3927"
+  HREF="node246.html">Tips and Hints</A>
+<B> Previous:</B> <A NAME="tex2html3921"
+  HREF="node258.html">How to define loads</A>
+ &nbsp; <B>  <A NAME="tex2html3929"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001813000000000000000"></A><A NAME="How_to_map_loads"></A>
+<BR>
+How to map loads
+</H2>
+Values at nodes can be mapped (interpolated) from a second mesh with the &rdquo;<A HREF="node121.html#map">map</A>&rdquo; command (2D and 3D). This second mesh (data source or &ldquo;master&rdquo;) is usually available as a result-file from a previous calculation. The &rdquo;<A HREF="node176.html#read">read</A>&rdquo; command with the &ldquo;add&rdquo; parameter can be used to include this file in the current model. Solver-input files (inp) and result files (frd) can be used as a data source. The command will add an offset to the nodes and elements so that existing nodes and elements will not be overwritten. The original mesh is the target or &ldquo;slave&rdquo; of the mapping process. The mapping process will add the interpolated (mapped) values to the dataset(s) which originated from the master mesh. The mapped values can be visualized by selecting the mapped dataset and entity and then by plotting the slave elements or faces with &ldquo;<A HREF="node145.html#plot">plot</A> fv slave&rdquo;. An example of the necessary commands for the mapping process (surfaces to surfaces) is listed below:
+<PRE>
+  REMARK: Be aware that you have to create sets of nodes and
+          faces for surface mapping! They will be called 'master'
+          and 'slave'
+
+  Open the target mesh with cgx.
+  Define a set with the slave nodes or faces to which values
+  should be mapped (for example pressure):
+    qadd slave t10 (here with a tolerance of 10 deg)
+    comp slave do (to extend the set by the referenced faces or
+                   nodes)
+
+  Then open a set and read the model with the values (pressure):
+    seto source
+    read result.frd add
+    setc
+
+  If necessary move 'source' in space to match the position of the
+  'slave' (see &ldquo;move&rdquo;).
+
+  Add the faces to the 'source' set
+  (now only nodes and elements are already stored in 'source'):
+    comp source do
+    plot f source
+
+  Define the master set:
+    qadd master t10  (catch the right faces showing the values)
+    comp master do
+
+  Map the values of dataset 1 with:
+    map slave master surf ds1
+
+  Check the mapping with:
+    ds 1 e 1
+    plot fv slave
+
+  Write the file with the mapped values:
+    send slave abq pres ds1 e1
+
+  Check the file &ldquo;slave_ds1e1.dlo&rdquo; with an editor and use it
+  in an inp-file.
+</PRE>
+If the master values are not available in either inp or frd format but in any other format which can be read by cgx (isaac, openFoam ..) you may write them in frd format with the &rdquo;<A HREF="node182.html#send">send</A>&rdquo; command to be usable as a master.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html3930"
+  HREF="node260.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3926"
+  HREF="node246.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3920"
+  HREF="node258.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3928"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3931"
+  HREF="node260.html">How to run cgx</A>
+<B> Up:</B> <A NAME="tex2html3927"
+  HREF="node246.html">Tips and Hints</A>
+<B> Previous:</B> <A NAME="tex2html3921"
+  HREF="node258.html">How to define loads</A>
+ &nbsp; <B>  <A NAME="tex2html3929"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

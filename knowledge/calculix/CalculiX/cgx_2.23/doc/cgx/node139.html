@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>neigh</TITLE>
+<META NAME="description" CONTENT="neigh">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node140.html">
+<LINK REL="previous" HREF="node138.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node140.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2452"
+  HREF="node140.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2448"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2442"
+  HREF="node138.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2450"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2453"
+  HREF="node140.html">node</A>
+<B> Up:</B> <A NAME="tex2html2449"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2443"
+  HREF="node138.html">mshp</A>
+ &nbsp; <B>  <A NAME="tex2html2451"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001073000000000000000"></A><A NAME="neigh"></A>
+<BR>
+neigh
+</H2>
+<PRE>
+  'neigh' &lt;set&gt; &lt;tol&gt; ['abq'|'ans'|'nas'] -&gt;
+           ['con' ['tie']|[[&lt;stiffness&gt;] [&lt;mue&gt;]]]|
+           ['equ' [&lt;dofs('t'|'1-6')..&gt; 'c'|'u'..]|
+           ['tie' ['yes']]|
+           ['nsc' ['tie']|[[&lt;stiffness&gt;] [&lt;mue&gt;]]]
+</PRE>
+This keyword is used to find neighboring element faces (and nodes) which can be used in a contact formulation. So far *TIE, *CONTACT PAIR, or *EQUATION formulations for abaqus and ccx are availabe but only equations for ansys and nastran. It will search for disjunct meshes and generates sets storing the faces of this meshes with setnames starting with '+CF'. The neighboring element faces are stored in additional sets which reference this meshes. The name of such a set consist of three parts. The first part of the name is just one character indicating if it is to be used at the dependent 'D' or independent 'I' side. The second part references the set containing the dependent faces, the third references the neighbor (the leading '+' of the basic sets are neglected). For example:
+<PRE>
+  DCF2_CF4
+</PRE>
+includes the faces and nodes of '+CF2' which are close to '+CF4' were '+CF2' should be the dependent side. All sets for which no partner could be found are stored in set '+UNCON'. 
+
+<P>
+The cgx writes equations connecting both sets when using the optional parameter 'equ':
+<BR>
+<BR>
+neigh all 0.1 abq equ
+<BR>
+<BR>
+But the recommended method is using 'tie', 'con' or 'nsc' which write the ccx command *TIE;
+<BR>
+<BR>
+neigh all 0.1 abq tie
+<BR>
+<BR>
+or *CONTACT:
+<BR>
+<BR>
+neigh all 0.1 abq con 1e6 0.2
+<BR>
+<BR>
+In this example the value 1e6 is used as normal contact stiffness (1/100 of that will be used as tangential stiffnes) and 0.2 as friction coefficient. The parameter 'con' defines surface to surface contact and 'nsc' node to surface contact. If the user does not provide values for stiffness and mue the cgx does not write *SURFACE INTERACTION, *SURFACE BEHAVIOR and *FRICTION commands. If instead of a stiffness 'tie' is given then a tied contact is formulated:
+<BR>
+<BR>
+neigh all 0.1 abq con tie
+<BR>
+<BR>
+Since ccx regards no gap criterion to exclude faces which are not in contact the surface sets must be defined more restricted for the 'con tie' option. Because of that some close faces might not be included in the contact sets. REMARK: Option TIED with node to surface contact does not work so far, so an alternative method is recomended:
+
+<P>
+Instead of PRESSURE-OVERCLOSURE=TIED the cgx writes PRESSURE-OVERCLOSURE=LINEAR with a normal and tangential stiffness of 1e7. To prevent a sliding contact mue is set to 1e30. The user should run his calculation in the following way:
+<PRE>
+** generate springs
+*STEP                      
+*STATIC                    
+*BOUNDARY                  
+Nall,1,3                   
+*END STEP
+** use the springs w/o updating them                  
+** either:
+***STEP,NLGEOM,perturbation       
+** or:                   
+*STEP,perturbation  
+** either:
+*STATIC                    
+** or:                   
+*FREQUENCY                 
+*BOUNDARY,OP=NEW
+</PRE>
+).
+
+<P>
+The *TIE commands use the parameter ADJUST=NO for robustness (might be overruled when using as a last parameter 'yes'):
+<BR>
+<BR>
+neigh all 0.1 tie yes
+<BR>
+<BR>
+The user should check his calculation for unrealistic high stresses at the junctions and eventually change the formulation on such locations to ADJUST=YES. If the calculation does not run anymore he might modify the mesh locally or use the 'equ' option for that location.
+
+<P>
+The necessary ccx contact commands and the set definitions are written when using the parameter 'tie', 'nsc' or 'con'. The single files storing the sets might be bundeled into one file with:
+<BR>
+<BR>
+cat CF* <code>&gt;|</code> all.inp
+<BR>
+<BR>
+This file and the file with the *TIE or *CONTACT formulations are then referenced in the ccx input file with *INCLUDE commands:
+<PRE>
+*INCLUDE, input=all.inp
+*INCLUDE, input=neigh.con
+</PRE>
+When using the 'equ' option just one file has to be generated and used in ccx:
+<PRE>
+*INCLUDE, input=all.inp
+</PRE>
+
+<P>
+It should be mentioned that the option 'equ' uses actually the same functionality as the command &ldquo;<A HREF="node182.html#send">send</A>&rdquo; with parameter 'areampc'. In consequence all the functionality of that command is usable. A closer description of the available options can be found in that section. For example the last parameter 'u' prevents the adaption of the position of the dependent nodes.
+
+<P>
+The command writes the setnames of the dependent and independent face pairs to the &rdquo;<A HREF="node195.html#stack">stack</A>&rdquo;.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2452"
+  HREF="node140.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2448"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2442"
+  HREF="node138.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2450"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2453"
+  HREF="node140.html">node</A>
+<B> Up:</B> <A NAME="tex2html2449"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2443"
+  HREF="node138.html">mshp</A>
+ &nbsp; <B>  <A NAME="tex2html2451"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

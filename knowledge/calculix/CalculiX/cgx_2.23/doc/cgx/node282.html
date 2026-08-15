@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>User File Parser</TITLE>
+<META NAME="description" CONTENT="User File Parser">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="previous" HREF="node281.html">
+<LINK REL="up" HREF="node273.html">
+<LINK REL="next" HREF="node283.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html4211"
+  HREF="node283.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html4207"
+  HREF="node273.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html4203"
+  HREF="node281.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html4209"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html4212"
+  HREF="node283.html">Bibliography</A>
+<B> Up:</B> <A NAME="tex2html4208"
+  HREF="node273.html">Simple Examples</A>
+<B> Previous:</B> <A NAME="tex2html4204"
+  HREF="node281.html">Data storage in a</A>
+ &nbsp; <B>  <A NAME="tex2html4210"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION000199000000000000000"></A><A NAME="User_File_Parser"></A>
+<BR>
+User File Parser
+</H2>
+The following file will be parsed and two new datasets will be created. The nodes and elements must exist before execution!
+<PRE>
+# Modelname: oragl
+# 0rAg1 version: 19.7
+## ONLINE OUTPUT ##
+** CONTACT ELEMENT STATES @ amplitude=1.584893e-04
+el.nr stick[%] slip[%] sep[%] FN mean[N] FN min[N] FN max[N] MU
+208 0.0000 0.3594 0.6406 -1.7391E-02 -9.3037E-02 0.00005 6.00E-01
+209 0.0703 0.2734 0.6562 -8.3892E-03 -4.6994E-02 0.00E00 6.00E-01
+389 1.0000 0.0000 0.0000 -1.3890E+03 -1.3890E+03 -1.38E03 6.00E-01
+390 1.0000 0.0000 0.0000 -6.9448E+02 -6.9450E+02 -6.94455 6.00E-01
+391 1.0000 0.0000 0.0000 -1.3890E+03 -1.3890E+03 -1.38895 6.00E-01
+392 1.0000 0.0000 0.0000 -6.9448E+02 -6.9452E+02 -6.94435 6.005-01
+
+** CONTACT ELEMENT STATES @ amplitude=2.511886e-04
+el.nr stick[%] s1ip[%] sep[%] FN mean[N] FN min[N] FN max[N] MU
+208 0.0000 0.3594 0.6406 -2.7563E-02 -1.4745E-01 0.00005 6.00E-01
+209 0.0703 0.2734 0.6562 -1.3296E-02 -7.4481E-02 0.00005 6.00E-01
+389 1.0000 0.0000 0.0000 -1.3890E+03 -1.3890E+03 -1.38895 6.00E-01
+390 1.0000 0.0000 0.0000 -6.9448E+02 -6.9451E+02 -6.94445 6.00E-01
+391 1.0000 0.0000 0.0000 -1.3890E+03 -1.3890E+03 -1.38895 6.00E-01
+392 1.0000 0.0000 0.0000 -6.9448E+02 -6.9454E+02 -6.94415 6.00E-01
+</PRE>
+The following code asks for the filename of the above listed data and stores the node related data in two new datasets each with seven entities.
+<PRE>
+valu string1 el.nr
+valu string2 **
+valu string3 CONTACT
+
+valu file ? "provide oragl cstate filename:"
+
+read file stack
+stack on
+prnt st si
+stack off
+valu sum_recs pop
+
+val nn 0
+while nn &lt; sum_recs
+  valu nn + nn 1
+  valu nn int nn
+  valu record &amp; L nn
+  val record pop
+endwhile
+stack free
+
+valu nn 0
+stack on
+while nn &lt; sum_recs
+  valu nn + nn 1
+  valu nn int nn
+  valu record &amp; L nn
+  # REC record
+  val record push
+  valu arg1 pop
+  valu arg2 pop
+  if arg2 eq string3
+    valu amplitude pop 4
+    # AMP amplitude
+    valu amplitude push =\
+    valu amplitude pop 2
+  endif
+  if arg1 eq string1
+    # found record arg1 string1
+    # create a new dataset
+    ds g CSTATE 7 amplitude
+    valu cur_nod 0
+    #
+    while cur_nod ne string2
+      # in while cur_nod ne string2
+      valu nn + nn 1
+      valu nn int nn
+      if nn &gt;= sum_recs
+        # break nn sum_recs
+        valu cur_nod string2
+      else
+        valu record &amp; L nn
+        val record push
+        valu cur_nod pop
+        valu arg1 pop
+        valu arg2 pop
+        valu arg3 pop
+        valu arg4 pop
+        valu arg5 pop
+        valu arg6 pop
+        valu arg7 pop
+        node cur_nod v arg1 arg2 arg3 arg4 arg5 arg6 arg7
+        seta CNODES \n cur_nod
+        stack free
+      endif
+    endwhile
+    #
+    # set entity parameters
+    ds e stick[%] 1
+    ds e slip[%] 2
+    ds e sep[%] 3
+    ds e FNmean 4
+    ds e FNmin 5
+    ds e FNmax 6
+    ds e MUE 7
+    # finish
+    ds f
+    valu nn - nn 1
+    valu nn int nn
+  endif
+endwhile
+stack off
+stack free
+</PRE>
+
+<P>
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

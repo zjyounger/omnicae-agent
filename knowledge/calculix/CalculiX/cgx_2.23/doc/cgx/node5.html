@@ -1,0 +1,257 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>Getting Started</TITLE>
+<META NAME="description" CONTENT="Getting Started">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node6.html">
+<LINK REL="previous" HREF="node4.html">
+<LINK REL="up" HREF="cgx.html">
+<LINK REL="next" HREF="node6.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html611"
+  HREF="node6.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html607"
+  HREF="cgx.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html601"
+  HREF="node4.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html609"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html612"
+  HREF="node6.html">Program Parameters</A>
+<B> Up:</B> <A NAME="tex2html608"
+  HREF="cgx.html">CalculiX USER'S MANUAL -</A>
+<B> Previous:</B> <A NAME="tex2html602"
+  HREF="node4.html">File Formats</A>
+ &nbsp; <B>  <A NAME="tex2html610"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00050000000000000000"></A><A NAME="Getting_Started"></A>
+<BR>
+Getting Started
+</H1>
+For installation help, see .../Calculix/cgx_X.X/INSTALL. Be aware of the possibility to redefine the helpfiles, browser and psviewer which is explained there.
+
+<P>
+After the program is installed on your machine, you should check the functionality by running the examples included in the distribution. The examples are located in .../Calculix/cgx_X.X/examples/. Begin with a result file called result.frd. Just type
+<BR>
+<BR>&rdquo;cgx result.frd&rdquo;
+<BR>
+<BR>
+and some information is echoed in the konsole and a new window called main window appears on the screen. The name conventions used for the different areas in the main-window are explained in figure <A HREF="node8.html#mainwindow">2</A>. Now you should move the mouse pointer into the menu-area and press the left mouse-button. Keep it pressed and continue over the menu item &ldquo;Dataset&rdquo; to &ldquo;Disp&rdquo;. There you release the button. Then press the left button again and continue over &ldquo;Dataset&rdquo; and &ldquo;Entity&rdquo; to &ldquo;D1&rdquo;. For background informations look into the subsection &rdquo;<A HREF="node11.html#Datasets">Datasets</A>&rdquo; and &rdquo;<A HREF="node12.html#Entity">Entity</A>&rdquo; which explains how to display results. After seeing the values you might play around a bit with the &rdquo;<A HREF="node10.html#Menu">Menu</A>&rdquo;. Before going further, you should read the section &rdquo;<A HREF="node7.html#Input_Devices">Input Devices</A>&rdquo;. See also the commands &rdquo;<A HREF="node196.html#steps">steps</A>&rdquo;, &rdquo;<A HREF="node125.html#maxr">maxr</A>&rdquo;, &rdquo;<A HREF="node132.html#minr">minr</A>&rdquo;, &rdquo;<A HREF="node123.html#max">max</A>&rdquo;, &rdquo;<A HREF="node130.html#min">min</A>&rdquo; (or the combination of max and min &rdquo;<A HREF="node134.html#mm">mm</A>&rdquo;) and &rdquo;<A HREF="node181.html#scal">scal</A>&rdquo; which might be used to modify the colour representation of the displayed values. For example type &ldquo;min 0&rdquo; to set the lower value of the colour bar to zero. Now you should study the following interactive commands: Use &rdquo;<A HREF="node159.html#qenq">qenq</A>&rdquo; to enquire values at nodes. Use &rdquo;<A HREF="node174.html#qtxt">qtxt</A>&rdquo; to generate node attached texts showing their number and value. Use &rdquo;<A HREF="node75.html#capt">capt</A>&rdquo; to change the displayed filename to a user defined text and &rdquo;<A HREF="node209.html#ulin">ulin</A>&rdquo; to add a second line under the filename. Use &rdquo;<A HREF="node155.html#qcut">qcut</A>&rdquo; to generate a section through the model. And use &rdquo;<A HREF="node106.html#graph">graph</A>&rdquo; to generate a 2D time history plot (for results with several time-steps) or a 2D plot of values along a sequence of nodes (see &rdquo;<A HREF="node170.html#qseq">qseq</A>&rdquo;). In case you want to display just a set of nodes, faces or elements with their results use the &rdquo;<A HREF="node145.html#plot">plot</A>&rdquo;, &rdquo;<A HREF="node146.html#plus">plus</A>&rdquo; and &rdquo;<A HREF="node133.html#minus">minus</A>&rdquo;. commands (see also &rdquo;<A HREF="node248.html#How_to_get_the_sets_from_a_geo-_or_ccx-inp_file_for_post-processing">How to get the sets from a geo- or ccx-inp file for post-processing</A>&rdquo;).  Watch out when you type a command; the cgx window MUST stay active and not the konsole from which the program was started. It is better to stay with the mouse pointer in the cgx window. Next, &rdquo;<A HREF="node64.html#Quit">Quit</A>&rdquo; the program and type
+<BR>
+<BR>&rdquo;cgx -b geometry.fbd&rdquo;
+<BR>
+<BR>
+in the konsole. The program starts again but now you see only a wire-frame of the geometry. Move the mouse-pointer into the new window and type &rdquo;<A HREF="node128.html#mesh">mesh</A> all&rdquo;. The mouse-pointer MUST stay in this window during typing and NOT in the konsole from which the program was started. After you see &rdquo;ready&rdquo; in the parent konsole, the mesh is created. To actually see it, type &rdquo;<A HREF="node146.html#plus">plus</A> ea all&rdquo;. Now you see the mesh in green color. To see the mesh as a wire-frame, choose in the main menu&rdquo;<A HREF="node13.html#Viewing">Viewing</A>&rdquo; and continue to the entry &rdquo;<A HREF="node23.html#Toggle_Element_Edges">Toggle Element Edges</A>&rdquo; and then again in &rdquo;<A HREF="node13.html#Viewing">Viewing</A>&rdquo; choose &rdquo;<A HREF="node18.html#Dots">Dots</A>&rdquo;. To see the mesh illuminated chose in the main menu &rdquo;<A HREF="node13.html#Viewing">Viewing</A>&rdquo; and continue to the entry &rdquo;<A HREF="node14.html#Show_Elements_With_Light">Show Elements With Light</A>&rdquo;. To see it filled, choose in the main menu &rdquo;<A HREF="node13.html#Viewing">Viewing</A>&rdquo; and continue to the entity &rdquo;<A HREF="node16.html#Fill">Fill</A>&rdquo;. Most of the time it is sufficient to see the surface elements only. For this purpose, choose in the main menu &rdquo;<A HREF="node13.html#Viewing">Viewing</A>&rdquo; and continue to the entry &rdquo;<A HREF="node24.html#Toggle_Surfaces_Volumes">Toggle Surfaces/Volumes</A>&rdquo;. If you start cgx in the post processor mode, as you did in the first example (cgx result.frd), the surface mode is automatically set. To see the interior of the structure, choose in the main menu &rdquo;<A HREF="node13.html#Viewing">Viewing</A>&rdquo; and continue to the entity &rdquo;<A HREF="node20.html#Toggle_Culling_Back_Front">Toggle Culling Back/Front</A>&rdquo;. To save the mesh in the format used by the solver, type &rdquo;send all abq&rdquo;. To store the mesh in the result format type &rdquo;send all frd&rdquo;. 
+
+<P>
+To create a new model start the cgx by typing
+<BR>
+<BR>&rdquo;cgx -b file&rdquo;
+<BR>
+<BR>
+where &rdquo;file&rdquo; will be the name of the new model if you later exit the program with the command &rdquo;<A HREF="node98.html#exit">exit</A>&rdquo;. The way to create a model from scratch is roughly as follows, create
+
+<UL>
+<LI>points with &rdquo;<A HREF="node167.html#qpnt">qpnt</A>&rdquo; or &rdquo;<A HREF="node147.html#pnt">pnt</A>&rdquo;,
+</LI>
+<LI>lines with &rdquo;<A HREF="node163.html#qlin">qlin</A>&rdquo;,
+</LI>
+<LI>surfaces with&rdquo;<A HREF="node173.html#qsur">qsur</A>&rdquo;,
+</LI>
+<LI>Bodies with &rdquo;<A HREF="node153.html#qbod">qbod</A>&rdquo;.
+</LI>
+</UL>
+If possible, create higher geometry by sweeping or copying geometry with &rdquo;<A HREF="node200.html#swep">swep</A>&rdquo; or &rdquo;<A HREF="node81.html#copy">copy</A>&rdquo;. You might move or scale your model with the command &rdquo;<A HREF="node135.html#move">move</A>&rdquo;. The commands require sets to work with. Sets reference entities like bodies or nodes. They are useful because you can deal with a bunch of entities at once. See the section &rdquo;<A HREF="node249.html#How_to_define_a_set_of_entities">How to define a set of entities</A>&rdquo; about how to create them.
+You may write a file with basic commands like &rdquo;pnt&rdquo; to create the basis for your construction and read it with the &rdquo;<A HREF="node176.html#read">read</A>&rdquo; command. Most commands can be used in batch mode. This allows the user to write a command file for repeated actions.
+
+<P>
+If you want to start with CAD geometry then please read &rdquo;<A HREF="node262.html#How_to_deal_with_CAD-geometry">How to deal with CAD-geometry</A>&rdquo;.
+
+<P>
+The interactive commands start with the letter 'q'. Please make yourself familiar with all of them before you start to model complex geometry.
+
+<P>
+After the geometry is created, the divisions of the lines can be changed to control the density of the elements.  Display the lines and their divisions with 
+
+<UL>
+<LI>&rdquo;<A HREF="node145.html#plot">plot</A> ld all&rdquo;.
+</LI>
+</UL>
+To change the element division, use 
+
+<UL>
+<LI>&rdquo;<A HREF="node158.html#qdiv">qdiv</A>&rdquo;.
+</LI>
+</UL>
+The default division is &rdquo;4&rdquo;. With a division of&rdquo;4,&rdquo; a line will have 6 nodes and will therefore be the edge of two element of the quadratic type. Next, the type of the elements must be defined. This can be done for each of the different sets. A new assignment will replace a previous one. Delete all previous assignments with
+
+<UL>
+<LI>&rdquo;<A HREF="node92.html#elty">elty</A> all&rdquo;
+</LI>
+</UL>
+and assign new types with
+
+<UL>
+<LI>&rdquo;<A HREF="node92.html#elty">elty</A> all he20&rdquo;.
+</LI>
+</UL>
+If a mesh is already defined type
+
+<UL>
+<LI>&rdquo;<A HREF="node85.html#del">del</A> mesh&rdquo;
+</LI>
+</UL>
+and mesh again with
+
+<UL>
+<LI>&rdquo;<A HREF="node128.html#mesh">mesh</A> all&rdquo;.
+</LI>
+</UL>
+Then choose the menu entity &rdquo;<A HREF="node13.html#Viewing">Viewing</A> - <A HREF="node14.html#Show_Elements_With_Light">Show Elements With Light</A>&rdquo; to see the illuminated mesh. Lastly, export the mesh in the calculix solver format with
+
+<UL>
+<LI>&rdquo;<A HREF="node182.html#send">send</A> all abq&rdquo;.
+</LI>
+</UL>
+With the &rdquo;send&rdquo; command, it is also possible to write boundary conditions, loads and equations to files. The equations are useful to &rdquo;glue&rdquo; parts together (see &rdquo;<A HREF="node257.html#How_to_connect_independent_meshes">How to connect independent meshes</A>&rdquo;.
+
+<P>
+It is advisable to save your work from time to time without exiting the program. This is done with the command
+
+<UL>
+<LI>&rdquo;<A HREF="node180.html#save">save</A>&rdquo;.
+</LI>
+</UL>
+You leave the program either with 
+
+<UL>
+<LI>&rdquo;<A HREF="node98.html#exit">exit</A>&rdquo;
+</LI>
+</UL>
+or with
+
+<UL>
+<LI>&rdquo;<A HREF="node175.html#quit">quit</A>&rdquo;.
+</LI>
+</UL>
+Exit will write all geometry to an fbd-file and if a file of this name exists already then the extension of this file will be renamed from fbd to fbb. &rdquo;quit&rdquo;  closes the program without saving. 
+
+<P>
+A solver input file can be written with the help of an editor (emacs, nedit etc.). If you write a ccx command file, then include the mesh, the boundary conditions etc. with the ccx command &rdquo;*INCLUDE&rdquo;. After you finished your input-file for the solver (ccx) you might read it by calling the program again with
+<BR>
+<BR>&rdquo;cgx -c solverfile.inp&rdquo;
+<BR>
+<BR>
+for a final check. All predefined sets are available together with automatically generated sets which store boundaries, equations and more. These sets start with the &rdquo;+&rdquo;-sign. For example the set +bou stores all constrained nodes where the set +bou1, +bou2, +bou3 store the constraints for the individual directions. Further the set +dep and +ind store the dependent and independent nodes involved in equations etc. See which sets are defined with the command
+
+<UL>
+<LI>&rdquo;<A HREF="node148.html#prnt">prnt</A> se&rdquo;.
+</LI>
+</UL>
+Each line starts with the set-index, then the set-name followed by the number of all referenced entities. The sets can be specified by index or name. For example if the index of set &rdquo;blade&rdquo; is &rdquo;5&rdquo; the following commands are equivalent:
+
+<UL>
+<LI>&rdquo;plot p 5&rdquo;
+</LI>
+<LI>&rdquo;plot p blade&rdquo;
+</LI>
+</UL>
+The use of wildcards is possible to search for a certain expression:
+
+<UL>
+<LI>&rdquo;<A HREF="node148.html#prnt">prnt</A> se +*&rdquo;
+</LI>
+</UL>
+Now all sets starting with a &ldquo;+&rdquo; in their names will be listed.
+
+<P>
+Predefined loads are stored as &rdquo;<A HREF="node11.html#Datasets">Datasets</A>&rdquo; to be visualized. Sets with the name of the load-type (CLOAD, DLOAD) store the related nodes, faces or elements. Use the command
+
+<UL>
+<LI>&rdquo;<A HREF="node145.html#plot">plot</A>&rdquo;
+</LI>
+</UL>
+or
+
+<UL>
+<LI>&rdquo;<A HREF="node146.html#plus">plus</A>&rdquo;
+</LI>
+</UL>
+to visualize entities of sets.
+
+<P>
+Then run the input file with ccx. The result file (.frd) can be visualized with
+<BR>
+<BR>&rdquo;cgx result.frd solverfile.inp&rdquo;
+<BR>
+<BR>
+were the solver input file &rdquo;filename.inp&rdquo; is optional. With this file, the sets, boundary conditions and loads used in the calculation are available together with the results.
+<BR>
+<BR>
+If you have problems doing the above or if you want to learn more and in more detail about the cgx continue with the tutorial [<A
+ HREF="node283.html#tutorial">11</A>] and look in the appendix, section <A HREF="node246.html#Tips_and_Hints">Tips and Hints</A> and <A HREF="node242.html#Known_Problems">Known Problems</A>.    
+
+<P>
+Eventually adapt the &ldquo;.cgx&rdquo; file in your home directory to your preferences. Especially configure the help system and the psviewer for the &ldquo;<A HREF="node106.html#graph">graph</A>&rdquo; command if necessary (see &ldquo;<A HREF="node65.html#Customization">Customization</A>&rdquo;).
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html611"
+  HREF="node6.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html607"
+  HREF="cgx.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html601"
+  HREF="node4.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html609"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html612"
+  HREF="node6.html">Program Parameters</A>
+<B> Up:</B> <A NAME="tex2html608"
+  HREF="cgx.html">CalculiX USER'S MANUAL -</A>
+<B> Previous:</B> <A NAME="tex2html602"
+  HREF="node4.html">File Formats</A>
+ &nbsp; <B>  <A NAME="tex2html610"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

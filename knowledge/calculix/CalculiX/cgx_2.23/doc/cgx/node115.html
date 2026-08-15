@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>init</TITLE>
+<META NAME="description" CONTENT="init">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node116.html">
+<LINK REL="previous" HREF="node114.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node116.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2164"
+  HREF="node116.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2160"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2154"
+  HREF="node114.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2162"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2165"
+  HREF="node116.html">lcmb</A>
+<B> Up:</B> <A NAME="tex2html2161"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2155"
+  HREF="node114.html">int</A>
+ &nbsp; <B>  <A NAME="tex2html2163"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001049000000000000000"></A><A NAME="init"></A>
+<BR>
+init
+</H2>
+<PRE>
+   'init' &lt;internal parameters&gt;
+</PRE>
+This command defines the window and model size, the model position, rotational center, fonts and others. It is created and written to a file by the
+&ldquo;<A HREF="node182.html#send">send</A>&rdquo; command. If that command should change the window dimensions and is used in a batch file, it has to be used in the first line. Otherwhise the window dimensions take only effect after the batch file was completely parsed and executed. A batch file could look like that::
+<PRE>
+  read init.fbl
+  read ccx.frd new
+  ds 1 e 1
+  plot fv all
+  hcpy png
+  quit
+</PRE>
+If the window size is not affected by the command then it is not necessarily the first command in the batch file.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

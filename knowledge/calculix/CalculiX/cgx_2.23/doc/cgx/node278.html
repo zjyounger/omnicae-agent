@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>Sphere (Thin Volume)</TITLE>
+<META NAME="description" CONTENT="Sphere (Thin Volume)">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node279.html">
+<LINK REL="previous" HREF="node277.html">
+<LINK REL="up" HREF="node273.html">
+<LINK REL="next" HREF="node279.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html4165"
+  HREF="node279.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html4161"
+  HREF="node273.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html4155"
+  HREF="node277.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html4163"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html4166"
+  HREF="node279.html">Airfoil for cfd codes</A>
+<B> Up:</B> <A NAME="tex2html4162"
+  HREF="node273.html">Simple Examples</A>
+<B> Previous:</B> <A NAME="tex2html4156"
+  HREF="node277.html">Sphere (Volume)</A>
+ &nbsp; <B>  <A NAME="tex2html4164"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION000195000000000000000"></A><A NAME="Sphere__Thin_Volume_"></A>
+<BR>
+Sphere (Thin Volume)
+</H2>
+
+<DIV ALIGN="CENTER"><A NAME="Segment_of_a_Sphere__Thin_Volume_"></A><A NAME="2747"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 21:</STRONG>
+Segment of a Sphere (Thin Volume)</CAPTION>
+<TR><TD><IMG
+ WIDTH="543" HEIGHT="466" BORDER="0"
+ SRC="img41.png"
+ ALT="\begin{figure}\epsfig{file=sphere_thinvol.eps,width=12cm}\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<PRE>
+ # written by dichtstoff
+ # Spherical shell made of 3D elements
+ # thickness of sphere
+ # valu sphth 
+ # radius of the sphere
+ # valu sphrd 
+ # valu points of sphere 
+ # valu sphv1 
+ # valu sphv2 
+ # amount of element with line division
+ # valu lidiv 
+ ######################################
+ valu sphth 1.93
+ valu sphrd 200 
+ valu sphth        * sphth  +0.5
+ valu sphthoffseto + sphrd sphth 
+ valu sphthoffseti - sphrd sphth
+ valu sphrdn       * sphrd  -1.0
+ valu lidiv 20
+
+ PNT base     0.00000       0.00000       0.000000000
+ PNT D001     0.00000       0.00000       sphthoffseto
+ PNT D002     0.00000       0.00000       sphthoffseti
+ PNT D003     0.00000       sphthoffseto  0.000000000
+ PNT D004     0.00000       sphthoffseti  0.000000000
+ PNT D005     sphthoffseto  0.00000       0.000000000
+ PNT D006     sphthoffseti  0.00000       0.000000000
+ PNT roty     0.00000       sphrdn        0.000000000
+ PNT rotx      sphrdn       0.00000       0.000000000
+
+ LINE ! D001 D002 1
+ LINE ! D003 D004 1
+ LINE ! D005 D006 1
+
+ seta L001 l L001
+ seta L002 l L002
+ seta L003 l L003
+
+ copy L001 L004 rot y 45
+ copy L002 L005 rot x 45
+ copy L003 L006 rot z 45
+
+ seta roty p roty
+ seta rotx p rotx
+
+ move roty rot z  45
+ move rotx rot z -45
+
+ copy L006 L007 rot roty rotx -35.264389683
+
+ LINE ! D001 D007 base lidiv
+ LINE ! D001 D009 base lidiv
+ LINE ! D002 D008 base lidiv
+ LINE ! D002 D00A base lidiv
+ LINE ! D003 D009 base lidiv
+ LINE ! D003 D00B base lidiv
+ LINE ! D004 D00A base lidiv
+ LINE ! D004 D00C base lidiv
+ LINE ! D005 D00B base lidiv
+ LINE ! D005 D007 base lidiv
+ LINE ! D006 D00C base lidiv
+ LINE ! D006 D008 base lidiv
+ LINE ! D007 D00D base lidiv
+ LINE ! D008 D00E base lidiv
+ LINE ! D009 D00D base lidiv
+ LINE ! D00A D00E base lidiv
+ LINE ! D00B D00D base lidiv
+ LINE ! D00C D00E base lidiv
+
+ SHPE SPHi sph base sphthoffseti
+ SHPE SPHo sph base sphthoffseto
+
+ GSUR A001 + BLEND - L006 + L00O + L007 - L00P
+ GSUR A002 + BLEND - L005 + L00M + L007 - L00N 
+ GSUR A003 + BLEND - L004 + L00K + L007 - L00L  
+ GSUR A004 + BLEND - L003 + L00G + L006 - L00I 
+ GSUR A005 + BLEND - L003 + L00H + L004 - L00J 
+ GSUR A006 + BLEND - L002 + L00C + L005 - L00E 
+ GSUR A007 + BLEND - L002 + L00D + L006 - L00F
+ GSUR A008 + BLEND - L001 + L008 + L004 - L00A 
+ GSUR A009 + BLEND - L001 + L009 + L005 - L00B  
+ GSUR A010 + SPHo - L00G + L00H + L00K - L00O 
+ GSUR A011 + SPHi - L00I + L00J + L00L - L00P
+ GSUR A012 + SPHi - L00E + L00F + L00P - L00N 
+ GSUR A013 + SPHo - L00C + L00D + L00O - L00M
+ GSUR A014 + SPHi - L00A + L00B + L00N - L00L 
+ GSUR A015 + SPHo - L008 + L009 + L00M - L00K
+ GBOD B001 NORM + A001 - A005 - A003 - A011 + A004 + A010
+ GBOD B002 NORM - A001 + A006 + A002 + A013 - A007 - A012 
+ GBOD B003 NORM - A002 + A008 + A003 + A015 - A009 - A014
+
+ div all mult 2
+ elty all he20r
+ mesh all
+ plot f all n
+</PRE>
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

@@ -1,0 +1,268 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>asgn</TITLE>
+<META NAME="description" CONTENT="asgn">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node70.html">
+<LINK REL="previous" HREF="node68.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node70.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1612"
+  HREF="node70.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1608"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1602"
+  HREF="node68.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1610"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1613"
+  HREF="node70.html">aver</A>
+<B> Up:</B> <A NAME="tex2html1609"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html1603"
+  HREF="node68.html">area</A>
+ &nbsp; <B>  <A NAME="tex2html1611"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION000103000000000000000"></A><A NAME="asgn"></A>
+<BR>
+asgn
+</H2>
+<PRE>
+   'asgn' 'n'|'e'|'p'|'l'|'c'|'s'|'b'|'S'|'L'|'se'|-&gt;
+          'sh'|'alpha'|'beta'|'nadapt' &lt;value&gt;| -&gt;
+          'bg' 'on'|'off' -&gt;
+          'graph' 'on'|'off'|&lt;nr&gt;| -&gt;
+          'max'|'maxr'|'maxc' [&lt;col&gt;]|'minc' [&lt;col&gt;] -&gt;
+          'mem' 'free|'keep'| -&gt;
+          'netgen'|'tetgen'| -&gt;
+          'thrds' &lt;value&gt;|'rbe' [&lt;value&gt;|'mpc']| -&gt;
+          'usr' &lt;text&gt;| -&gt;
+          'viewer' &lt;[path]file&gt;| -&gt;
+          'viewformat' 'ps'|'png'| -&gt;
+          'browser' &lt;[path]file&gt;| -&gt;
+          'cgxhelpfile' &lt;[path]file&gt;| -&gt;
+          'ccxhelpfile' &lt;[path]file&gt;
+</PRE>
+This keyword is used to manipulate the behaviour of successive commands or certain values.
+
+<P>
+It can be used to define the first node or element number which will be used for the next mesh generation. And it is used to redefine the leading character of new entities. The default is D for points p, L for lines l, C for combined lines (lcmb) c, A for surfaces s, B for Bodies b, Q for nurb lines (nurl) L, N for nurb surfaces (nurs) S, A for sets se and H for Shapes sh. For example
+<BR>
+<BR>
+asgn p U
+<BR>
+<BR>
+will assign the character U as the leading character to all newly created names of points. The automatically created names of geometric entities use 4 characters. If all possible names with the chosen leading letter are in use then the next alphabetical letter is chosen as a leading letter, so after PZZZ follows Q000. After the last letter the amount of characters per name is increased. The maximum number is 8. Each entity has its own name space. Different entities might use the same name. Remark: Currently nurbs-lines are automatically create splines sharing the same name. Nurbs-lines can not be used for other purposes than to be displayed and so far they can not be written to a file.
+
+<P>
+Meta informations stored in the frd database can be extended:
+<BR>
+<BR>
+asgn usr ADDDISP DS:1
+<BR>
+<BR>
+will assign or change the User Header Record &ldquo;ADDDISP DS:1&rdquo;. Actually this type of record is automatically generated if the user adds displacements to the node coordinates (see &ldquo;<A HREF="node28.html#Toggle_Add-Displacement">Toggle Add-Displacement</A>)&rdquo; and &ldquo;<A HREF="node222.html#User_Header_Record">User Header Record</A>)&rdquo;). The first word in the text is used as a key and the rest is the message. So 
+<BR>
+<BR>
+asgn usr ADDDISP NONE
+<BR>
+<BR>
+will change this User Header Record to the new message &ldquo;NONE&rdquo;.
+
+<P>
+The node related data will be readed if the user selects a certain dataset. The already stored data are kept by default. With the command
+<BR>
+<BR>
+asgn mem free
+<BR>
+<BR>
+the current data are freed before the selected data are stored. With 
+<BR>
+<BR>
+asgn mem keep
+<BR>
+<BR>
+the current data are kept. This is useful on computers with limited memory.
+
+<P>
+The method how the the color fringe plot scale is presented can be chosen with either
+<BR>
+<BR>
+asgn max
+<BR>
+<BR>
+asgn maxr
+<BR>
+<BR>
+or
+<BR>
+<BR>
+asgn maxc m
+<BR>
+<BR>
+and
+<BR>
+<BR>
+asgn minc m
+<BR>
+<BR>
+were 'm' is the color of the suppressed values, here magenta (see <A HREF="node124.html#maxc">maxc</A>). 
+
+<P>
+The command is also used to control the behaviour of the surface mesh generator for unstructured triangles. This mesher [<A
+ HREF="node283.html#mesh2d">15</A>] uses the tree parameters alpha, beta, nadapt for mesh-control. Current default is 0.4 for alpha and beta and 4 for nadapt.
+
+<P>
+The surface mesh generator is able to use multiple cores (threads). Per default the mesher uses only one thread because only in this case the mesh numbering is reproducable. But since the surface meshing of a CAD geometry can be very time consumable a certain number of threads is used when the model is opened in the auto mode (cgx -a file). The actual number of threads is listed with the command &ldquo;<A HREF="node148.html#prnt">prnt</A> info&rdquo;. This value can be changed in the cgx.h file (NTHREADS). When using
+<BR>
+<BR>
+asgn thrds 8
+<BR>
+<BR>
+the next mesh generation will use 8 threads and when saving the geometry this command is stored as well. The user might use this command to store his personal number of threads in the &ldquo;.cgx&rdquo; file in his home directory.
+
+<P>
+Currently two different tet mesher are available [<A
+ HREF="node283.html#NETGEN">4</A>] [<A
+ HREF="node283.html#TETGEN">5</A>]. They can be chosen with
+<BR>
+<BR>
+asgn tetgen
+<BR>
+<BR>
+or
+<BR>
+<BR>
+asgn netgen
+<BR>
+<BR>
+In case Nastran input should be generated it is possible to switch from MPCs to RBEs when using the <A HREF="node182.html#send">send</A> command in combination with the areampc option. The value after &ldquo;rbe&rdquo; represents the thermal expansion coefficient of this elements:
+<BR>
+<BR>
+asgn rbe 0.5e-6
+<BR>
+<BR>
+It should be noted that coincident nodes are connected by MPCs either way.
+
+<P>
+The presentation of the 2D plots generated by &ldquo;<A HREF="node106.html#graph">graph</A>&rdquo; can be switched of or on and the next running number of the files written with 'graph' can be defined:
+<BR>
+<BR>
+asgn graph off
+<BR>
+<BR>
+asgn graph on
+<BR>
+<BR>
+asgn graph 11
+<BR>
+<BR>
+The viewer used for that presentation can be redefined with
+<BR>
+<BR>
+asgn viewer /usr/bin/ghostview
+<BR>
+<BR>
+which switches here to ghostview for ps files. The file type used for the 2D plots can be changed to 'png' with:
+<BR>
+<BR>
+asgn viewformat png
+<BR>
+<BR>
+But of course the viewer has to be changed as well:
+<BR>
+<BR>
+asgn viewer xview
+<BR>
+<BR>
+<P>
+The helpsystem can be redefined with
+<BR>
+<BR>
+asgn browser /usr/bin/okular
+<BR>
+<BR>
+which switches here to an pdf viewer. Of course the helpfiles must now be redefined to pdf files with
+<BR>
+<BR>
+asgn cgxhelpfile /home/user/cgx.pdf
+<BR>
+<BR>
+and
+<BR>
+<BR>
+asgn ccxhelpfile /home/user/ccx.pdf
+<BR>
+<BR>
+<P>
+Finally to speed up the execution of batch files in normal operation (with the grapical window visible) the internal operations necessary for graphical output can be switched off or on during reading of command lines from a file with:
+<BR>
+<BR>
+asgn bg off
+<BR>
+<BR>
+asgn bg on
+<BR>
+<BR>
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1612"
+  HREF="node70.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1608"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1602"
+  HREF="node68.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1610"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1613"
+  HREF="node70.html">aver</A>
+<B> Up:</B> <A NAME="tex2html1609"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html1603"
+  HREF="node68.html">area</A>
+ &nbsp; <B>  <A NAME="tex2html1611"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

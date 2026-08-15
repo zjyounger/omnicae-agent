@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>Principal Stresses</TITLE>
+<META NAME="description" CONTENT="Principal Stresses">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node233.html">
+<LINK REL="previous" HREF="node231.html">
+<LINK REL="up" HREF="node227.html">
+<LINK REL="next" HREF="node233.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html3581"
+  HREF="node233.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3577"
+  HREF="node227.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3571"
+  HREF="node231.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3579"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3582"
+  HREF="node233.html">Principal Strains</A>
+<B> Up:</B> <A NAME="tex2html3578"
+  HREF="node227.html">Pre-defined Calculations</A>
+<B> Previous:</B> <A NAME="tex2html3572"
+  HREF="node231.html">Signed Von Mises Equivalent</A>
+ &nbsp; <B>  <A NAME="tex2html3580"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION000135000000000000000"></A><A NAME="Principal_Stresses"></A>
+<BR>
+Principal Stresses
+</H2>
+Entity names: PS1, PS2, PS3, worstPS
+<BR>
+<BR>
+The principal stresses <SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img19.png"
+ ALT="$\sigma$"></SPAN> are named PS1, PS2, PS3. From the three principal stresses <SPAN CLASS="MATH"><IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img19.png"
+ ALT="$\sigma$"></SPAN> the absolute maximum value will be calculated and named worstPS. For example if a node has the three values 100, 0 and -110 MPa then -110 MPa would be shown. The three principal stresses <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img21.png"
+ ALT="$\sigma_{1}$"></SPAN> <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img22.png"
+ ALT="$\sigma_{2}$"></SPAN> <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img23.png"
+ ALT="$\sigma_{3}$"></SPAN> are derived from the following equation:
+<BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{displaymath}
+\left [
+\begin{array}{ccc}
+\sigma_{xx}-\lambda & \sigma_{xy} & \sigma_{xz}\\
+\sigma_{yx} & \sigma_{yy}-\lambda & \sigma_{yz}\\
+\sigma_{zx} & \sigma_{zy} & \sigma_{zz}-\lambda
+\end{array}
+\right ]
+\left [
+\begin{array}{c}
+nx\\
+ny\\
+nz
+\end{array}
+\right ]
+=
+\left [
+\begin{array}{c}
+0\\
+0\\
+0
+\end{array}
+\right ]
+\end{displaymath}
+ -->
+
+<IMG
+ WIDTH="342" HEIGHT="64" BORDER="0"
+ SRC="img24.png"
+ ALT="\begin{displaymath}
+\left [
+\begin{array}{ccc}
+\sigma_{xx}-\lambda &amp; \sigma_{xy}...
+... ]
+=
+\left [
+\begin{array}{c}
+0\\
+0\\
+0
+\end{array}\right ]
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+They are given by the three roots of the equation (stress tensor is symmetric: <SPAN CLASS="MATH"><IMG
+ WIDTH="28" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img25.png"
+ ALT="$\sigma_{xy}$"></SPAN> = <SPAN CLASS="MATH"><IMG
+ WIDTH="28" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img26.png"
+ ALT="$\sigma_{yx}$"></SPAN> etc.):
+<BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{displaymath}
+\sigma^3 - (\sigma_{xx}+\sigma_{yy}+\sigma_{zz})\sigma^2 + (\sigma_{xx}\sigma_{yy}+\sigma_{yy}\sigma_{zz}+\sigma_{zz}\sigma_{xx}-\sigma_{xy}^2-\sigma_{yz}^2-
+\end{displaymath}
+ -->
+
+<IMG
+ WIDTH="478" HEIGHT="30" BORDER="0"
+ SRC="img27.png"
+ ALT="\begin{displaymath}\sigma^3 - (\sigma_{xx}+\sigma_{yy}+\sigma_{zz})\sigma^2 + (\...
+...\sigma_{zz}+\sigma_{zz}\sigma_{xx}-\sigma_{xy}^2-\sigma_{yz}^2-\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+<BR><P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay">
+<!-- MATH
+ \begin{displaymath}
+\sigma_{zx}^2)\sigma - (\sigma_{xx}\sigma_{yy}\sigma_{zz}+2\sigma_{xy}\sigma_{yz}\sigma_{zx}-\sigma_{xx}\sigma_{yz}^2-\sigma_{yy}\sigma_{zx}^2-\sigma_{zz}\sigma_{xy}^2)  = 0
+\end{displaymath}
+ -->
+
+<IMG
+ WIDTH="470" HEIGHT="30" BORDER="0"
+ SRC="img28.png"
+ ALT="\begin{displaymath}\sigma_{zx}^2)\sigma - (\sigma_{xx}\sigma_{yy}\sigma_{zz}+2\s...
+..._{yz}^2-\sigma_{yy}\sigma_{zx}^2-\sigma_{zz}\sigma_{xy}^2) = 0 \end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

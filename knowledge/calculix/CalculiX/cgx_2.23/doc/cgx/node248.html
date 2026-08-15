@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>How to get the sets from a geo- or ccx-inp file for post-processing</TITLE>
+<META NAME="description" CONTENT="How to get the sets from a geo- or ccx-inp file for post-processing">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node249.html">
+<LINK REL="previous" HREF="node247.html">
+<LINK REL="up" HREF="node246.html">
+<LINK REL="next" HREF="node249.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html3798"
+  HREF="node249.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3794"
+  HREF="node246.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3788"
+  HREF="node247.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3796"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3799"
+  HREF="node249.html">How to define a</A>
+<B> Up:</B> <A NAME="tex2html3795"
+  HREF="node246.html">Tips and Hints</A>
+<B> Previous:</B> <A NAME="tex2html3789"
+  HREF="node247.html">How to change the</A>
+ &nbsp; <B>  <A NAME="tex2html3797"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION000182000000000000000"></A><A NAME="How_to_get_the_sets_from_a_geo-_or_ccx-inp_file_for_post-processing"></A>
+<BR>
+How to get the sets from a geo- or ccx-inp file for post-processing
+</H2>
+Quite often it is useful to have the already defined sets from the pre-processing or/and the calculation available when doing the post-processing of results. The sets defined in the ccx-input file (.inp) can either be read together with the results (.frd) at start-up:
+<BR>
+<BR>
+cgx results.frd input.inp
+<BR>
+<BR>
+or the user may read them during run-time
+<BR>
+<BR>
+read input.inp nom
+<BR>
+<BR>(see &ldquo;<A HREF="node176.html#read">read</A>&rdquo;). When it comes to the sets defined in the geo file a slightly different approach is needed. The geo file must be read before the result file. So the user starts cgx in the build mode
+<BR>
+<BR>
+cgx -b geofile.fbd
+<BR>
+<BR>
+meshes the model (see &ldquo;<A HREF="node128.html#mesh">mesh</A>&rdquo;) and then read the results
+<BR>
+<BR>
+read results.frd nom
+<BR>
+<BR>
+and optionally the input file. Be aware that the parameter &ldquo;nom&rdquo; is essential here. Use &ldquo;<A HREF="node148.html#prnt">prnt</A>&rdquo; to get an overview over the available sets.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

@@ -1,0 +1,279 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>ds</TITLE>
+<META NAME="description" CONTENT="ds">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node89.html">
+<LINK REL="previous" HREF="node87.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node89.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1840"
+  HREF="node89.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1836"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1830"
+  HREF="node87.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1838"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1841"
+  HREF="node89.html">elem</A>
+<B> Up:</B> <A NAME="tex2html1837"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html1831"
+  HREF="node87.html">div</A>
+ &nbsp; <B>  <A NAME="tex2html1839"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001022000000000000000"></A><A NAME="ds"></A>
+<BR>
+ds
+</H2>
+<PRE>
+   'ds' [&lt;1.Dataset-Nr&gt; [&lt;2.Dataset-Nr&gt;] [&lt;n.Dataset-Nr&gt;] -&gt;
+            ['a[h]'|'e[h]' [&lt;entity-nr&gt; (up to 4 times)]]|
+            [['+'|'-'|'*'|'/'] &lt;Dataset-Nr&gt; ['c'] ]|
+            ['o' &lt;value&gt; [&lt;entity-nr&gt;]]|
+            ['p' &lt;power&gt; [&lt;entity-nr&gt;]]|
+            ['s' &lt;value&gt; [&lt;entity-nr&gt;]]|
+            ['r' &lt;key&gt; [&lt;parm1&gt;] [&lt;parm2&gt;] [..&lt;parm5&gt;]]]|
+        ['g' &lt;name&gt; [[&lt;ncomps&gt;|&lt;0&gt;] &lt;value&gt; &lt;text&gt; &lt;type&gt; -&gt;
+          &lt;step&gt; &lt;analysisName&gt;]]|
+        ['e' &lt;name&gt; &lt;comp&gt; &lt;type&gt; &lt;row&gt; &lt;column&gt;]|
+        ['f']
+</PRE>
+This keyword is used to select, modify or generate one or more <A HREF="node11.html#Datasets">Datasets</A> (ds) and one or more <A HREF="node12.html#Entity">Entity</A> (e). In addition it can be used to generate or modify related parameters which might store step specific descriptions. The dataset has to be a positive number which has to match the nr in the Dataset-menu or an 'l' (lower case 'L') which is interpreted as the last available Dataset or a negative number. Then it is interpreted as the last ds minus the specified number. For example
+<BR>
+<BR>
+ds 1
+<BR>
+<BR>
+will just select the first Dataset and will write some informations about it to stdout and to the &rdquo;<A HREF="node195.html#stack">stack</A>&rdquo; if active. It will write ds-nr, lc-name, ds-value, ds-text, ds-name, nr-of-entities 
+<BR>
+<BR>
+ds 1 e 1
+<BR>
+<BR>
+will display the first entity of the first Dataset and will write some informations about it to stdout or to the &rdquo;<A HREF="node195.html#stack">stack</A>&rdquo; if active. It will write ds-nr, lc-name, ds-value, ds-text, ds-name, entity-name.
+<BR>
+<BR>
+ds l e 1
+<BR>
+<BR>
+will display the last Dataset.
+To start the animation of the second-to-last Dataset right away:
+<BR>
+<BR>
+ds -1 a
+<BR>
+<BR>
+Or generate an animated fringe plot by adding the desired entity:
+<BR>
+<BR>
+ds -1 a 4
+<BR>
+<BR>
+Sequences can be defined by specifying one to three datasets and by extending the 'e' parameter by an 'h' ('history'):
+<BR>
+<BR>
+ds 2 eh 1
+<BR>
+<BR>
+Here all datasets of the same type as ds 2 are selected. The spacing between datasets of the same type is only evaluated for the first step. A unique step-with is therfore needed.
+<BR>
+<BR>
+ds 2 10 eh 1
+<BR>
+<BR>
+Here the datasets 2, 10 and all successive ones of the same type with a spacing of 8 are selected.
+<BR>
+<BR>
+ds 2 4 10 eh 1
+<BR>
+<BR>
+Here the 1st entity of each second Dataset is selected. The selection starts at the second- and ends at the 10th dataset. If more than one entity is defined then a vector-plot will be displayed. If a 4th entity is defined then this entity will be used for the basic color-plot:
+<BR>
+<BR>
+ds 2 4 10 eh 12 13 14 15
+<BR>
+<BR>
+In case the deformed shape should be shown together with the fringe plot in a sequence of datasets then the 'e' parameter has to be replaced by an 'a' character.
+<BR>
+<BR>
+ds 2 ah 1
+<BR>
+<BR>
+REMARK: So far vector plots can not use the deformed shape. Therefore only one entity is supported.
+<BR>
+<BR>
+In addition, it is possible to scale or offset the entities of the specified datasets:
+<BR>
+<BR>
+ds 1 s 1.2
+<BR>
+<BR>
+will scale all entities of dataset 1 by a factor of 1.2.
+<BR>
+<BR>
+ds 1 + 3
+<BR>
+<BR>
+will create a new dataset which stores the addition of dataset 1 and 2.
+<BR>
+<BR>
+ds 1 + 3 c
+<BR>
+<BR>
+using parameter 'c' will change the dataset 1 with the result of the addition of dataset 1 and 2. 
+<BR>
+<BR>
+ds 1 p 1.2 3
+<BR>
+<BR>
+will use the given exponent to scale entity 3 of dataset 1 by an exponent of 1.2.
+<BR>
+<BR>
+ds 1 o 200.
+<BR>
+<BR>
+will add a value of 200 to all entities of dataset 1.
+<BR>
+<BR>
+ds 1 o 200. 2
+<BR>
+<BR>
+will add a value of 200 to the entity 2 of dataset 1.
+Each dataset might use related parameters (see <A HREF="node225.html#Parameter_Header_Record">Parameter Header Record</A> for the format of a parameter record). This parameters can be overwritten or created:
+<BR>
+<BR>
+ds 2 4 10 r TAMB 1
+<BR>
+<BR>
+Each second dataset from 2 to 10 gets a related parameter 'TAMB' with the value '1'. If the value is nummeric it can be used by the &ldquo;<A HREF="node106.html#graph">graph</A>&rdquo; command. 
+
+<P>
+A new dataset in which all values are initiallized to zero is generated with:
+<BR>
+<BR>
+ds g VELOCITY 3
+<BR>
+<BR>
+The 'name' VELOCITY will appear in the menu as the dataset name and can be 8 character long. It has 3 components ('ncomps', default is '1'). The other parameters are optional:
+
+<UL>
+<LI>value: A nummeric value, usually time or frequency (used by &ldquo;<A HREF="node106.html#graph">graph</A>&rdquo;).
+</LI>
+<LI>text:  A describing text (used by &ldquo;<A HREF="node106.html#graph">graph</A>&rdquo;).
+</LI>
+<LI>type:  Analysis type (static:0,time step:1,frequency:2, etc.).
+</LI>
+<LI>step:  Step or increment number
+</LI>
+<LI>analysisName: Type of analysis (description).
+</LI>
+</UL>
+The current dataset name is modified if only the name is given:
+<BR>
+<BR>
+ds g VELOCITY
+<BR>
+<BR>
+The other parameters of the current dataset can be modified if the number of components is set to zero:
+ds g VELOCITY 0 1e4 test
+<BR>
+<BR>
+The entities of the current dataset are manipulated with:
+<BR>
+<BR>
+ds e V 2
+<BR>
+<BR>
+The 'name' V will appear in the menu as the entity name and can be 8 character long. It is the second entity (component) of the current dataset (default is '1'). The third and following parameters can be omitted for a scalar.
+
+<UL>
+<LI>name:   entity name
+</LI>
+<LI>comp:   entity nr (component)
+</LI>
+<LI>type:   Mathematical data type (scalar:1, vector:2, matrix:4, etc.)
+</LI>
+<LI>row:    sub-component index or row number
+</LI>
+<LI>column: column number if matrix
+</LI>
+</UL>
+The 'row' paramter defines the location of the enitity in the vector or the row of the matrix. 
+The dataset is finalized with:
+<BR>
+<BR>
+ds f
+<BR>
+<BR>
+The maximum- and minimum value over all nodes for the current dataset will be determined and stored together with the corresponding node numbers. This values are needed for the graphic display.
+<BR>
+<BR>
+The values at the nodes are manipulated with the &rdquo;<A HREF="node140.html#node">node</A>&rdquo; command. With that command the new dataset gets its data. See also &ldquo;<A HREF="#How_to_generate_a_new_dataset">How to generate a new dataset</A>&rdquo; for further details.
+
+<P>
+More details can be found in section &rdquo;<A HREF="node226.html#Nodal_Results_Block">Nodal Results Block</A>&rdquo;.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1840"
+  HREF="node89.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1836"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1830"
+  HREF="node87.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1838"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1841"
+  HREF="node89.html">elem</A>
+<B> Up:</B> <A NAME="tex2html1837"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html1831"
+  HREF="node87.html">div</A>
+ &nbsp; <B>  <A NAME="tex2html1839"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

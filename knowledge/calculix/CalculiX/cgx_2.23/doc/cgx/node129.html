@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>mids</TITLE>
+<META NAME="description" CONTENT="mids">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node130.html">
+<LINK REL="previous" HREF="node128.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node130.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2332"
+  HREF="node130.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2328"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2322"
+  HREF="node128.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2330"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2333"
+  HREF="node130.html">min</A>
+<B> Up:</B> <A NAME="tex2html2329"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2323"
+  HREF="node128.html">mesh</A>
+ &nbsp; <B>  <A NAME="tex2html2331"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001063000000000000000"></A><A NAME="mids"></A>
+<BR>
+mids
+</H2>
+<PRE>
+    'mids' &lt;set&gt; ['force'|'lin'|'gen'|'rem']
+</PRE>
+This keyword is used correct the midside node-position of higher order elements stored in a set. It is performed automatically if a new mesh is created or if nodes are projected to target surfaces. The correction will use a circular track defined by the corner-nodes and the midside node. With the parameter &rdquo;lin,&rdquo; the corrected position is halfway between the corner-nodes for all inner nodes. Except the midside nodes on the surface are not linearized but use the circular track. The user might overrule this restriction with the &ldquo;force&rdquo; option. The &rdquo;gen&rdquo; option will generate midside nodes for linear elements like he8 or te4. The &rdquo;rem&rdquo; option will remove midside nodes from the element formulation but the nodes are not deleted. The nodes are stored in a new set called &rdquo;-delete&rdquo; and the user might &rdquo;<A HREF="node217.html#zap">zap</A>&rdquo; this set. 
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

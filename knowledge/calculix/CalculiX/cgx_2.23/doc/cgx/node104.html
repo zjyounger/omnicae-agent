@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>gbod</TITLE>
+<META NAME="description" CONTENT="gbod">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node105.html">
+<LINK REL="previous" HREF="node103.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node105.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2032"
+  HREF="node105.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2028"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2022"
+  HREF="node103.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2030"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2033"
+  HREF="node105.html">gonly</A>
+<B> Up:</B> <A NAME="tex2html2029"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2023"
+  HREF="node103.html">frame</A>
+ &nbsp; <B>  <A NAME="tex2html2031"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001038000000000000000"></A><A NAME="gbod"></A>
+<BR>
+gbod
+</H2>
+<PRE>
+   'gbod' &lt;name(char&lt;9)&gt;|'!' 'NORM' '+|-' &lt;surf&gt; '+|-' &lt;surf&gt; -&gt;
+   .. ( 5-7 surfaces )
+</PRE>
+This keyword is used to define or redefine a body in the most basic way (see also &ldquo;<A HREF="node153.html#qbod">qbod</A>&rdquo;). Each body must have five to seven surfaces to be mesh-able. However, the number of recommended surfaces is six. The first two surfaces should be the &rdquo;top&rdquo; and the &rdquo;bottom&rdquo; surfaces. For example,
+<BR>
+<BR>
+gbod B001 NORM - S001 + S002 - S005 - S004 - S003 - S006
+<BR>
+<BR>
+will create a body B001. The keyword &rdquo;NORM&rdquo; is a necessary placeholder for future functionality but has no actual meaning. Next, follow the surfaces with a sign &rdquo;+&rdquo; or &rdquo;-&rdquo; in front that indicates the orientation of each surface. These signs will be corrected automatically if necessary. If the an automatically generated name is desired, then type &rdquo;<code>!</code>&rdquo; instead of a name.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

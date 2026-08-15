@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>nurs</TITLE>
+<META NAME="description" CONTENT="nurs">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node144.html">
+<LINK REL="previous" HREF="node142.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node144.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2500"
+  HREF="node144.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2496"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2490"
+  HREF="node142.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2498"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2501"
+  HREF="node144.html">ori</A>
+<B> Up:</B> <A NAME="tex2html2497"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2491"
+  HREF="node142.html">nurl</A>
+ &nbsp; <B>  <A NAME="tex2html2499"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001077000000000000000"></A><A NAME="nurs"></A>
+<BR>
+nurs
+</H2>
+<PRE>
+   'nurs' [&lt;name(char9)&gt;|'!' ['DEFINE' ['COMPACT'] -&gt;
+              &lt;u.deg&gt; &lt;v.deg&gt; &lt;u.npnt&gt; &lt;v.npnt&gt; &lt;u.nknt&gt; &lt;v.nknt&gt;]|
+              ['CONTROL' &lt;u.index&gt; &lt;v.index&gt; [&lt;pnt&gt;|&lt;x y z&gt;] -&gt;
+              &lt;weight&gt;]|
+              ['KNOT' &lt;U&gt;|&lt;V&gt; &lt;index&gt; &lt;value&gt;]|
+              ['END']] |
+          [ &lt;!&gt; &lt;setname(containing surfaces)&gt;]
+</PRE>
+This keyword is used to define a nurbs shape. Surfaces might use nurbs to define the interior geometry. There are two possible ways of definition. The first using predefined point names and the second by specifying the coordinates explicitly. When the coordinates are defined, then the parameter &rdquo;COMPACT&rdquo; must be used as shown above but when point names are used, then &rdquo;COMPACT&rdquo; must be omitted. CAD-interfaces might use this functionality.
+<BR>
+<BR>
+REMARK: The knot-vector has to have a multiplicity of &ldquo;degree+1&rdquo;.
+<BR>
+<BR>
+There is also a small nurbs-building capability in cgx. It is possible to use
+existing surfaces (with 4 edges) which do not already reference a given
+nurbs or shape. The new nurbs will follow the Coons-algorithm but can be modified by
+moving the control points. NOTE: The number of control points is controlled by the
+divisions of the lines defining the surface edges. The surfaces must be stored in a set. For
+example,
+<BR>
+<BR>
+nurs ! surfaceSet
+<BR>
+<BR>
+will define nurbs for all surfaces stored in
+the set surfaceSet. This nurbs can be used to define the interiour of other
+surfaces. This is necessary if &ldquo;tr3u&rdquo; elements (unstructured triangles)
+should be used and if the surface is not related to a given shape. Note:
+&ldquo;<A HREF="node173.html#qsur">qsur</A>&rdquo; offers another option to create nurbs related
+surfaces by associating existing surfaces to an overlapping existing
+NURBS. The interiour of the surface is then defined by the NURBS.
+
+<P>
+Remark: Internally nurbs are always linked by a shape to a surface definition. Such a shape will be automatically generated when a nurbs is finished by the &ldquo;END&rdquo; parameter using the same name as the nurbs. This shapes will not be written to a file but using the <A HREF="node148.html#prnt">prnt</A> command will list them:
+<BR>
+<BR>
+shpe N001 NURS N001
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2500"
+  HREF="node144.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2496"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2490"
+  HREF="node142.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2498"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2501"
+  HREF="node144.html">ori</A>
+<B> Up:</B> <A NAME="tex2html2497"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2491"
+  HREF="node142.html">nurl</A>
+ &nbsp; <B>  <A NAME="tex2html2499"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

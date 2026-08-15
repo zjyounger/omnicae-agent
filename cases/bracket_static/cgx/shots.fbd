@@ -1,0 +1,34 @@
+read FemMesh.inp
+view elem
+rot y
+rot u 20
+rot r 20
+frame
+plot f all g
+hcpy png
+plot f all w
+plus n BoltFix r
+plus n +clo b
+frame
+hcpy png
+seta top n +clo
+comp top up
+comp top do
+plot f top g
+plus n +clo r
+frame
+hcpy png
+rot z
+frame
+hcpy png
+seta bolt n BoltFix
+comp bolt up
+comp bolt do
+rot y
+rot u 20
+rot r 20
+plot f bolt g
+plus n BoltFix r
+frame
+hcpy png
+quit

@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>plot</TITLE>
+<META NAME="description" CONTENT="plot">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node146.html">
+<LINK REL="previous" HREF="node144.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node146.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2524"
+  HREF="node146.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2520"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2514"
+  HREF="node144.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2522"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2525"
+  HREF="node146.html">plus</A>
+<B> Up:</B> <A NAME="tex2html2521"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2515"
+  HREF="node144.html">ori</A>
+ &nbsp; <B>  <A NAME="tex2html2523"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001079000000000000000"></A><A NAME="plot"></A>
+<BR>
+plot
+</H2>
+<PRE>
+   'plot' ['n'|'e'|'f'|'p'|'l'|'s'|'b'|'S'|'L'|'sh'|'si']&amp;-&gt;
+          ['a'|'b'|'c'|'d'|'n'|'p'|'q'|'t'|'v'] -&gt;
+          [&lt;set&gt;|&lt;*chars*&gt;] ['b'|'g'|'k'|'m'|'n'|'r'|'t'|'w'|'y'] [&lt;width&gt;-&gt;
+                |&lt;transparency&gt;]
+</PRE>
+This keyword is used to display the entities of a set. Entities already visible will be erased. The following types of entities are known:
+<BR>
+<BR>
+Nodes n, Elements e, Faces f, Points p, Lines l, Surfaces s, Bodies b, Nurbs Surfaces S, Nurbs Lines L, Shapes sh and the shaded (illuminated) surfaces si
+<BR>
+<BR>
+The entities can be displayed in the following colors:
+<BR>
+<BR>
+White w, Black k, Red r, Green g, Blue b, Yellow y, Magenta m, Neutral 'n' (metallic grey) and turquois t
+<BR>
+<BR>
+To display the entities with attributes, use the type in combination with an attribute (second letter). If no set is specified, the entities of the given type of all sets are shown:
+<BR>
+<BR>
+plot e
+<BR>
+<BR>
+shows the elements of all sets in the available colors (except set 'all'). The command 
+<BR>
+<BR>
+plot e *
+<BR>
+<BR>
+does the same. In general wildcards(*) are supported:
+<BR>
+<BR>
+plot e E*
+<BR>
+<BR>
+will display all elements of all sets staring with an 'E'.
+
+<P>
+To get a list of the visible sets and the used colors use &ldquo;<A HREF="node148.html#prnt">prnt</A> ve&rdquo;.
+
+<P>
+Other examples are:
+<BR>
+<BR>
+plot la all
+<BR>
+<BR>
+will display all lines with their names. The attribute d works only for lines,
+<BR>
+<BR>
+plot ld all
+<BR>
+<BR>
+will display all lines with their division and bias (see <A HREF="node71.html#bia">bia</A>). The division is given by the numbers (1-99) following the <code>#</code> sign and the bias by the leading digits. If the bias uses more than one digit in front of the division, the number has to be divided by a factor of ten to get the bias (101<code>#</code>30 means a bias of 10.1 and a div of 30). 
+<BR>
+<BR>
+plot ln all
+<BR>
+<BR>
+shows potential node locations. The attribute p works only for lines. In this case the lines with its end-points are drawn:
+<BR>
+<BR>
+plot lp all
+<BR>
+<BR>
+This is useful to detect the begin and end of all lines. If end-points are deleted, the line is also deleted. Therefore special care with end-points is necessary. The key c combines the line parameters d, p, n:
+<BR>
+<BR>
+plot lc all
+<BR>
+<BR>
+The lines are drawn with their end-points, potential node positions and divisions.
+Shaded surfaces
+<BR>
+<BR>
+plot si all
+<BR>
+<BR>
+can only be displayed if the interiour was previously calculated, which is done with the command &ldquo;<A HREF="node177.html#rep">rep</A>&rdquo; or &ldquo;<A HREF="node128.html#mesh">mesh</A>&rdquo;. The attribute t applies only to nodes and will display only the ones which have attached texts:
+<BR>
+<BR>
+plot nt all
+<BR>
+<BR>
+will display only the nodes which have attached texts out of the set 'all'. They are created with &rdquo;<A HREF="node150.html#qadd">qadd</A>&rdquo;, &rdquo;<A HREF="node159.html#qenq">qenq</A>&rdquo; or &rdquo;<A HREF="node174.html#qtxt">qtxt</A>&rdquo;. The attribute &ldquo;width&rdquo; determines the number of pixels used for the thickness of the entity (points, nodes, lines):
+<BR>
+<BR>
+plot l all 4
+<BR>
+<BR>
+will display all lines with a width of 4 pixels. This works also for 2D faces and beams.
+The attribute n works for nodes only:
+<BR>
+<BR>
+plot nn set1
+<BR>
+<BR>
+will display the nodes in set set1 with their numerical values. The attribute v works for nodes, faces ane elements. This attribute is used to display results with colors representing their values:
+<BR>
+<BR>
+plot nv set1
+<BR>
+<BR>
+plot fv set1
+<BR>
+<BR>
+plot ev set1
+<BR>
+<BR>
+Actually this is what happens automatically if the user selects an &rdquo;<A HREF="node12.html#Entity">Entity</A>&rdquo; from &rdquo;<A HREF="node11.html#Datasets">Datasets</A>&rdquo; in the &rdquo;<A HREF="node126.html#menu">menu</A>&rdquo;. The faces can be displayed in a transparent manner with the attribute b:
+<BR>
+<BR>
+plot fb set1 t 33
+<BR>
+<BR>
+will display the faces in turquois color with a transparency of 33<code>%</code>.
+<BR>
+<BR>
+plot fvb set1 33
+<BR>
+<BR>
+will display the faces with their colored values with a transparency of 33<code>%</code>. A default transparency is used if a number is not given.
+<BR>
+<BR>
+The attribute q works only for elements. With this attribute, only elements which do not pass the element-quality check are displayed:
+<BR>
+<BR>
+plot eq all
+<BR>
+<BR>
+The threshold for the element-quality is defined with &rdquo;<A HREF="node97.html#eqal">eqal</A>&rdquo;.
+<BR>
+<BR>
+To plot additional entities, see <A HREF="node146.html#plus">plus</A>.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2524"
+  HREF="node146.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2520"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2514"
+  HREF="node144.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2522"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2525"
+  HREF="node146.html">plus</A>
+<B> Up:</B> <A NAME="tex2html2521"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2515"
+  HREF="node144.html">ori</A>
+ &nbsp; <B>  <A NAME="tex2html2523"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

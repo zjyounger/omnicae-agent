@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>map</TITLE>
+<META NAME="description" CONTENT="map">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node122.html">
+<LINK REL="previous" HREF="node120.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node122.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2236"
+  HREF="node122.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2232"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2226"
+  HREF="node120.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2234"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2237"
+  HREF="node122.html">mats</A>
+<B> Up:</B> <A NAME="tex2html2233"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2227"
+  HREF="node120.html">mata</A>
+ &nbsp; <B>  <A NAME="tex2html2235"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001055000000000000000"></A><A NAME="map"></A>
+<BR>
+map
+</H2>
+<PRE>
+   'map' &lt;slave-set&gt; &lt;master-set&gt;  -&gt;
+         [['surf']|
+          ['volu']|
+          [ 'x'|'y'|'z'|'rx'|'ry'|'rz']]  -&gt;
+          'ds'[&lt;nr&gt;] ['nex']
+</PRE>
+This keyword is used to map (or interpolate) values from one mesh to another. For example
+<BR>
+<BR>
+map slave master surf ds1
+<BR>
+<BR>
+will map the values from Dataset 1 to the nodes of set slave. All available datasets will be mapped if no number follows the &ldquo;ds&rdquo; parameter. The parameter &ldquo;surf&rdquo; is used for mapping of values from element faces to element faces and their nodes (2D or 3D). Do not use internal nodes or volume elements! A typical application would be the mapping of pressure. The parameter &ldquo;volu&rdquo; triggers the mapping from a 3D mesh to another 3D mesh of the same shape (i.e. temperatures). The parameters &ldquo;x,y,z&rdquo; are used for mapping from 2D to 2D/3D in the indicated direction. The parameters &ldquo;rx,ry,rz&rdquo; are used for rotational mapping of 2D to 2D/3D around the x,y,z-axis. The &ldquo;master&rdquo; set must include the nodes and their elements. The optional parameter 'nex' prevents extrapolation and outside slave nodes get a zero value and they are stored in set '-notMapped'. Unconnected nodes are not allowed. Usually the master nodes (on which the values are known) were included from an external result file with the &ldquo;<A HREF="node176.html#read">read</A>&rdquo; command (with the parameter &ldquo;add&rdquo;). For further details see &ldquo;<A HREF="node259.html#How_to_map_loads">How to map loads</A>&rdquo; in the appendix. Remark: The 3D mapper uses multi threading. The number of cores is defined in cgx.h (NTHREADS).
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2236"
+  HREF="node122.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2232"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2226"
+  HREF="node120.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2234"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2237"
+  HREF="node122.html">mats</A>
+<B> Up:</B> <A NAME="tex2html2233"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2227"
+  HREF="node120.html">mata</A>
+ &nbsp; <B>  <A NAME="tex2html2235"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

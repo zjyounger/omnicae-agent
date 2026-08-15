@@ -1,0 +1,7 @@
+read FemMesh.inp
+seta nod n all
+enq nod TOPN rec _ _ 72. 0.01 a
+comp TOPN f
+send all abq
+send TOPN abq pres 1.0
+quit

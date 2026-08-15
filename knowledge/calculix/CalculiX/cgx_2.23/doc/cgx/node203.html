@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>thrs</TITLE>
+<META NAME="description" CONTENT="thrs">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node204.html">
+<LINK REL="previous" HREF="node202.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node204.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html3220"
+  HREF="node204.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3216"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3210"
+  HREF="node202.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3218"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3221"
+  HREF="node204.html">tra</A>
+<B> Up:</B> <A NAME="tex2html3217"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html3211"
+  HREF="node202.html">test</A>
+ &nbsp; <B>  <A NAME="tex2html3219"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00010137000000000000000"></A><A NAME="thrs"></A>
+<BR>
+thrs
+</H2>
+<PRE>
+   'thrs' &lt;set&gt; &lt;value&gt; 'h'|'l'|'o' ['t']
+</PRE>
+Compiles all nodes from the given set which have values of the actual dataset above (h) or below (l) the given value (stored in set '+THRS'). The related elements are collected as well. All unconnected element-clusters from that set together with their related nodes are stored in separate sets (+grp1..+grpn). This sets are displayed in a certain mode were only the dots are visible (see &ldquo;<A HREF="node212.html#view">view</A>&rdquo;):
+<BR>
+<BR>
+thrs all 600. h
+<BR>
+<BR>
+When the parameter 't' is used the local nodes referencing maximum or minimum values are stored in additional sets (+grpN1..+grpNn) and displayed in addition:
+<BR>
+<BR>
+thrs all 600. h t
+<BR>
+<BR>
+This node attached texts can be manipulated with &ldquo;<A HREF="node174.html#qtxt">qtxt</A>&rdquo; or with  &ldquo;<A HREF="node206.html#txt">txt</A>&rdquo;.
+
+<P>
+To display the full model again in the filled mode:
+<BR>
+<BR>
+thrs o
+<BR>
+<BR>
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

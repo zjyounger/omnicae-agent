@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>How to process results</TITLE>
+<META NAME="description" CONTENT="How to process results">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node262.html">
+<LINK REL="previous" HREF="node260.html">
+<LINK REL="up" HREF="node246.html">
+<LINK REL="next" HREF="node262.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html3954"
+  HREF="node262.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3950"
+  HREF="node246.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3944"
+  HREF="node260.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3952"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3955"
+  HREF="node262.html">How to deal with</A>
+<B> Up:</B> <A NAME="tex2html3951"
+  HREF="node246.html">Tips and Hints</A>
+<B> Previous:</B> <A NAME="tex2html3945"
+  HREF="node260.html">How to run cgx</A>
+ &nbsp; <B>  <A NAME="tex2html3953"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001815000000000000000"></A><A NAME="How_to_process_results"></A>
+<BR>
+How to process results
+</H2>
+The node results can be modified or used to generate derived results. There are basically three levels of operations.
+
+<P>
+The easiest one is to just multiply with a factor, add a number or use an exponent to all node results of a certain dataset with the &rdquo;<A HREF="node88.html#ds">ds</A>&rdquo; command.
+
+<P>
+The next level is using variables which can be used to do calculations based on results and can be written back to an existing dataset or a new one. This requires a good knowledge of the way cgx works and of the necessary commands (&rdquo;<A HREF="node113.html#if">if</A>&rdquo;, &rdquo;<A HREF="node214.html#while">while</A>&rdquo;, &rdquo;<A HREF="node195.html#stack">stack</A>&rdquo;, &rdquo;<A HREF="node211.html#valu">valu</A>&rdquo;, &rdquo;<A HREF="node95.html#enq">enq</A>&rdquo;, &rdquo;<A HREF="node148.html#prnt">prnt</A>&rdquo;, &rdquo;<A HREF="node88.html#ds">ds</A>&rdquo;, &rdquo;<A HREF="node201.html#sys">sys</A>&rdquo; etc.). In this way data can be written to a file with the &ldquo;<A HREF="node201.html#sys">sys</A>&rdquo; command (depending on the operation system using echo or printf) were an external program might be invoked by the &ldquo;sys&rdquo; command which in turn could provide data for cgx.
+
+<P>
+Finally, complex operations can be coded in C in the file userFunction.c. The
+user function is activated by the &rdquo;<A HREF="node74.html#call">call</A>&rdquo; command. A new
+compilation of cgx is required unless a dynamically linked library is used.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

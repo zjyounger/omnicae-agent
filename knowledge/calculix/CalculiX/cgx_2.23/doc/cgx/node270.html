@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>Remarks Concerning NETGEN</TITLE>
+<META NAME="description" CONTENT="Remarks Concerning NETGEN">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node271.html">
+<LINK REL="previous" HREF="node269.html">
+<LINK REL="up" HREF="node246.html">
+<LINK REL="next" HREF="node271.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html4062"
+  HREF="node271.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html4058"
+  HREF="node246.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html4052"
+  HREF="node269.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html4060"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html4063"
+  HREF="node271.html">Remarks Concerning OpenFOAM</A>
+<B> Up:</B> <A NAME="tex2html4059"
+  HREF="node246.html">Tips and Hints</A>
+<B> Previous:</B> <A NAME="tex2html4053"
+  HREF="node269.html">Remarks Concerning Nastran</A>
+ &nbsp; <B>  <A NAME="tex2html4061"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001824000000000000000"></A><A NAME="Remarks_Concerning_NETGEN"></A>
+<BR>
+Remarks Concerning NETGEN
+</H2>
+It is not necessary to write the mesh in abaqus format if you use netgen as a mesher. The native netgen format (.vol) can be read by cgx (cgx -ng file.vol) as well. The netgen mesh format (.vol) includes the surface-patches which were defined by the edges of the model and used for the generation of the volume-mesh. This patches can be used to define boundary conditions or loads. The nodes and faces of this patches are stored in sets named &ldquo;+set[nr]&rdquo;. To get an overview over the patches type &ldquo;<A HREF="node148.html#prnt">prnt</A> se&rdquo;. To see were the patches are located type &ldquo;<A HREF="node145.html#plot">plot</A> f all&rdquo; and use the &ldquo;PAGE_DOWN&rdquo;-key to scan through all sets.
+<BR>
+<BR>
+A netgen surface mesh can be written based on faces of elements. The faces of hex, tet, quad and tria elements are triangulated and written in the stl format which can be read by using the netgen-gui or the stand-alone netgen mesher format (file.ng). This mesher can be found in the netgen sub-directory nglib and is named ng_vol. It will create tet4 elements which use and keep the shape of the provided tri3 elements. To improve the meshing results with the netgen-gui the user could create own edges based on the stl triangles or read and manipulate the netgen created edges with cgx and then write them back. To read the edges: In NETGEN open the stl-doctor and go in the edges menu. There delete all edges with &rdquo;all undefined&rdquo; then load the edges with &rdquo;load edgedata&rdquo; and activate them with &rdquo;candidate to confirm&rdquo;.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html4062"
+  HREF="node271.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html4058"
+  HREF="node246.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html4052"
+  HREF="node269.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html4060"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html4063"
+  HREF="node271.html">Remarks Concerning OpenFOAM</A>
+<B> Up:</B> <A NAME="tex2html4059"
+  HREF="node246.html">Tips and Hints</A>
+<B> Previous:</B> <A NAME="tex2html4053"
+  HREF="node269.html">Remarks Concerning Nastran</A>
+ &nbsp; <B>  <A NAME="tex2html4061"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>test</TITLE>
+<META NAME="description" CONTENT="test">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node203.html">
+<LINK REL="previous" HREF="node201.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node203.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html3208"
+  HREF="node203.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3204"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3198"
+  HREF="node201.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3206"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3209"
+  HREF="node203.html">thrs</A>
+<B> Up:</B> <A NAME="tex2html3205"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html3199"
+  HREF="node201.html">sys</A>
+ &nbsp; <B>  <A NAME="tex2html3207"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00010136000000000000000"></A><A NAME="test"></A>
+<BR>
+test
+</H2>
+<PRE>
+   'test' ['d'|'v'|'n'|'e'|'p'|'l'|'c'|'s'|'b'|-&gt;
+           'S'|'L'|'se'|'sh' &lt;entity-name&gt;] | -&gt;
+          ['file' &lt;file&gt; [&lt;"&gt;string&lt;"&gt;]]  | -&gt;
+          ['i' &lt;set1&gt; &lt;set2&gt;] | -&gt;
+          ['o' &lt;set&gt;|&lt;node&gt;]
+</PRE>
+A boolean opperation. Usually tests the existence of a given entity (watch the '<code>\</code>' which prevents the value beeing replaced by its content!):
+<BR>
+<BR>
+test v <code>\</code>value
+<BR>
+<BR>
+And it checks if and which nodes included in set1 are inside the elements included in set2:
+<BR>
+<BR>
+test i nodeset elemset
+<BR>
+<BR>
+It returns TRUE or FALSE and the amount of nodes inside the elements of set2 and stores the nodes in the special set &rdquo;-included&rdquo;.
+
+<P>
+Or it tests the observability 'o' of a certain node under the given orientation of the model. The node can be given as a member of a set or directly by its node-nr.
+
+<P>
+The existence of a file or the existence of a certain string in a given file can be checked:
+<BR>
+<BR>
+test file filename.txt &ldquo;HELLO&rdquo;
+<BR>
+<BR>
+The command returns TRUE or FALSE and writes it to the &rdquo;<A HREF="node195.html#stack">stack</A>&rdquo;.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

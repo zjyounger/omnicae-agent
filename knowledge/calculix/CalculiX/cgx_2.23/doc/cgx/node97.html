@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>eqal</TITLE>
+<META NAME="description" CONTENT="eqal">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node98.html">
+<LINK REL="previous" HREF="node96.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node98.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1948"
+  HREF="node98.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1944"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1938"
+  HREF="node96.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1946"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1949"
+  HREF="node98.html">exit</A>
+<B> Up:</B> <A NAME="tex2html1945"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html1939"
+  HREF="node96.html">eprop</A>
+ &nbsp; <B>  <A NAME="tex2html1947"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001031000000000000000"></A><A NAME="eqal"></A>
+<BR>
+eqal
+</H2>
+<PRE>
+   'eqal' 'jbir'|'aspr'|'mca' &lt;value&gt;
+</PRE>
+The keyword without parameters lists the current element quality thresholds (0==off):
+
+<UL>
+<LI>JBIR: The maximum ratio of jacobian determinants xsj between all gaus-points. Were xsj = Vworldcoordinates <code>/</code> Velementcoordinates and jbir = xsj-max <code>/</code> xsj-min. Supported element types he8, he20, te10.
+</LI>
+<LI>ASPR: Element aspect ratio between all element sides. Supported element types he8, he20.
+</LI>
+<LI>MCA: Maximum corner angle between all element sides. Supported element types he8, (he20 not regarding midside nodes).
+</LI>
+</UL>
+Parameter &ldquo;value&rdquo; sets the value of the threshold. The element-quality is checked with &rdquo;<A HREF="node145.html#plot">plot</A> eq all&rdquo;. The user might use this command to store his personal parameters in the &ldquo;.cgx&rdquo; file in his home directory.
+
+<P>
+The command writes to the &rdquo;<A HREF="node195.html#stack">stack</A>&rdquo;.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

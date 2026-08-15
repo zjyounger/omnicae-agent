@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>Concept</TITLE>
+<META NAME="description" CONTENT="Concept">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node4.html">
+<LINK REL="previous" HREF="node2.html">
+<LINK REL="up" HREF="cgx.html">
+<LINK REL="next" HREF="node4.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html587"
+  HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html583"
+  HREF="cgx.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html577"
+  HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html585"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html588"
+  HREF="node4.html">File Formats</A>
+<B> Up:</B> <A NAME="tex2html584"
+  HREF="cgx.html">CalculiX USER'S MANUAL -</A>
+<B> Previous:</B> <A NAME="tex2html578"
+  HREF="node2.html">Introduction</A>
+ &nbsp; <B>  <A NAME="tex2html586"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00030000000000000000">
+Concept</A>
+</H1>
+This program uses the openGL library for visualization and the glut library [<A
+ HREF="node283.html#glut">2</A>] for window management and event handling. This results in very high speed if a hardware-accelerated openGL-library is available and still high speed for software-rendering (MesaGL,[<A
+ HREF="node283.html#mesa">1</A>]). 
+
+<P>
+The cgx has pre- and post-processor capabilities. It is able to generate and display beam, shell and brick elements in its linear and quadratic form (fig. <A HREF="cgx.html#cover">1</A>), tets can be generated from within cgx if either TETGEN [<A
+ HREF="node283.html#TETGEN">5</A>] or the program ng_vol (part of NETGEN [<A
+ HREF="node283.html#NETGEN">4</A>]) is accessible (see also &rdquo;<A HREF="node262.html#How_to_deal_with_CAD-geometry">How to deal with CAD-geometry</A>&rdquo;). TETGEN comes with cgx.
+
+<P>
+The built-in mesher creates a structured mesh based on a description of the geometry. For example, it uses lines for beam elements, surfaces for shell elements and volumes (bodies) for brick elements. The program distinguishes between the mesh and the underlying geometry. Elements are made from faces and faces are made from nodes. If you move a node, the corresponding face(s) and element(s) will follow. The geometry behaves according to the mesh:
+Lines are made from points, surfaces are made from lines and bodies are made of surfaces. As a result, if you modify the position of a point, all related geometry will follow. In other words, if the location of geometric entities is changed, it is necessary to move the points on which the entities rely.  It should be noted that faces exist only on free surfaces of the model.
+
+<P>
+In addition, entities can be grouped together to make sets. Sets are useful to handle parts of a model. For example, sets can be used to manipulate or display a few entities at a time (see also &rdquo;<A HREF="node249.html#How_to_define_a_set_of_entities">How to define a set of entities</A>&rdquo;). 
+
+<P>
+A simple but powerful entity which can store values (character strings) is also available. This values can be derived from previous commands or calculated results by using an internal stack. Simple calculations can be performed. The values can be used to substitute parameters of subsequent commands. The user might measure a distance or calculate a distance and use this value to move a part of the mesh. Together with a 'while' loop, an 'if' case distinguishing command and the possibility to use system calls via the 'sys' command, elaborated batch files can be written.  
+
+<P>
+After a mesh is created in cgx, it needs written to a file for use with the solver. Likewise, several boundary conditions and loads can be written to files (see &rdquo;<A HREF="node257.html#How_to_connect_independent_meshes">How to connect independent meshes</A>&rdquo;, &rdquo;<A HREF="node258.html#How_to_define_loads_and_constraints">How to define loads and constraints</A>&rdquo; and &rdquo;<A HREF="node182.html#send">send</A>&rdquo;). These files need to be added into the control file for later use in ccx. Additional commands, material description and so on must be added with the help of an external editor. Existing fields like a pressure distribution or temperatures may be mapped from one mesh to another. Please see &rdquo;<A HREF="node259.html#How_to_map_loads">How to map loads</A>&rdquo; how to do that.
+
+<P>
+After the analysis is completed, the results can be visualized by calling the cgx program again in an independent session. The program is primary controlled by the keyboard with individual commands for each function. Only a subset of commands which are most important for post-processing is also available through a pop-up menu. Shaded animations of static and dynamic results, the common color plots and time history plots can be created. The outer faces can be switched off to make inner structures like a cavity visible or certain faces may be displayed in a transparent manner. Also, a cut through the model can be done which creates a section and it is possible to zoom through the model.
+
+<P>
+Skilled users might include their own functions. For example someone may need his own functions to manipulate the result-data or he may need an interface to read or write his own results format (see &rdquo;<A HREF="node74.html#call">call</A>&rdquo;).
+
+<P>
+Both the pre- and post- processing can be automated in batch-mode (see &rdquo;<A HREF="node260.html#How_to_run_cgx_in_batch_mode">How to run cgx in batch mode</A>&rdquo;).
+
+<P>
+The program searches the home directoy for a file named &ldquo;.cgx&rdquo; (see &ldquo;<A HREF="node65.html#Customization">Customization</A>&rdquo;). The commands written there will be executed during startup. The user might store there &rdquo;<A HREF="node126.html#menu">menu</A>&rdquo; commands which link user written command files to the menu or other personal settings like &ldquo;<A HREF="node212.html#view">view</A> cl&rdquo; to switch the command line from the konsole to the graphic's window. Also the helpfiles, the browser and the psviewer (for graphs) can be redefined (see &ldquo;<A HREF="node69.html#asgn">asgn</A>&rdquo;). 
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html587"
+  HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html583"
+  HREF="cgx.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html577"
+  HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html585"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html588"
+  HREF="node4.html">File Formats</A>
+<B> Up:</B> <A NAME="tex2html584"
+  HREF="cgx.html">CalculiX USER'S MANUAL -</A>
+<B> Previous:</B> <A NAME="tex2html578"
+  HREF="node2.html">Introduction</A>
+ &nbsp; <B>  <A NAME="tex2html586"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

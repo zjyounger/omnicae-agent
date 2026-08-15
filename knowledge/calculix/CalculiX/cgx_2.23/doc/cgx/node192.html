@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>setr</TITLE>
+<META NAME="description" CONTENT="setr">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node193.html">
+<LINK REL="previous" HREF="node191.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node193.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html3088"
+  HREF="node193.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3084"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3078"
+  HREF="node191.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3086"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3089"
+  HREF="node193.html">shpe</A>
+<B> Up:</B> <A NAME="tex2html3085"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html3079"
+  HREF="node191.html">seto</A>
+ &nbsp; <B>  <A NAME="tex2html3087"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00010126000000000000000"></A><A NAME="setr"></A>
+<BR>
+setr
+</H2>
+<PRE>
+   'setr' &lt;set&gt; 'n'|'e'|'p'|'l'|'la'|'ll'|'ls'|'ln'| -&gt;
+                's'|'b'|'L'|'S'|'v'|'se'|'sh'
+                &lt;name|*chars*&gt; &lt;name|*chars*&gt; ..
+</PRE>
+This keyword is used to remove entities from a set (see also <A HREF="node169.html#qrem">qrem</A>. The entity will not be deleted. It is just not longer a member of that set. To remove entities from the set dummy type:
+<BR>
+<BR>
+setr dummy p p1 p2
+<BR>
+<BR>
+This will remove the points p1 and p2 from the set. The following entities are known: Nodes n, Elements e, Points p, Lines l, Surfaces s, Bodies b, Nurb Lines L, Nurb Surfaces S, Values v, other sets se and shapes sh. The program will automatically determine the type of the entities if not specified, but then the names must be unique. Wildcards (*) can be used to search for setnames of a certain expression.
+
+<P>
+The type of lines can be given with the second digit:
+<BR>
+<BR>
+setr dummy ls
+all
+<BR>
+<BR>
+This will remove only splines from set 'dummy'. Known are 'l' straight
+lines, 'a' arcs, 'n' nurbs, 's' splines.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

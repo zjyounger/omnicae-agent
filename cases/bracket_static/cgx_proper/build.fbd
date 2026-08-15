@@ -1,0 +1,11 @@
+read FemMesh.inp
+seta nod n all
+enq nod TOPN rec _ _ 72. 0.01 a
+comp TOPN f
+prnt se
+send TOPN abq nam
+send TOPN abq sur
+send TOPN abq trac 3.978874 0. 0.
+send BoltFix abq nam
+send BoltFix abq spc 123
+quit

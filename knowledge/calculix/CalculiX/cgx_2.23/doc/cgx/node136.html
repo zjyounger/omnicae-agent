@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>movi</TITLE>
+<META NAME="description" CONTENT="movi">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node137.html">
+<LINK REL="previous" HREF="node135.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node137.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2416"
+  HREF="node137.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2412"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2406"
+  HREF="node135.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2414"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2417"
+  HREF="node137.html">msg</A>
+<B> Up:</B> <A NAME="tex2html2413"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2407"
+  HREF="node135.html">move</A>
+ &nbsp; <B>  <A NAME="tex2html2415"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001070000000000000000"></A><A NAME="movi"></A>
+<BR>
+movi
+</H2>
+<PRE>
+   'movi' [loops &lt;nr&gt;]|[delay &lt;sec&gt;]|[start]|[stop]|
+          [frames ['auto']|[&lt;nr&gt; [&lt;epilogFile&gt;]]]|
+          [make [&lt;pic-nr&gt; &lt;pic-nr&gt; [&lt;prolog.gif&gt;]]]|
+          [clean]
+</PRE>
+This keyword is used to start or stop the recording of a movie. After &rdquo;start&rdquo; all frames will be stored in single gif files until the &rdquo;stop&rdquo; command is issued. Use the option &rdquo;make&rdquo; to assemble the movie from the individual files. The range consists of the nr of the first and last picture to be used. An existing movie will be copied in front of a range of frames if its name is given. With the option &rdquo;delay&rdquo; a time-delay (in seconds) between frames can be specified. With the option &rdquo;loops&rdquo; a certain nr of loops can be chosen before the animation stops. Without giving a certain nr the default is chosen which is infinite loops. With the option &rdquo;clean,&rdquo; all single gif-files will be erased.
+<BR>
+<BR>
+Below is an example command sequence. Do not use this sequence in a file since the start and stop commands will be executed without delay (see option 'frames' for use in a command file). Instead of using the default value of loops here one loop is defined:
+<PRE>
+   movi delay 0.01
+   movi loops 1
+   movi start
+   (let the program run until all frames are recorded)
+   movi stop
+   movi make
+   (or if a certain movie should be extended by the first 500 frames:)
+   movi make 1 500 prolog.gif
+   movi clean
+</PRE>
+When using the &ldquo;frames&rdquo; option the recording starts and a given nr of frames will be recorded before the recording stops atomatically. In cases were an animation of a mode shape or a sequence of datasets should be recorded it might be useful to use the argument 'auto' instead of a specific nr of frames. With the 'auto' functionality the program determines how much frames are needed to cover one period of frames and this period is then recorded. The 'make' and 'clean' functionality is included in the 'auto' mode. The 'auto' mode requires that the animation or the sequence is defined and started with the next command line (see &rdquo;<A HREF="node88.html#ds">ds</A>&rdquo;):
+<PRE>
+   anim real
+   movi frames auto
+   ds 3 eh 7
+</PRE>
+There is a second method available when successive commands after the recording of a given number of frames are needed:
+<BR>
+<BR>
+movi frames 90 epilogCommandFile.fbl
+<BR>
+<BR>
+This command must be the last command in an eventual command file. After 90 frames the given file 'epilogCommandFile.fbl' will be executed (the records are interpreted as cgx commands).
+<BR>
+<BR>
+Further remarks in &rdquo;<A HREF="node247.html#How_to_change_the_format_of_the_movie_file">How to change the format of the movie file</A>&rdquo;. See also the menu options &rdquo;<A HREF="node61.html#Start_Recording_Gif-Movie">Start Recording Gif-Movie</A>&rdquo;. 
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2416"
+  HREF="node137.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2412"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2406"
+  HREF="node135.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2414"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2417"
+  HREF="node137.html">msg</A>
+<B> Up:</B> <A NAME="tex2html2413"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2407"
+  HREF="node135.html">move</A>
+ &nbsp; <B>  <A NAME="tex2html2415"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

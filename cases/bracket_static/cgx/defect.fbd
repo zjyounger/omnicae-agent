@@ -1,0 +1,70 @@
+read FemMesh.inp
+seta SKIP e 38409
+seta SKIP e 38424
+seta SKIP e 38546
+seta SKIP e 38549
+seta SKIP e 38562
+seta SKIP e 38643
+seta SKIP e 38651
+seta SKIP e 38696
+seta SKIP e 38714
+seta SKIP e 38741
+seta SKIP e 38750
+seta SKIP e 38754
+seta SKIP e 38782
+seta SKIP e 38814
+seta SKIP e 38821
+seta SKIP e 38829
+seta SKIP e 38858
+seta SKIP e 38865
+seta SKIP e 38869
+seta SKIP e 38870
+seta SKIP e 38938
+seta SKIP e 38993
+seta MISS n 982
+seta MISS n 983
+seta MISS n 984
+seta MISS n 985
+seta MISS n 986
+seta MISS n 987
+seta MISS n 990
+seta MISS n 991
+seta MISS n 992
+seta MISS n 993
+seta MISS n 994
+seta MISS n 995
+seta MISS n 996
+seta MISS n 997
+seta MISS n 998
+seta MISS n 999
+seta MISS n 1000
+seta MISS n 1001
+seta MISS n 1002
+seta MISS n 1003
+seta MISS n 1004
+seta MISS n 1005
+seta top n +clo
+comp top up
+comp top do
+view elem
+rot z
+plot f top w
+plus n +clo r
+plus e SKIP b
+plus n MISS m
+frame
+hcpy png
+seta zo n 982
+seta zo n 1005
+seta zo n 1004
+comp zo up
+comp zo do
+comp zo up
+comp zo do
+plot f zo w
+plus n +clo r
+plus e SKIP b
+plus n MISS m
+frame
+hcpy png
+quit

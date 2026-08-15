@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>How to define a set of entities</TITLE>
+<META NAME="description" CONTENT="How to define a set of entities">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node250.html">
+<LINK REL="previous" HREF="node248.html">
+<LINK REL="up" HREF="node246.html">
+<LINK REL="next" HREF="node250.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html3810"
+  HREF="node250.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3806"
+  HREF="node246.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3800"
+  HREF="node248.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3808"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3811"
+  HREF="node250.html">How to enquire node</A>
+<B> Up:</B> <A NAME="tex2html3807"
+  HREF="node246.html">Tips and Hints</A>
+<B> Previous:</B> <A NAME="tex2html3801"
+  HREF="node248.html">How to get the</A>
+ &nbsp; <B>  <A NAME="tex2html3809"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION000183000000000000000"></A><A NAME="How_to_define_a_set_of_entities"></A>
+<BR>
+How to define a set of entities
+</H2>
+Some knowledge is necessary to efficiently select entities (nodes, points ..). As a golden rule in complicated situations never try to create a set just by &rdquo;adding&rdquo; the entities to the set (see <A HREF="node150.html#qadd">qadd</A>). It is much better to catch a bigger group which includes certainly the wanted ones. Then display the set with the <A HREF="node145.html#plot">plot</A> command and remove all unwanted entities with the <A HREF="node169.html#qrem">qrem</A> command. Entities are selected if at least one pixel of it is inside the selection rectangle. But there is one exception: Only the lower left corner of any text (names of points etc.) can be selected. Surfaces can also be selected by picking its shaded interiour (see &ldquo;<A HREF="node177.html#rep">rep</A>)&rdquo;. You might add all lower entities (as points for example) by typing &rdquo;<A HREF="node79.html#comp">comp</A> set do&rdquo;. This is necessary for example if you had selected surfaces and you want to move them in space. Only points have locations and therefore nothing will happen unless you completed the set by the related points with &rdquo;comp&rdquo; command.
+
+<P>
+There is another type of set called sequence. The data-structure is the same but with one exception, the data keep their order in which they were selected. This type of set is used for splines (see &rdquo;<A HREF="node163.html#qlin">qlin</A>&rdquo; and &rdquo;<A HREF="node118.html#line">line</A>&rdquo;) or in combination with the &rdquo;<A HREF="node106.html#graph">graph</A>&rdquo; command if values along a path should be displayed. Use &rdquo;<A HREF="node148.html#prnt">prnt</A> sq&rdquo; to list all existing sequences and use &rdquo;<A HREF="node170.html#qseq">qseq</A>&rdquo; or &rdquo;<A HREF="node183.html#seqa">seqa</A>&rdquo; to create them. Up to now they are only used to store nodes and points. As sets they will be written to a file if fbd format is specified. In this case also node-sequences can be stored.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html3810"
+  HREF="node250.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3806"
+  HREF="node246.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3800"
+  HREF="node248.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3808"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3811"
+  HREF="node250.html">How to enquire node</A>
+<B> Up:</B> <A NAME="tex2html3807"
+  HREF="node246.html">Tips and Hints</A>
+<B> Previous:</B> <A NAME="tex2html3801"
+  HREF="node248.html">How to get the</A>
+ &nbsp; <B>  <A NAME="tex2html3809"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

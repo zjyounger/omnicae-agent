@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>qdis</TITLE>
+<META NAME="description" CONTENT="qdis">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node158.html">
+<LINK REL="previous" HREF="node156.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node158.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2668"
+  HREF="node158.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2664"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2658"
+  HREF="node156.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2666"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2669"
+  HREF="node158.html">qdiv</A>
+<B> Up:</B> <A NAME="tex2html2665"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2659"
+  HREF="node156.html">qdel</A>
+ &nbsp; <B>  <A NAME="tex2html2667"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001091000000000000000"></A><A NAME="qdis"></A>
+<BR>
+qdis
+</H2>
+<PRE>
+   'qdis' RETURN 'c'|'f'|'g'|'m'|'n'|'p'|'q'|'s'|'w'
+</PRE>
+This keyword is used to measure distances between nodes or points. Move the mouse pointer over one entity and press the following key, for a node 'n', for a point 'p' or for a center point 'c' (has to be the second selection). If the key 'c' was pressed then the distance between the two nodes or points are given in cylindrical coordinates. Here lcir is the length of the arc, da the angle, dr is r2-r1. If no center point was chosen then the distance and its xyz components are given in the Cartesian system. But in addition the cylindrical distances around the origin and around the xyz-axis are also given.
+
+<P>
+In addition the normal distance of a node or point to a plane defined by three nodes or points can be measured. The point or node in question is selected with key 'n' or 'p' and the nodes or points which define the plane are selected with 'm' (mesh nodes) or 'g' (geometry points). Instead of defining a plane the user may select a single surface with 's' or a single element face with 'f' (will be extended by adjacent faces). This selection has to take place before the node or point is selected.
+
+<P>
+Press &rdquo;q&rdquo; to quit the command.
+
+<P>
+
+<UL>
+<LI>dist: global distance
+</LI>
+<LI>dx, dy,dz: distance in the three Cartesian directions
+</LI>
+<LI>da: global angle
+</LI>
+<LI>dax, day, daz: angle around x, y, z
+</LI>
+<LI>dr: global radius difference
+</LI>
+<LI>drx, dry, drz: radius difference around x, y, z
+</LI>
+</UL>
+
+<P>
+It is also possible to measure distances between two pixels on the screen. Just press the key &rdquo;w&rdquo; on the positions of the two pixels. The distance is calculated in the scale of the displayed geometry.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2668"
+  HREF="node158.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2664"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2658"
+  HREF="node156.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2666"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2669"
+  HREF="node158.html">qdiv</A>
+<B> Up:</B> <A NAME="tex2html2665"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2659"
+  HREF="node156.html">qdel</A>
+ &nbsp; <B>  <A NAME="tex2html2667"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

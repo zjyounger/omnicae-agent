@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>graph</TITLE>
+<META NAME="description" CONTENT="graph">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node107.html">
+<LINK REL="previous" HREF="node105.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node107.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2056"
+  HREF="node107.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2052"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2046"
+  HREF="node105.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2054"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2057"
+  HREF="node107.html">grpa</A>
+<B> Up:</B> <A NAME="tex2html2053"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2047"
+  HREF="node105.html">gonly</A>
+ &nbsp; <B>  <A NAME="tex2html2055"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001040000000000000000"></A><A NAME="graph"></A>
+<BR>
+graph
+</H2>
+<PRE>
+   'graph'  [&lt;amplitude|*chars*&gt; 'amp']|
+            [&lt;material|*chars*&gt; 'mat']|
+            [&lt;set|seq&gt; 'length' ['+'|'-'|'+c'|'-c']]| 
+            [&lt;set&gt;|'-p' 'nr'|'time'|'descr'|&lt;parameter-name&gt; -&gt;
+              [&lt;Dataset-name&gt; &lt;entity-name&gt;|&lt;parameter-name&gt; ] -&gt;
+                [&lt;first-Dataset-Nr&gt; &lt;last-Dataset-Nr&gt;]  ]
+</PRE>
+This keyword is used to create time history plots of nodal values. The values of the pre-selected nodes stored in the referenced set will be written to a file called &rdquo;graph_<code>&lt;</code>nr<code>&gt;</code>.out&rdquo;. A gnuplot command file will be written called &rdquo;graph_<code>&lt;</code>nr<code>&gt;</code>.gnu&rdquo; and executed. The resulting file &rdquo;graph_<code>&lt;</code>nr<code>&gt;</code>.ps&rdquo; will be automatically displayed with the postscript viewer unless the user has used &ldquo;<A HREF="node69.html#asgn">asgn</A>&rdquo; to turn the presentation off (and the <code>&lt;</code>nr<code>&gt;</code> can be defined). The default viewer is &rdquo;ghostview&rdquo; but this can be changed in the &rdquo;cgx.h&rdquo; file before the program is build. See also &ldquo;<A HREF="node254.html#How_to_generate_a_time-history_plot">How to generate a time-history plot</A>&rdquo; for further details.
+
+<P>
+A set with the nodes of interest must be created (usually with &ldquo;<A HREF="node150.html#qadd">qadd</A>&rdquo;) before a graph can be drawn. If the parameter l (length) is used to plot values along the length of a set of nodes then this set should be of the sequence type (usually created with &ldquo;<A HREF="node170.html#qseq">qseq</A>&rdquo;):
+<BR>
+<BR>
+graph seq length
+<BR>
+<BR>
+The length is calculated as the sum of the distances between successive nodes. Usual sets (as created with &ldquo;qadd&rdquo;) will be copied into a temporary ordered set in a way that the positive direction points away from the origin of the coordinate system. The direction can be chosen with a '+' or '-' sign following the 'length' parameter ('+' is default). This temporary ordered set is kept when a 'c' follows the sign. The name of this set is equal to the original setname but with an 'N' in front.
+
+<P>
+Instead using existing nodes it is possible to use a line or a combined line &ldquo;<A HREF="node116.html#lcmb">lcmb</A>&rdquo; as a method to generate new locations for data-points. The current displayed results will be automatically mapped to this locations and shown in a 2D graph over the length of the line:
+<BR>
+<BR>
+graph lineset length +
+<BR>
+<BR>
+The set lineset stores a line. Since a '+' was given the graph starts at the beginning of the line. With a '-' it would start at the end of the line. 
+
+<P>
+Since version 1.8, there are two ways of operation. One way is to specify the Datasets and the entity as parameters of the command
+<BR>
+<BR>
+graph set time DISP D1
+<BR>
+<BR>
+which will display the displacement D1 of nodes in &rdquo;set&rdquo; vs. the dataset-time of all &rdquo;DISP&rdquo; Datasets. The first and the last dataset can be specified optionally.
+
+<P>
+For the traditional way, a sequence of datasets must have been selected (see  <A HREF="node41.html#Toggle_Dataset_Sequence">Toggle Dataset Sequence</A>). After the selection of the datasets, an <A HREF="node12.html#Entity">Entity</A> must be specified. Then, the user could use the graph command to generate the history-plot of this pre-defined sequence. The command
+<BR>
+<BR>
+graph set nr
+<BR>
+<BR>
+will display the values on the node-positions vs. the dataset-numbers. The command
+<BR>
+<BR>
+graph set time
+<BR>
+<BR>
+will display the values on the node-positions vs. the dataset-values (usually time or frequency, see <A HREF="node226.html#Nodal_Results_Block">Nodal Results Block</A>, parameter &ldquo;VALUE&rdquo;)) and the command
+<BR>
+<BR>
+graph set descr
+<BR>
+<BR>
+will display the values on the node-positions vs. the dataset-description (only makes sense if the description is a numerical value. See <A HREF="node226.html#Nodal_Results_Block">Nodal Results Block</A>), parameter &ldquo;TEXT&rdquo;, for the location of this data in the frd-file.
+<BR>
+<BR>
+In addition, a second data-file is written &rdquo;graph.out2&rdquo; which stores the node-number and the node-coordinates and all values at this node-position for all datasets. This file can be used to display values over node-positions, etc. It is up to the user to generate a suitable plot out of this data.
+<BR>
+<BR>
+The &rdquo;graph&rdquo; files can be edited and combined. For example to plot one type of value vs. another type of value.
+<BR>
+<BR>
+<P>
+If an ccx- or Abaqus-input-file was read then it is also possible to create time history plots of the amplitudes (*AMPLITUDE in ccx) or the material-properties can be displayed (*MATERIAL in ccx):
+<BR>
+<BR>
+graph amplitude-name amp
+<BR>
+<BR>
+graph material-name mat
+<BR>
+<BR>
+Wildcards (*) can be used to search for amplitudes or materials of a certain expression.
+
+<P>
+The parameters related to datasets can also be displayed with the graph command:
+<BR>
+<BR>
+graph -p time DISP HID
+<BR>
+<BR>
+This command plots the nodal-diameters used in a cyclic symmetry calculation over the dataset-value. Only few parameters are written from ccx in frd-format. Other applications might define its own parameters in frd-format (see <A HREF="node225.html#Parameter_Header_Record">Parameter Header Record</A> for the format of a parameter record). If needed cgx can also create this dataset parameters, see the &rdquo;<A HREF="node88.html#ds">ds</A>&rdquo; command on how to do it. 
+
+<P>
+The running number in the name of the written file is stored in the value !graph_Nr (the leading '!' prevents the value from beeing written by the send or save command). It can be used in a subsequent &rdquo;<A HREF="node201.html#sys">sys</A>&rdquo; command to change the filename.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2056"
+  HREF="node107.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2052"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2046"
+  HREF="node105.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2054"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2057"
+  HREF="node107.html">grpa</A>
+<B> Up:</B> <A NAME="tex2html2053"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2047"
+  HREF="node105.html">gonly</A>
+ &nbsp; <B>  <A NAME="tex2html2055"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

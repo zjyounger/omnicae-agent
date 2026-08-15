@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>qmsh</TITLE>
+<META NAME="description" CONTENT="qmsh">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node166.html">
+<LINK REL="previous" HREF="node164.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node166.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2764"
+  HREF="node166.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2760"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2754"
+  HREF="node164.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2762"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2765"
+  HREF="node166.html">qnor</A>
+<B> Up:</B> <A NAME="tex2html2761"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2755"
+  HREF="node164.html">qmov</A>
+ &nbsp; <B>  <A NAME="tex2html2763"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001099000000000000000"></A><A NAME="qmsh"></A>
+<BR>
+qmsh
+</H2>
+<PRE>
+   'qmsh' RETURN 'i'|'a'|'e'|'f'|'v'|'n'|'l'|'c'|'s'|'m'|'d'|'h'|-&gt;
+                 't'|'x'|'q'
+</PRE>
+A very useful command to optimize surface meshes as a basis for tet-meshes. Line divisions can be changed by selecting one or more lines with the &ldquo;l&rdquo; key and then a number as with &ldquo;<A HREF="node158.html#qdiv">qdiv</A>&rdquo;. The mesh will be updated automatically.
+
+<P>
+Based on identified lines &ldquo;l&rdquo; or surfaces &ldquo;s&rdquo; meshes can be coarsened 't', refined 'h', deleted &ldquo;d&rdquo; and generated &ldquo;m&rdquo;. Surfaces can be combined &ldquo;c&rdquo; to get rid of very small ones and splitted 'b'.
+<BR>
+<BR>
+To change the mesh density along a line:
+
+<UL>
+<LI>Identify a line or several lines with key &ldquo;l&rdquo;. The related surfaces are selected.
+</LI>
+<LI>The line division is changed by pressing the key with the desired number. This function of qmsh works like the &ldquo;<A HREF="node158.html#qdiv">qdiv</A>&rdquo; command. The related surfaces are automatically re-meshed.
+</LI>
+<LI>The line bias is changed if first the key &ldquo;b&rdquo; is pressed and then the key with the desired number or the key &ldquo;c&rdquo; to inverse the direction. This function of qmsh works like the &ldquo;<A HREF="node152.html#qbia">qbia</A>&rdquo; command. The related surfaces are automatically re-meshed.
+</LI>
+</UL>
+Example for a surface combination:
+
+<UL>
+<LI>Identify a line with key &ldquo;l&rdquo;. The related surfaces are selected.
+</LI>
+<LI>Or identify two adjacent surfaces with key &ldquo;s&rdquo; or by selecting two single elements &ldquo;e&rdquo; one for each surface. They must use the same lines at the junction. 
+</LI>
+<LI>To combine the two selected surfaces press key &ldquo;c&rdquo; (Attention: The surface with the longer perimeter must reference a shape (a nurbs)). In the moment an automatic adaption of the embedded shape or nurbs is not done. The shape of the bigger surface is just used for the combined surface. It might be necessary to use a mapped mesh for the new surface if the embedded shape is too small ( use tr6 instead of tr6u, switching is done with key &ldquo;x&rdquo;).
+</LI>
+</UL>
+A surface can be splitted by a crossing line:
+
+<UL>
+<LI>First create the desired splitting line, for example with &ldquo;<A HREF="node163.html#qlin">qlin</A>&rdquo;.
+</LI>
+<LI>Type &ldquo;qmsh&rdquo; and identify the line with key &ldquo;l&rdquo;.
+</LI>
+<LI>Identify the surface with key &ldquo;s&rdquo; or by selecting a single element &ldquo;e&rdquo;.
+</LI>
+<LI>Press key &ldquo;b&rdquo; to break (split) the surface in two. The previously selected line will be converted to a spline with as much control points as the line division. Then the line-points are projeted to the surface.
+</LI>
+</UL>
+To change the mesh density in a selected surface:
+
+<UL>
+<LI>Select one or more surfaces with key &ldquo;s&rdquo; or by selecting lines &ldquo;l&rdquo; or by selecting a single element &ldquo;e&rdquo;.
+</LI>
+<LI>Press &ldquo;h&rdquo; (higher) to increase the mesh density or &ldquo;t&rdquo; (thinner) to decrease.  
+</LI>
+</UL>
+To change the element type from unstructured to structured or vice versa:
+
+<UL>
+<LI>Select one surfaces with key &ldquo;x&rdquo;. Be aware that only certain line division combinations will work for structured meshes. Initially the element type tr6 will be used if no element type was assigned to the selected surface.
+</LI>
+</UL>
+
+<P>
+This keyword can be used to manually define elements. The key &ldquo;n&rdquo; selects nodes and the key &ldquo;f&rdquo; or &ldquo;v&rdquo; generate a surface or volume element based on the node-selection.
+
+<P>
+To catch more than one entity with one stroke, type &rdquo;a&rdquo; (all) at first. Then create a rectangular picking area by pressing two times the &rdquo;r&rdquo; key. Both strokes define opposite corners of the selection-rectangle. To catch only the entity which is closest to the user type &rdquo;i&rdquo; before.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2764"
+  HREF="node166.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2760"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2754"
+  HREF="node164.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2762"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2765"
+  HREF="node166.html">qnor</A>
+<B> Up:</B> <A NAME="tex2html2761"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2755"
+  HREF="node164.html">qmov</A>
+ &nbsp; <B>  <A NAME="tex2html2763"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

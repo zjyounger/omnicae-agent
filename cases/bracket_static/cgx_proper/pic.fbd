@@ -1,0 +1,11 @@
+read FemMesh.inp
+seta nod n all
+enq nod TOPN rec _ _ 72. 0.01 a
+comp TOPN f
+view elem
+rot z
+plot f TOPN g
+plus n TOPN r
+frame
+hcpy png
+quit

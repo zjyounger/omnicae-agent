@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>view</TITLE>
+<META NAME="description" CONTENT="view">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node213.html">
+<LINK REL="previous" HREF="node211.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node213.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html3328"
+  HREF="node213.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3324"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3318"
+  HREF="node211.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3326"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3329"
+  HREF="node213.html">volu</A>
+<B> Up:</B> <A NAME="tex2html3325"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html3319"
+  HREF="node211.html">valu</A>
+ &nbsp; <B>  <A NAME="tex2html3327"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00010146000000000000000"></A><A NAME="view"></A>
+<BR>
+view
+</H2>
+<PRE>
+   'view' 'fill'|'line'|'point' [&lt;value&gt;]|'cl' 'off'|
+          'edge' [&lt;value&gt;|'off']|'elem' ['off']|'surf'|'volu'|
+          'front'|'back'|'vec' ['off']|'disp' ['off'|'keep']|
+          'bg' ['w'|'k']|'sh' ['off']|'ill' ['off']|'rul' ['off'|&lt;string&gt;]
+</PRE>
+Command to control the graphic output. This command is intended for batch-mode. See also &rdquo;<A HREF="node13.html#Viewing">Viewing</A>&rdquo; for the menu controlled functions.
+
+<UL>
+<LI>&rdquo;cl&rdquo; The command line is shown in the graphic's window. 
+</LI>
+<LI>&rdquo;fill&rdquo; Element-faces are filled 
+</LI>
+<LI>&rdquo;line&rdquo; Elements are displayed as fireframes
+</LI>
+<LI>&rdquo;point&rdquo; Element-edges are displayed as points with a pixel-width of 'value'
+</LI>
+<LI>&rdquo;edge&rdquo; triggers the display of the model edges with a pixel-width of 'value'
+</LI>
+<LI>&rdquo;elem&rdquo; triggers the display of the element edges. They are deselected with the additional parameter &rdquo;off&rdquo;.
+</LI>
+<LI>&rdquo;surf&rdquo; and &rdquo;volu&rdquo; are used to display the structure either only by it's outer skin (surf) or by drawing all elements (volu).
+</LI>
+<LI>&rdquo;front&rdquo; and &rdquo;back&rdquo; define which side of the structure should be drawn. Either the side which faces the user or the back-side. If the back-side is displayed then internal structures are visible. 
+</LI>
+<LI>&rdquo;vec&rdquo; triggers the vector mode. All vector-entities like displacements are displayed with arrows pointing in the direction of the vector and with a length proportional to the value of the vector. See &rdquo;<A HREF="node27.html#Toggle_Vector-Plot">Toggle Vector-Plot</A>&rdquo; for a detailed description of the equivalent menu-function.
+</LI>
+<LI>&rdquo;disp&rdquo; will show the deformed structure based on a formerly selected displacement dataset (no entity must be selected). See &rdquo;<A HREF="node28.html#Toggle_Add-Displacement">Toggle Add-Displacement</A>&rdquo; for a detailed description of the equivalent menu-function. Switched off with ”off”. Or add the displacements permanently with &ldquo;keep&rdquo;. Now a second displacement dataset could be added. Be aware that the scaling of the displacement must be done after the 'view disp' command and before the 'view disp keep' command.
+</LI>
+<LI>&rdquo;bg&rdquo; Without second parameter toggles the background colour. The second parameter 'w' forces white while the parameter 'k' forces black as background colour.
+</LI>
+<LI>&rdquo;sh&rdquo; Shaded results are shown. Switched off with &rdquo;off&rdquo;. 
+</LI>
+<LI>&rdquo;ill&rdquo; Illuminale the backface of the elements. Switched off with &rdquo;off&rdquo;. 
+</LI>
+<LI>&rdquo;rul&rdquo; triggers the display of a ruler bar. Switched off with &rdquo;off&rdquo;. A string containing the unit can be given: &ldquo;view rul mm&rdquo;. 
+</LI>
+</UL>  
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html3328"
+  HREF="node213.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3324"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3318"
+  HREF="node211.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3326"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3329"
+  HREF="node213.html">volu</A>
+<B> Up:</B> <A NAME="tex2html3325"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html3319"
+  HREF="node211.html">valu</A>
+ &nbsp; <B>  <A NAME="tex2html3327"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

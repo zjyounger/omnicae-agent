@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>qlin</TITLE>
+<META NAME="description" CONTENT="qlin">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node164.html">
+<LINK REL="previous" HREF="node162.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node164.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2740"
+  HREF="node164.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2736"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2730"
+  HREF="node162.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2738"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2741"
+  HREF="node164.html">qmov</A>
+<B> Up:</B> <A NAME="tex2html2737"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2731"
+  HREF="node162.html">qint</A>
+ &nbsp; <B>  <A NAME="tex2html2739"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001097000000000000000"></A><A NAME="qlin"></A>
+<BR>
+qlin
+</H2>
+<PRE>
+   'qlin' &lt;name&gt;(optional) RETURN 'w'|'b'|'c'|'e'|'g'|'l'|'m'|'p'|-&gt;
+                                  'q'|'s'|'t'|'u'|'x'
+</PRE>
+This keyword is used to create a sequence of lines (or just one, see also <A HREF="node118.html#line">line</A>). The user might specify a name in the command-line or by picking an existing line with the key &rdquo;l&rdquo;. In this case an existing line might be redefined without destroying related geometries.
+
+<P>
+To start a sequence of lines move the mouse pointer over a point and press the key &rdquo;b&rdquo; (begin).
+
+<P>
+To define just a straight line go to the end point and press &rdquo;g&rdquo; (generate). This point is also the starting point for the next line. So no &rdquo;b&rdquo; is necessary for the next line.
+
+<P>
+If the line is a sequential line (spline) then the points of the sequence must be defined with the key &rdquo;t&rdquo; in the correct order, but the last point must be selected with the key &rdquo;g&rdquo;.
+
+<P>
+If the line is an arc then the center point must be selected with the &rdquo;c&rdquo; key or one point on the line between the end-points must be selected with the &rdquo;m&rdquo; key, but the last point must be selected with the key &rdquo;g&rdquo;.
+
+<P>
+In case you need to split a line during the process, you can do that by pressing the &rdquo;s&rdquo; key.
+
+<P>
+When you want to modify the length then pick an existing line with the key &rdquo;l&rdquo; and then the endpoint you want to move with the key &rdquo;p&rdquo;. The displacement is requested and the point is moved in the direction of the line by the specified displacement. 
+
+<P>
+The &rdquo;x&rdquo; key will transform the line into a straight line.
+
+<P>
+One quite useful function for cad-based surfaces is triggered by the &rdquo;e&rdquo;-key (exchange). This allows to modify an existing surface (<A HREF="node109.html#gsur">gsur</A>). With that command a line or a line sequence in a <A HREF="node116.html#lcmb">lcmb</A> can be exchanged by the previous selected (&ldquo;l&rdquo; key) or generated line. For example one edge of an already existing surface uses a lcmb but the user wants to replace it by a spline (line) then the user defines or selects the new spline and then moves the mouse in an area were one of the old lines (the new one might be present as well) is located and presses the &rdquo;e&rdquo; key. The definition of the lcmb will be changed without destroying the surface-definition. Alternatively the existing lines can be combined with the &rdquo;<A HREF="node170.html#qseq">qseq</A>&rdquo; command into a single spline. This command will delete the original lines.
+
+<P>
+Press &rdquo;q&rdquo; to quit the command or &rdquo;u&rdquo; to delete the last created line.
+
+<P>
+It is also possible to measure distances between two pixels on the screen. Just press the key &rdquo;w&rdquo; on the positions of the two pixels. The distance is calculated in the scale of the displayed geometry.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2740"
+  HREF="node164.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2736"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2730"
+  HREF="node162.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2738"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2741"
+  HREF="node164.html">qmov</A>
+<B> Up:</B> <A NAME="tex2html2737"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2731"
+  HREF="node162.html">qint</A>
+ &nbsp; <B>  <A NAME="tex2html2739"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

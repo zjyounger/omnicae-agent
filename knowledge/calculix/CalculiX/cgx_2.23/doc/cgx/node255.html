@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>How the mesh is related to the geometry</TITLE>
+<META NAME="description" CONTENT="How the mesh is related to the geometry">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node256.html">
+<LINK REL="previous" HREF="node254.html">
+<LINK REL="up" HREF="node246.html">
+<LINK REL="next" HREF="node256.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html3882"
+  HREF="node256.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3878"
+  HREF="node246.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3872"
+  HREF="node254.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3880"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3883"
+  HREF="node256.html">How to change the</A>
+<B> Up:</B> <A NAME="tex2html3879"
+  HREF="node246.html">Tips and Hints</A>
+<B> Previous:</B> <A NAME="tex2html3873"
+  HREF="node254.html">How to generate a</A>
+ &nbsp; <B>  <A NAME="tex2html3881"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION000189000000000000000"></A><A NAME="How_the_mesh_is_related_to_the_geometry"></A>
+<BR>
+How the mesh is related to the geometry
+</H2>
+Very often you need the embedded nodes, element-faces or elements of geometric entities to apply boundary conditions. If you understand the underlying concept you will be able to get them more easily.
+
+<P>
+Geometric entities are the mothers of nodes, faces and elements (so to say) and will remember them. In turn if an entity is not the mother of a given mesh-entity it will not remember it. Therefore a body will only know about nodes which are not placed on surfaces, lines or points. A surface will only know about nodes which are not placed on lines or points. And so on.
+
+<P>
+Therefore if you need the nodes on a surface and not only the ones just inside the surface, then create a set with this surface and do a &rdquo;<A HREF="node79.html#comp">comp</A> set do&rdquo;. This will add the lines and points together with their nodes to the set.
+
+<P>
+On the other hand if you have only a node and you need the geometric entity in which the node is embedded you might also type &rdquo;comp set do&rdquo;.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

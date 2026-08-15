@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>surf</TITLE>
+<META NAME="description" CONTENT="surf">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node200.html">
+<LINK REL="previous" HREF="node198.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node200.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html3172"
+  HREF="node200.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3168"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3162"
+  HREF="node198.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3170"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3173"
+  HREF="node200.html">swep</A>
+<B> Up:</B> <A NAME="tex2html3169"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html3163"
+  HREF="node198.html">subm</A>
+ &nbsp; <B>  <A NAME="tex2html3171"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00010133000000000000000"></A><A NAME="surf"></A>
+<BR>
+surf
+</H2>
+<PRE>
+   'surf' &lt;name(char&lt;9)&gt;|'!' [&lt;set&gt;|&lt;nurbs&gt;]|&lt;shape&gt;] | -&gt;
+    [&lt;nurbs&gt;]|&lt;shape&gt;|'blend'] &lt;line|lcmb&gt; &lt;line|lcmb&gt; (etc. 3 to 5 times).
+</PRE>
+This keyword is used to define or redefine a surface. It is a more convenient way to define a surface than the command <A HREF="node109.html#gsur">gsur</A>. Either individual lines or a set of lines (including optionally one shape or nurs) can be specified. To be meshable with structured elements it requires 3, 4 or 5 edges (lines or lcmbs). To be meshable with tr3u or tr6u it requires either to be planar or to reference a shape or nurbs which can be provided also in a second call with this command. The mouse controlled way to define surfaces is to use the command <A HREF="node173.html#qsur">qsur</A>. 
+If the name of the surface should be automatically generated, then just type &rdquo;<code>!</code>&rdquo; instead of a name. See also &ldquo;<A HREF="node109.html#gsur">gsur</A>&rdquo; which allows the assignment of a shape or &ldquo;<A HREF="node171.html#qshp">qshp</A>&rdquo; which allows the interactive assignment of a shape or nurbs to a surface.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

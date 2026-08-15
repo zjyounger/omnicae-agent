@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>comp</TITLE>
+<META NAME="description" CONTENT="comp">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node80.html">
+<LINK REL="previous" HREF="node78.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node80.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1732"
+  HREF="node80.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1728"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1722"
+  HREF="node78.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1730"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1733"
+  HREF="node80.html">cont</A>
+<B> Up:</B> <A NAME="tex2html1729"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html1723"
+  HREF="node78.html">col</A>
+ &nbsp; <B>  <A NAME="tex2html1731"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001013000000000000000"></A><A NAME="comp"></A>
+<BR>
+comp
+</H2>
+<PRE>
+   'comp' &lt;set|*chars*&gt; 'c'|'d'|'e'|'f'|'p'|'u'
+</PRE>
+This keyword is used to add all entities to the specified set (see
+<A HREF="node186.html#seta">seta</A>) which depend on the already included entities (u, up),
+or to include all entities necessary to describe the already included entities
+(d, down).
+<BR>
+For example the set &rdquo;lines&rdquo; stores lines and should also include
+all dependent points:
+<BR>
+<BR>
+comp lines do
+<BR>
+<BR>
+Or the set &rdquo;lines&rdquo; should also
+include all surfs and bodies which depend on the lines:
+<BR>
+<BR>
+comp lines up
+<BR>
+<BR>
+In
+some cases you will need only the end-points of lines. With the option p (
+edges)
+<BR>
+<BR>
+comp lines p
+<BR>
+<BR>
+only end-points and their lines are included in the set. Option c (
+combined lines) adds all LCMB's which use the stored lines. One exception to this logic was introduced for convenience:
+<BR>
+<BR>
+comp nodes do
+<BR>
+<BR>
+will add all faces which are fully described by the nodes in the set despite the fact that faces are made from nodes. For this purpose it uses the specific function were related faces can be added when using a set with nodes and/or elements with:
+<BR>
+<BR>
+comp set f
+<BR>
+<BR>
+As mentioned above they must be fully described by the nodes in set. With
+<BR>
+<BR>
+comp set e
+<BR>
+<BR>
+all elements which are fully described by the nodes in the set will be added.
+
+<P>
+Wildcards (*) can be used to search for setnames of a certain expression:
+<BR>
+<BR>
+comp E* do
+<BR>
+<BR>
+will complete all sets starting with &ldquo;E&rdquo;.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1732"
+  HREF="node80.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1728"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1722"
+  HREF="node78.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1730"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1733"
+  HREF="node80.html">cont</A>
+<B> Up:</B> <A NAME="tex2html1729"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html1723"
+  HREF="node78.html">col</A>
+ &nbsp; <B>  <A NAME="tex2html1731"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

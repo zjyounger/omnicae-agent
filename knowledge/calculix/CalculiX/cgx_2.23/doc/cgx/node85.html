@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>del</TITLE>
+<META NAME="description" CONTENT="del">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node86.html">
+<LINK REL="previous" HREF="node84.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node86.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1804"
+  HREF="node86.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1800"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1794"
+  HREF="node84.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1802"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1805"
+  HREF="node86.html">dist</A>
+<B> Up:</B> <A NAME="tex2html1801"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html1795"
+  HREF="node84.html">cut</A>
+ &nbsp; <B>  <A NAME="tex2html1803"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001019000000000000000"></A><A NAME="del"></A>
+<BR>
+del
+</H2>
+<PRE>
+   'del' ['p'|'l'|'c'|'s'|'b'|'t'|'v'|'S'|'L'|'se'|'sh' &lt;entity&gt;]|
+         ['l0' &lt;entity&gt;]|
+         ['se0']|
+         ['mesh']|
+         ['pic']
+</PRE>
+This keyword is used to delete entities, the whole mesh (see also <A HREF="node156.html#qdel">qdel</A>) or a background-picture. For example,
+<BR>
+<BR>
+del se part
+<BR>
+<BR>
+will delete the set &ldquo;part&rdquo; but all included entities are untouched. The following entities are known:
+<BR>
+<BR>
+Points p, Lines l, Combined Lines c, Surfaces s, Bodies b, Node Texts t, values v, Nurb Surfaces S, Nurb Lines L, Sets se and Shapes sh.
+<BR>
+<BR>
+When an entity is deleted, all dependent higher entities are deleted as well. Special cases are
+<BR>
+<BR>
+del l0 set  (l&lt;zero&gt;)
+<BR>
+<BR>
+were all lines with zero length in set &rdquo;set&rdquo; are deleted and
+<BR>
+<BR>
+del se0
+<BR>
+<BR>
+will delete all empty sets.
+If a value is to be deleted it is necessary to mask it with a leading '&#92;' otherwhise it would be replaced by its content:
+<BR>
+<BR>
+del v &#92;val
+<BR>
+<BR>
+will prevent the substitution of val1 by its content.
+
+<P>
+If a background-picture was loaded with the &rdquo;<A HREF="node176.html#read">read</A>&rdquo; command it can be deleted with:
+<BR>
+<BR>
+del pic
+
+<BR>
+<BR>
+See also &rdquo;<A HREF="node217.html#zap">zap</A>&rdquo; on how to delete a set with all its referenced entities.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

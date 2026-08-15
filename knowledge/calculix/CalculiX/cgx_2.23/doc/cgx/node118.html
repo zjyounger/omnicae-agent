@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>line</TITLE>
+<META NAME="description" CONTENT="line">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node119.html">
+<LINK REL="previous" HREF="node117.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node119.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2200"
+  HREF="node119.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2196"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2190"
+  HREF="node117.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2198"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2201"
+  HREF="node119.html">lnor</A>
+<B> Up:</B> <A NAME="tex2html2197"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2191"
+  HREF="node117.html">length</A>
+ &nbsp; <B>  <A NAME="tex2html2199"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001052000000000000000"></A><A NAME="line"></A>
+<BR>
+line
+</H2>
+<PRE>
+   'line' &lt;name(char&lt;9)&gt;|'!' &lt;p1&gt; &lt;p2&gt; &lt;cp|seq&gt; &lt;div&gt; [&lt;bias&gt;]
+</PRE>
+This keyword is used to define or redefine a line. A line depends on points. A line can only be defined if the necessary points are already defined. Attention: The points p1 and p2 must not lie on the same location. There are three different types of lines available. The straight line
+<BR>
+<BR>
+line l1 p1 p2 4
+<BR>
+<BR>
+is defined by: its name l1 (the name could have up to 8 characters), by the points p1 and p2 and optionally by the division. The arc
+<BR>
+<BR>
+line <code>!</code> p1 p2 cp 4
+<BR>
+<BR>
+needs a center point cp. The radius changes linear from p1 to p2 if the center-point cp is excentric. The name is chosen automatically (triggered by the character <code>!</code>). The spline
+<BR>
+<BR>
+line l1 p1 p2 seq 4
+<BR>
+<BR>
+needs a so called sequential-set, seq (use the command &ldquo;<A HREF="node183.html#seqa">seqa</A>&rdquo; or &ldquo;<A HREF="node170.html#qseq">qseq</A>&rdquo; to define such a set). This set seq stores the spline points between the end-points in the right order. The spline function is described in [<A
+ HREF="node283.html#spline">16</A>]. Usually, a line is defined interactively with &ldquo;<A HREF="node163.html#qlin">qlin</A>&rdquo;.
+
+<P>
+The bias is used to change the distances between successive nodes:
+<BR>
+<BR>
+line l1 p1 p2 4 1.1
+<BR>
+<BR>
+The bias of 1.1 means that each successive node is 1.1 times farther away. Only if a bias is given can the division be greater than 99.
+
+<P>
+ATTENTION: If the user does not provide a bias only the last two digits of the given 'division' are used to define the division itself. The leading digits define a bias. But in a different way as explained above. Here the bias defines the length increase between the first and last element on the line. If the bias uses more than one digit in front of the division, the number has to be divided by a factor of ten to get the bias (10130 means a bias of 10.1 and a div of 30). A negative number changes the direction of the bias:
+<BR>
+<BR>
+line l1 p1 p2 -404
+<BR>
+<BR>
+The number -404 specifies a division of 4 with a bias of 4 but the first node distance is 4 times longer than the last.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2200"
+  HREF="node119.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2196"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2190"
+  HREF="node117.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2198"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2201"
+  HREF="node119.html">lnor</A>
+<B> Up:</B> <A NAME="tex2html2197"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2191"
+  HREF="node117.html">length</A>
+ &nbsp; <B>  <A NAME="tex2html2199"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

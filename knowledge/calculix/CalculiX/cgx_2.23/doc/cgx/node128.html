@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>mesh</TITLE>
+<META NAME="description" CONTENT="mesh">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node129.html">
+<LINK REL="previous" HREF="node127.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node129.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2320"
+  HREF="node129.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2316"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2310"
+  HREF="node127.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2318"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2321"
+  HREF="node129.html">mids</A>
+<B> Up:</B> <A NAME="tex2html2317"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2311"
+  HREF="node127.html">merg</A>
+ &nbsp; <B>  <A NAME="tex2html2319"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001062000000000000000"></A><A NAME="mesh"></A>
+<BR>
+mesh
+</H2>
+<PRE>
+   'mesh' &lt;set&gt; ['fast'] ['tet' &lt;size&gt;|'block'|-&gt;
+                 'lonly'|'nolength'|'noangle'|'length'|'angle']
+</PRE>
+This keyword is used to start the meshing of the model. before using the mesh command, the element types must be defined with the <A HREF="node92.html#elty">elty</A> command.  Existing elements will not be deleted. Therefore, its possible to start cgx in the viewing mode (-v) with a mesh alone, and then create bodies and fill them with additional elements. To delete a mesh use the command <A HREF="node85.html#del">del</A> mesh. See the command &rdquo;<A HREF="node182.html#send">send</A>&rdquo; to describe areas for boundary-conditions. 
+
+<BR>
+<BR>
+In case a blocked grid for cfd-calculations should be generated, use the additional parameter &rdquo;block&rdquo;:
+
+<BR>
+<BR>
+mesh setname block
+<BR>
+<BR>
+see also the section &rdquo;<A HREF="node267.html#Remarks_Concerning_Duns_and_Isaac">Remarks Concerning Duns and Isaac</A>&rdquo;.
+
+<BR>
+<BR>
+The mesh optimizer for structured elements is controlled with the additional parameters &rdquo;nolength&rdquo; and &rdquo;noangle&rdquo;. These parameters switch off length and angle optimizations of elements. The parameter &rdquo;fast&rdquo; suppresses the Nurbs-based meshing and uses the fast coons-algorithm for surface meshing.
+
+<BR>
+<BR>
+Usually all elements are generated in a structured way. That means that no holes in a surface or volume are permitted. The only exception are the element types &rdquo;tr3u&rdquo; and &rdquo;tr6u&rdquo;. This types are generated in an unstructured way using the mesher from [<A
+ HREF="node283.html#mesh2d">15</A>]. In this case, holes are permitted and a surface coming from a cad system should be meshable. These surfaces MUST reference a given NURBS-surface or a shape to be meshable (if they are plane, a shape will be genrated atomatically). This is usually the case if the data is derived from a cad-system with the interface-program (vda2fbd). If NETGEN [<A
+ HREF="node283.html#NETGEN">4</A>] is installed and if the elements form a closed volume they can be used to generate a tet mesh:
+<BR>
+<BR>
+mesh set-with-trias tet
+<BR>
+<BR>
+or
+<BR>
+<BR>
+mesh set-with-trias tet <code>&lt;</code>element-target-size<code>&gt;</code>
+<BR>
+<BR>
+This is a second method to generate tets. The other one is to use &ldquo;<A HREF="node92.html#elty">elty</A>&rdquo; to asign tet-elements to bodies. Remark: The mesher is able to use multi threading. The number of cores are defined in cgx.h (NTHREADS) and can be changed with &ldquo;<A HREF="node69.html#asgn">asgn</A>&rdquo; during run time. The actual number can be listed with &ldquo;<A HREF="node148.html#prnt">prnt</A> info&rdquo;
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2320"
+  HREF="node129.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2316"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2310"
+  HREF="node127.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2318"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2321"
+  HREF="node129.html">mids</A>
+<B> Up:</B> <A NAME="tex2html2317"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2311"
+  HREF="node127.html">merg</A>
+ &nbsp; <B>  <A NAME="tex2html2319"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

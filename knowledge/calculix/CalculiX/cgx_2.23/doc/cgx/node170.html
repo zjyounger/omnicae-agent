@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>qseq</TITLE>
+<META NAME="description" CONTENT="qseq">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node171.html">
+<LINK REL="previous" HREF="node169.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node171.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2824"
+  HREF="node171.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2820"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2814"
+  HREF="node169.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2822"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2825"
+  HREF="node171.html">qshp</A>
+<B> Up:</B> <A NAME="tex2html2821"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2815"
+  HREF="node169.html">qrem</A>
+ &nbsp; <B>  <A NAME="tex2html2823"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00010104000000000000000"></A><A NAME="qseq"></A>
+<BR>
+qseq
+</H2>
+<PRE>
+   'qseq' [[&lt;set&gt;] RETURN 'p']|[ RETURN [&lt;nr&gt;|'l'|'g']]
+</PRE>
+This keyword is used to define a sequence of nodes or points or to convert one or more lines into a sequential line (spline). A sequence is nothing else than a set which keeps the selection-order of the entities:
+<BR>
+<BR>
+qseq nodeset
+<BR>
+<BR>
+will store all selected nodes (selected with the 'n' key) in the order in which they were selected. This set might be used for a subsequent &rdquo;<A HREF="node106.html#graph">graph</A>&rdquo; command. Point sequences are used to define splines. Sequences can be shown with the &ldquo;<A HREF="node148.html#prnt">prnt</A> sq&rdquo; command. Node sequences can be written to a file and read again with the commands &ldquo;send seqname fbd&rdquo; and &ldquo;read seqname.fbd&rdquo;.
+
+<P>
+To change one or more lines into a sequential line type
+<BR>
+<BR>
+qseq
+<BR>
+<BR>
+without a setname. Then either one existing line has to be selected with a numerical keystroke (or the space-bar followed by two numbers) or several lines with 'l' keystrokes. In both cases the selection has to be finished by a 'g' keystroke. New points will be created on the selected lines which in turn are used to redefine the selected lines as a sequence line. If just one line was selected then as much points are generated as defined with the nummerical keystroke. If more than one line was selected with the 'l' key then the combined line divisions minus one define the number of new points. This command will replace and delete the original lines.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2824"
+  HREF="node171.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2820"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2814"
+  HREF="node169.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2822"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2825"
+  HREF="node171.html">qshp</A>
+<B> Up:</B> <A NAME="tex2html2821"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2815"
+  HREF="node169.html">qrem</A>
+ &nbsp; <B>  <A NAME="tex2html2823"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

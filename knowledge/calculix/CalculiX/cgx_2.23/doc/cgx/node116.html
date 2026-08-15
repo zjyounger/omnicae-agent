@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>lcmb</TITLE>
+<META NAME="description" CONTENT="lcmb">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node117.html">
+<LINK REL="previous" HREF="node115.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node117.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html2176"
+  HREF="node117.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html2172"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html2166"
+  HREF="node115.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html2174"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html2177"
+  HREF="node117.html">length</A>
+<B> Up:</B> <A NAME="tex2html2173"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html2167"
+  HREF="node115.html">init</A>
+ &nbsp; <B>  <A NAME="tex2html2175"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001050000000000000000"></A><A NAME="lcmb"></A>
+<BR>
+lcmb
+</H2>
+<PRE>
+   'lcmb' &lt;name(char&lt;9)&gt;|'!' ['+|-' &lt;line&gt; '+|-' &lt;line&gt; '+|-' -&gt;
+   &lt;line&gt;..(up to 14 lines)]|
+                          ['ADD' '+|-' &lt;line&gt; '+|-' &lt;line&gt; -&gt;
+   '+|-' &lt;line&gt;..(up to 14 lines)]
+</PRE>
+This keyword is used to define, extend or redefine a combined line (lcmb). Combined lines are necessary if the edge of a surface should be made of more than one line. Usually the user does not create lcmb's directly. They are created automatically during the process of defining a surface with the command <A HREF="node173.html#qsur">qsur</A>. There is no limitation to the number of lines in a combined line. However with one command, not more than 14 lines can be specified at a time. To specify more than that or to extend an existing lcmb a modify command has to follow. For example,
+<BR>
+<BR>
+lcmb U260 + U249 - U248 - U247 - U243 - U237 - U236 - U231 - U219 
+<BR>
+<BR>
+defines the lcmb U260 with 8 lines and their orientation in the lcmb. The following command
+<BR>
+<BR>
+lcmb U260 ADD - U218 - U217
+<BR>
+<BR>
+extends the lcmb U260 by two additional lines.
+
+<P>
+It should be noted that an existing lcmb can be converted into a spline with the command <A HREF="node184.html#seqc">seqc</A>. 
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>How to run cgx in batch mode</TITLE>
+<META NAME="description" CONTENT="How to run cgx in batch mode">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node261.html">
+<LINK REL="previous" HREF="node259.html">
+<LINK REL="up" HREF="node246.html">
+<LINK REL="next" HREF="node261.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html3942"
+  HREF="node261.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3938"
+  HREF="node246.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3932"
+  HREF="node259.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3940"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3943"
+  HREF="node261.html">How to process results</A>
+<B> Up:</B> <A NAME="tex2html3939"
+  HREF="node246.html">Tips and Hints</A>
+<B> Previous:</B> <A NAME="tex2html3933"
+  HREF="node259.html">How to map loads</A>
+ &nbsp; <B>  <A NAME="tex2html3941"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001814000000000000000"></A><A NAME="How_to_run_cgx_in_batch_mode"></A>
+<BR>
+How to run cgx in batch mode
+</H2>
+Most commands can be executed in batch-mode. Actually if you read a file with geometry (fbd-file) then you run cgx in batch mode already! You just have to add &rdquo;exit&rdquo; or &rdquo;quit&rdquo; at the end of the file and it will be obvious. You might use the &rdquo;<A HREF="node176.html#read">read</A>&rdquo; command in such a command-file to reference other command-files or to read files with mesh-entities for whatever purposes. In such a way you can create and modify geometry or meshes in batch-mode or evaluate results in batch-mode. But you need a graphic-capable computer because cgx needs it even if no graphic output is requested. Nevertheless the pop up of the graphic window can be suppressed by starting cgx with the &ldquo;-bg&rdquo; parameter. In this mode the performance is higher since no graphic related actions are performed. Even during foreground operation the user has the possibillity to execute commands in the background mode when he switches this mode on with &ldquo;<A HREF="node69.html#asgn">asgn</A> bg on&rdquo;. Especially when reading commands from a file it increases the execution time significantly. After reading it has to be switched of with &ldquo;<A HREF="node69.html#asgn">asgn</A> bg off&rdquo;.
+
+<P>
+Some commands only make sense in a batch file like &ldquo;<A HREF="node113.html#if">if</A>&rdquo; and &ldquo;<A HREF="node214.html#while">while</A>&rdquo;. Please have a look into &ldquo;<A HREF="node280.html#If_and_while_demo">If and while demo</A>&rdquo; on how to work with this commands. Results can be extracted and stored to a file, see &ldquo;<A HREF="node252.html#How_to_write_values_to_a_file">How to write values to a file</A>&rdquo;.
+
+<P>
+Be aware of the 'examples' directory. It holds examples on how to use the command language as a programming language. The 'ifwhiledemo' generates points in a loop and shows how to write cgx generated values to a file. The 'userDataset' shows how to generate a user dataset for a temperature field based on the z coordinate of the nodes.
+
+<P>
+Regard the &ldquo;<A HREF="node197.html#stop">stop</A>&rdquo; command to stop file execution and the &ldquo;<A HREF="node80.html#cont">cont</A>&rdquo; command to re-start reading. This is very helpfull during creation of such a batch file.
+
+<P>
+It should be noted that a successive 'save' or 'exit' command will overwrite the batch file if it has the file-extension 'fbd'. To prevent this the user should use a different extension like 'fbl' instead of 'fbd'.
+
+<P>
+When executing commands which increase the used space then it might happen that geometry is clipped and can not be seen or accessed anymore. In such a case a &ldquo;<A HREF="node103.html#frame">frame</A>&rdquo; command is needed. This command is usually automatically triggered. Especially in batch mode without graphic output it solves sometimes strange situations.
+
+<P>
+When the command &ldquo;<A HREF="node115.html#init">init</A>&rdquo; or &ldquo;<A HREF="node216.html#wsize">wsize</A>&rdquo; is used then they have to be used in the very first line. Otherwhise the window dimensions take only effect after the batch file was completely parsed and executed.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html3942"
+  HREF="node261.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3938"
+  HREF="node246.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3932"
+  HREF="node259.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3940"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3943"
+  HREF="node261.html">How to process results</A>
+<B> Up:</B> <A NAME="tex2html3939"
+  HREF="node246.html">Tips and Hints</A>
+<B> Previous:</B> <A NAME="tex2html3933"
+  HREF="node259.html">How to map loads</A>
+ &nbsp; <B>  <A NAME="tex2html3941"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>split</TITLE>
+<META NAME="description" CONTENT="split">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node195.html">
+<LINK REL="previous" HREF="node193.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node195.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html3112"
+  HREF="node195.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3108"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3102"
+  HREF="node193.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3110"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3113"
+  HREF="node195.html">stack</A>
+<B> Up:</B> <A NAME="tex2html3109"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html3103"
+  HREF="node193.html">shpe</A>
+ &nbsp; <B>  <A NAME="tex2html3111"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00010128000000000000000"></A><A NAME="split"></A>
+<BR>
+split
+</H2>
+<PRE>
+   'split' [[&lt;set&gt; &lt;set&gt;] ['nos(eparation)'|'e']] |[&lt;line&gt; &lt;point&gt;]
+</PRE>
+This keyword is used to split lines, surfaces, bodies and elements stored in a first set by surfaces or shapes given in a second set. Also a single line can be splitted by a given point (see &ldquo;<A HREF="node147.html#pnt">pnt</A>&rdquo; how to generate a point on a line). It is advisable to split only elements or geometry. Otherwhise the performance is very poor.
+
+<P>
+So far only tetraeder elements (in the first set) can be splitted by surfaces, faces or shapes (referenced by the second set). The splitted tetraeder elements will be replaced by new tetraeder- and pentaeder elements. It can be used to cut out parts of the mesh to be either used directly in other models or which can be remeshed with tets based on an stl-file derived from them. Or it can be used to apply damages to a structure. See &ldquo;<A HREF="node259.html#How_to_map_loads">How to map loads</A>&rdquo; in the appendix on how to map loads to the new created nodes from the original mesh. The use of parameter 'e' just stores the elements which would be splitted in the set '+eorig' but prevents the splitting of the elements:
+
+<BR>
+<BR>
+split elset shape e
+<BR>
+<BR>
+<P>
+When bodies should be splitted then only one body per split command is currently possible. But only if the split would lead to exactly two parts. Splitting of several bodies at once will not create new bodies. Use several split commands instead. If unexpected results occur the user might use the option 'nos' to check the splitting of surfaces without the steps of separation and distribution to two bodies.
+
+<P>
+Sometimes the splitting of surfaces results in lines which do not look as expected. The reason is usually a insufficient resolution of the triangles used for the representation of the surfaces. These triangles are generated or updated before the splitting happens and they are the basis for the splitting (the <A HREF="node177.html#rep">rep</A> command does the same and the result can be viewed with &ldquo;plot si all&rdquo;). The user should increase the line division with <A HREF="node158.html#qdiv">qdiv</A> and the inner resolution with <A HREF="node92.html#elty">elty</A> or <A HREF="node165.html#qmsh">qmsh</A> before he starts the next attempt (it is advisable to save the model before the split command is used).
+
+<P>
+When using the parameter 'noseparation' (first 3 chars are significant)
+<BR>
+<BR>
+split surfset shape nos
+<BR>
+<BR>
+the resulting surfaces will still be connected by the new lines created by the splitting. And they will eventually share a common NURBS. So if one of this surfaces is deleted it is necessary not to delete the related NURBS as well since otherwhise all remaining surfaces will lose their internal definition! Splitted surfaces can be combined again with &ldquo;<A HREF="node165.html#qmsh">qmsh</A>&rdquo;.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html3112"
+  HREF="node195.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3108"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3102"
+  HREF="node193.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3110"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3113"
+  HREF="node195.html">stack</A>
+<B> Up:</B> <A NAME="tex2html3109"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html3103"
+  HREF="node193.html">shpe</A>
+ &nbsp; <B>  <A NAME="tex2html3111"
+  HREF="node1.html">Contents</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>How to generate a time-history plot</TITLE>
+<META NAME="description" CONTENT="How to generate a time-history plot">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node255.html">
+<LINK REL="previous" HREF="node253.html">
+<LINK REL="up" HREF="node246.html">
+<LINK REL="next" HREF="node255.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html3870"
+  HREF="node255.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3866"
+  HREF="node246.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3860"
+  HREF="node253.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3868"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3871"
+  HREF="node255.html">How the mesh is</A>
+<B> Up:</B> <A NAME="tex2html3867"
+  HREF="node246.html">Tips and Hints</A>
+<B> Previous:</B> <A NAME="tex2html3861"
+  HREF="node253.html">How to generate a</A>
+ &nbsp; <B>  <A NAME="tex2html3869"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION000188000000000000000"></A><A NAME="How_to_generate_a_time-history_plot"></A>
+<BR>
+How to generate a time-history plot
+</H2>
+So called time history plots can be created based on a previous displayed sequence of data-sets (see &rdquo;<A HREF="node41.html#Toggle_Dataset_Sequence">Toggle Dataset Sequence</A>&rdquo;) with the command &rdquo;<A HREF="node106.html#graph">graph</A>&rdquo;. It is also possible to use only the command line. For example:
+
+<UL>
+<LI>ds 1 e 3
+</LI>
+<LI>ds 1 2 10
+</LI>
+<LI>graph set t
+</LI>
+</UL>
+will produce a time history plot for the nodes stored in set over all loadcases from 1 to 10 for the entity nr 3.
+Or
+
+<UL>
+<LI>graph set t DISP D1
+</LI>
+</UL>
+will display the displacement in direction 1 for all loadcases.
+For more details and other options look into the &rdquo;<A HREF="node106.html#graph">graph</A>&rdquo; command description.
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="graph2D"></A><A NAME="2714"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 12:</STRONG>
+example of a time-history plot </CAPTION>
+<TR><TD><IMG
+ WIDTH="407" HEIGHT="583" BORDER="0"
+ SRC="img32.png"
+ ALT="\begin{figure}\epsfig{file=graph.eps,width=9cm}\end{figure}"></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+*.FCBak
+bridge/test-output/
+.venv-mcp
+.evidence-data/
+.claude/settings.local.json
+freecad/*.AppImage

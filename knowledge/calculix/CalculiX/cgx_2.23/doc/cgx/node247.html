@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>How to change the format of the movie file</TITLE>
+<META NAME="description" CONTENT="How to change the format of the movie file">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node248.html">
+<LINK REL="previous" HREF="node246.html">
+<LINK REL="up" HREF="node246.html">
+<LINK REL="next" HREF="node248.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html3786"
+  HREF="node248.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html3782"
+  HREF="node246.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html3776"
+  HREF="node246.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html3784"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html3787"
+  HREF="node248.html">How to get the</A>
+<B> Up:</B> <A NAME="tex2html3783"
+  HREF="node246.html">Tips and Hints</A>
+<B> Previous:</B> <A NAME="tex2html3777"
+  HREF="node246.html">Tips and Hints</A>
+ &nbsp; <B>  <A NAME="tex2html3785"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION000181000000000000000"></A><A NAME="How_to_change_the_format_of_the_movie_file"></A>
+<BR>
+How to change the format of the movie file
+</H2>
+Use a shell command like convert to split up movie.gif with multiple
+layers into multiple frames, as seperate jpeg files:
+<PRE>
+convert movie.gif %d.jpg
+</PRE>
+Convert any series of multiple jpeg files into WMV format with:
+<PRE>
+mencoder mf://*.jpg -mf w=800:h=600:fps=25:type=jpg -ovc lavc -lavcopts
+ vcodec=wmv2 -o movie.wmv
+</PRE>
+To convert a video file into avi format use this command:
+<PRE>
+mencoder &lt;videofile&gt; -ovc lavc -lavcopts vcodec=flv -of avi -o movie.avi
+</PRE>
+In general:To convert a video file from one format into the other, use
+the program "mencoder". It comes with the mplayer packages. 
+<PRE>
+mplayer movie.wmv
+</PRE>
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

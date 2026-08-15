@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2017.2 (Released Jan 23, 2017) -->
+<HTML>
+<HEAD>
+<TITLE>dist</TITLE>
+<META NAME="description" CONTENT="dist">
+<META NAME="keywords" CONTENT="cgx">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2017.2">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cgx.css">
+
+<LINK REL="next" HREF="node87.html">
+<LINK REL="previous" HREF="node85.html">
+<LINK REL="up" HREF="node66.html">
+<LINK REL="next" HREF="node87.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html1816"
+  HREF="node87.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="file:/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html1812"
+  HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="file:/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html1806"
+  HREF="node85.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="file:/usr/share/latex2html/icons/prev.png"></A> 
+<A NAME="tex2html1814"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents"
+ SRC="file:/usr/share/latex2html/icons/contents.png"></A>  
+<BR>
+<B> Next:</B> <A NAME="tex2html1817"
+  HREF="node87.html">div</A>
+<B> Up:</B> <A NAME="tex2html1813"
+  HREF="node66.html">Commands</A>
+<B> Previous:</B> <A NAME="tex2html1807"
+  HREF="node85.html">del</A>
+ &nbsp; <B>  <A NAME="tex2html1815"
+  HREF="node1.html">Contents</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0001020000000000000000"></A><A NAME="dist"></A>
+<BR>
+dist
+</H2>
+<PRE>
+   'dist' &lt;set&gt; [&lt;target-set&gt;|&lt;shpe&gt;] -&gt;
+              ['tra' &lt;dx&gt; &lt;dy&gt; &lt;dz&gt; &lt;offset&gt;]|
+              ['rot' &lt;p1&gt; &lt;p2&gt; &lt;offset&gt;]|
+              ['rot' 'x'|'y'|'z' &lt;offset&gt;]|
+              ['rad' &lt;p1&gt; &lt;p2&gt; &lt;offset&gt;]|
+              ['rad' 'x'|'y'|'z' &lt;offset&gt;]|
+              ['nor' &lt;offset&gt; &lt;tol&gt;]
+</PRE>
+measures distances between entities of one or of two sets. For example 
+<BR>
+<BR>
+dist set 
+<BR>
+<BR>
+gives the distance range of the points and nodes in the set in x,y and z direction.
+
+<P>
+If just one point or node is included in both provided sets 
+<BR>
+<BR>
+dist set1 set2 
+<BR>
+<BR>
+then as with &rdquo;<A HREF="node157.html#qdis">qdis</A>&rdquo; the cartesian distances, the angular distances and the radial distances are determined.
+
+<P>
+If just one point or node is included in the first set and several points or nodes in set2 
+<BR>
+<BR>
+dist set1 set2 
+<BR>
+<BR>
+then only the extremal cartesian distances from the sole point or node in set1 to all entities in set2 are determined (set1-set2).
+
+<P>
+Further parameter combinations work analogous to the &rdquo;<A HREF="node149.html#proj">proj</A>&rdquo; command and calculates distances to shapes or surfaces. Please look there for details, for example:
+<BR>
+<BR>
+dist set1 set2 rot p0 px 
+<BR>
+<BR>
+The average-, maximum- and minimum distance is determined. The distance is measured normal-, rotational-, radial or translatoric. 
+
+<P>
+The command writes to the &rdquo;<A HREF="node195.html#stack">stack</A>&rdquo;.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>
