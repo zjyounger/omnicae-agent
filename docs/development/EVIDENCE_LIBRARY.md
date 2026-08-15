@@ -7,7 +7,8 @@ purpose and interface are in [`../EVIDENCE_LIBRARY.md`](../EVIDENCE_LIBRARY.md).
 
 The first E0 artifact is implemented: `evidence/` contains a machine-readable
 source-manifest schema, deterministic file/tree hashing, provenance validation,
-and tests. No retrieval service, ingestion pipeline, normalized evidence-record
+and tests. This utility does not block an initial native R2R ingestion trial.
+No retrieval service, ingestion pipeline, normalized experience/evidence-record
 schema, or chunker has been implemented yet.
 
 The first useful scope is retrieval over CalculiX official documentation. Do
@@ -48,7 +49,7 @@ manifest. Public availability alone does not grant redistribution permission.
 
 ## Manifest and validation
 
-Before ingestion, every source must provide:
+Before a corpus is treated as reproducible project data, every source provides:
 
 ```yaml
 id:
@@ -64,11 +65,18 @@ Schema validation rejects missing provenance. Incremental ingestion compares
 stable identifiers and hashes, and handles add, update, rename, and delete. A
 deleted source must not leave searchable orphan chunks.
 
+The first controlled R2R trial may upload a small declared sample before the
+full manifest inventory is complete. This manifest is project provenance; it
+does not replace or redefine R2R's document schema.
+
 ## Parsing and chunking
 
 ### Structured documents
 
-The proposed document path is:
+The first baseline uploads standard documents through R2R's native document
+API and inspects the chunks and citations it actually produces. It does not
+introduce a project normalizer first. If that measured baseline shows a parsing
+or chunking limitation, the later structured-document path is:
 
 ```text
 PDF/DOCX/PPTX
@@ -157,9 +165,11 @@ from repository artifacts.
 
 Preparation baseline: the upstream R2R repository currently exposes a v3 REST
 API, offers an optional Python SDK, and documents both a light Python launch and
-a full Docker deployment. The first adapter targets the REST contract rather
-than importing the SDK. No R2R package or container is part of the default
-installation until an ingestion/search conformance test exists.
+a full Docker deployment. The first trial uses the native document and search
+endpoints directly. A project adapter is written only after observing that
+contract; it targets REST rather than importing the SDK. No R2R package or
+container is part of the default installation until an ingestion/search
+conformance test exists.
 
 ### Enterprise adapter
 
@@ -176,25 +186,40 @@ API or CLI workflow unless an explicit reviewed write tool is later justified.
 
 ## Delivery sequence
 
-### E0 — contract and provenance
+### R0 — native standard-document injection
 
-1. Define machine-readable evidence and source-manifest schemas. **Source
-   manifest complete; normalized evidence-record schema remains.**
-2. Define stable identifiers and content hashing. **Source identity and hashing
-   complete.**
-3. Record source and corpus licensing decisions.
-4. Add schema validation tests.
+1. Inventory the permitted CalculiX documentation and select a small sample.
+2. Add the smallest reproducible R2R deployment.
+3. Upload the sample through R2R's native document API without a project
+   normalizer or custom experience-record schema.
+4. Inspect document state, generated chunks, metadata, citations, deletion,
+   and search results.
+5. Record a small reviewed query set and the observed API payloads.
 
-Exit: an artifact without sufficient provenance is rejected before ingestion.
+Exit: standard CalculiX documents can be ingested, searched, cited, and removed
+through the native R2R API, and the actual chunk behaviour is recorded.
+
+### E0 — provenance and the thin retrieval adapter
+
+1. Apply the source-manifest contract to the selected corpus. **Schema,
+   identity, hashing, and validation are implemented.**
+2. Record source and corpus licensing decisions.
+3. Implement only the adapter fields required by the observed R2R REST
+   payloads.
+4. Add clean rebuild and incremental update tests.
+
+Exit: the tested corpus is reproducible from declared sources, and replacing
+R2R requires changing an adapter rather than the source artifacts.
 
 ### E1 — CalculiX text baseline
 
-1. Add the smallest reproducible reference backend deployment.
-2. Parse permitted CalculiX documentation and the existing keyword cards.
-3. Implement the project-owned retrieval adapter.
-4. Build a reviewed query set covering keyword meaning, applicability,
+1. Measure native R2R parsing and retrieval over the permitted CalculiX
+   documentation and existing keyword cards.
+2. Introduce Docling or custom keyword-card chunking only where the baseline
+   demonstrates a specific failure.
+3. Build a reviewed query set covering keyword meaning, applicability,
    cross-references, and representative errors.
-5. Record scores and missed queries as repository artifacts.
+4. Record scores and missed queries as repository artifacts.
 
 Exit: at least 90% of the reviewed queries retrieve the correct official source
 in the top five, and every result opens the exact source location. This is an
@@ -249,7 +274,8 @@ agent, evidence schema, or source corpus.
 
 ## Restraint
 
-Only E0 and E1 belong to the first implementation. More corpus, more models,
-and more retrieval features do not compensate for an unmeasured baseline. The
-library remains subordinate to application integrations, engineering tools,
-experience abstraction, and validation.
+R0 comes first. E0 and E1 follow only from what the native injection baseline
+actually shows. Normalized experience/evidence records, more corpus, more
+models, and more retrieval features do not compensate for an unmeasured
+standard-document baseline. The library remains subordinate to application
+integrations, engineering tools, experience abstraction, and validation.
