@@ -242,7 +242,9 @@ status and immediate work are recorded only in `PLAN.md`.
 
 ## Licensing
 
-Code and corpus may require different licences. The project must decide their
-licences and whether contributions use a DCO or CLA before accepting the first
-outside contribution; changing those terms later would require contributor
-consent.
+Original OmniCAE Agent code and documentation use the MIT License. Third-party
+software, documentation, and corpus material retain their upstream terms and
+must be recorded in `THIRD_PARTY_NOTICES.md`; inclusion in this repository does
+not relicense them. The project must still decide whether contributions use a
+DCO or CLA before accepting the first outside contribution; changing those
+terms later would require contributor consent.
