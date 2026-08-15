@@ -79,5 +79,7 @@ The intended contribution unit is small: one integration capability, reader,
 inspector, procedure, experience record, or benchmark should be useful without
 requiring a contributor to understand the whole system.
 
-Code and corpus licensing, and the choice between a DCO and CLA, are still open
-decisions. They must be settled before accepting outside contributions.
+Original project code and documentation are released under the [MIT
+License](LICENSE). Bundled third-party material retains its upstream terms; see
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The choice between a DCO and
+CLA remains open and must be settled before accepting outside contributions.
