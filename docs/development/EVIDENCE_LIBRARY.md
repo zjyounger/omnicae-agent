@@ -5,8 +5,10 @@ purpose and interface are in [`../EVIDENCE_LIBRARY.md`](../EVIDENCE_LIBRARY.md).
 
 ## Status
 
-Design only. No retrieval service, ingestion pipeline, evidence schema, or
-chunker has been implemented in this repository yet.
+The first E0 artifact is implemented: `evidence/` contains a machine-readable
+source-manifest schema, deterministic file/tree hashing, provenance validation,
+and tests. No retrieval service, ingestion pipeline, normalized evidence-record
+schema, or chunker has been implemented yet.
 
 The first useful scope is retrieval over CalculiX official documentation. Do
 not expand to broad OCR, knowledge graphs, a new user interface, or automatic
@@ -153,6 +155,12 @@ hybrid retrieval, and metadata filters. Do not depend on its chat or agent
 interfaces. The reference deployment must remain optional and reproducible
 from repository artifacts.
 
+Preparation baseline: the upstream R2R repository currently exposes a v3 REST
+API, offers an optional Python SDK, and documents both a light Python launch and
+a full Docker deployment. The first adapter targets the REST contract rather
+than importing the SDK. No R2R package or container is part of the default
+installation until an ingestion/search conformance test exists.
+
 ### Enterprise adapter
 
 RAGFlow is not part of the default installation. An organisation may ingest the
@@ -170,8 +178,10 @@ API or CLI workflow unless an explicit reviewed write tool is later justified.
 
 ### E0 — contract and provenance
 
-1. Define machine-readable evidence and source-manifest schemas.
-2. Define stable identifiers and content hashing.
+1. Define machine-readable evidence and source-manifest schemas. **Source
+   manifest complete; normalized evidence-record schema remains.**
+2. Define stable identifiers and content hashing. **Source identity and hashing
+   complete.**
 3. Record source and corpus licensing decisions.
 4. Add schema validation tests.
 

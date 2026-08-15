@@ -28,23 +28,17 @@ the available software or evidence cannot support a requested conclusion.
 The complete objective, architecture, repository strategy, and contribution
 model are in [Project Objective and Architecture](docs/PROJECT.md).
 
-## Current state
-
-The first vertical slice is structural static implicit analysis with CalculiX,
-starting from an existing mesh and closing the result against an analytical
-solution.
-
-Implemented so far:
+## Implemented so far
 
 - an in-process FreeCAD Bridge with a JSON-RPC client and thin MCP adapter;
 - CAD, FEM setup, Gmsh meshing, and CalculiX solving through the Bridge;
 - structured errors, capability discovery, path confinement, and hot reload;
 - deck and result inspectors;
+- evidence source manifests, deterministic content hashing, and provenance
+  validation;
 - integration tests for protocol, security, reconnection, and failure paths.
 
-The retrieval layer, general experience-record format, additional application
-integrations, and broader benchmarks are not implemented yet. See
-[PLAN.md](PLAN.md) for the current front rather than a speculative roadmap.
+See [PLAN.md](PLAN.md) for current work and immediate priorities.
 
 ## Working principle
 
