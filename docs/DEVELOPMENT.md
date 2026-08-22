@@ -17,6 +17,14 @@ runtime may need an in-process Bridge. A command-line solver may instead need a
 runner, input reader, result reader, and inspectors. `integration` is the
 general boundary; `bridge` is one implementation pattern inside it.
 
+**Every integration has an action contract and an evidence contract.** The
+action contract says what the integration can change. The evidence contract
+says how the caller observes the resulting state and what independent checks
+are available. Native state queries, exported artifacts, logs, measurements,
+and rendered images can satisfy that contract without a live GUI Bridge. Use
+the least complex interaction level that preserves adequate evidence and any
+required human handoff.
+
 **Keep integrations together until independence is real.** The monorepo is the
 right default while contracts and shared tests are changing. Split an
 integration only in response to a concrete independent release cycle,
@@ -75,6 +83,12 @@ error lines so the caller can act on them; raising throws that information away.
 console.** Untrusted callers get a structured error. Debugging without a
 traceback anywhere is guesswork.
 
+**Host diagnostics are part of the operation result.** The FreeCAD Bridge
+measures the Report View before and after each request and returns the delta on
+both success and failure. This catches diagnostics emitted below the adapter,
+including messages from FEM deck writers, without replacing FreeCAD's own
+console functions.
+
 ## Verification tooling
 
 **Verification tools need verifying too.** Both deck inspectors written here had
@@ -90,3 +104,34 @@ usually made on the spur of the moment.
 
 **Do not kill processes by a pattern that also matches you.** Your own shell is
 in the search space. Resolve the PID, then kill the PID.
+
+## Cooperative GUI sessions
+
+Use this pattern only when persistent application state or live human handoff
+adds value beyond an observable batch or command interface.
+
+**Automation is not a Bridge.** A command-line switch, generated macro, or
+keyboard event can automate an application without providing live state,
+acknowledgement, concurrency control, or recovery. Declare the actual
+interaction level instead of promoting every automation route to a native API.
+
+**One action needs an observation barrier.** Read native state, perform one
+operation, wait for the application, then read state again. Return both states
+with the exact operation. Without the second observation, "the key was sent" is
+being substituted for "the model changed".
+
+**Human handoff is a write-ownership change.** A persistent GUI can be shared
+only if there is one writer. Every mutation carries an actor and expected state
+revision. Human activity observed between agent steps advances the revision and
+invalidates stale commands.
+
+**Run host APIs on the host's GUI thread.** The Gmsh Bridge owns the official
+Python API and calls fltk.wait() on the main thread while socket readers place
+requests on a serialized queue. This gives human GUI events and agent API calls
+one ordering instead of racing two threads through the model.
+
+**A GUI fallback remains weaker after careful wrapping.** Exact PID/window
+binding, an exclusive lease, console deltas, and before/after screenshots make
+CGX keyboard control diagnosable. They cannot reveal all hidden application
+state or guarantee that a person did not press a key simultaneously. The
+contract therefore returns gui-fallback, never native-cooperative.

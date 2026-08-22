@@ -1,0 +1,28 @@
+[app]
+default_max_documents_per_user = 10_000
+default_max_chunks_per_user = 10_000_000
+
+[embedding]
+provider = "ollama"
+base_model = "mxbai-embed-large"
+base_dimension = 1_024
+batch_size = 32
+concurrent_request_limit = 2
+
+[completion_embedding]
+provider = "ollama"
+base_model = "mxbai-embed-large"
+base_dimension = 1_024
+batch_size = 32
+concurrent_request_limit = 2
+
+[ingestion]
+provider = "r2r"
+chunking_strategy = "recursive"
+chunk_size = 1_024
+chunk_overlap = 128
+automatic_extraction = false
+skip_document_summary = true
+
+[orchestration]
+provider = "simple"

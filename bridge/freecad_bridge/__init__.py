@@ -33,7 +33,7 @@ def current():
 # Reloaded in dependency order. This package itself is deliberately absent: it
 # holds _server, and reloading it would drop the only handle on the running
 # Bridge.
-_RELOADABLE = ("errors", "contract", "security", "api", "server")
+_RELOADABLE = ("errors", "contract", "security", "console_capture", "api", "server")
 
 
 def _reload_modules():

@@ -7,6 +7,25 @@ AppImage and used by the FEM workbench. Full PDF manual at
 No Python module is installed for the system copy; the CLI takes `.geo`
 command files.
 
+## Native interactive Bridge
+
+The project installs the official Gmsh wheel through
+`requirements-runtime.txt`. The wheel contains both the application and
+Python SDK, so users do not need the distribution package.
+
+`integrations.gmsh.server` owns one persistent Gmsh process. The JSON-RPC
+socket reader queues requests, while every Gmsh API call and `fltk.wait()`
+runs on the GUI main thread. This is the supported human/agent interaction
+route; sending keyboard shortcuts with xdotool is not.
+
+The Bridge reads a native state fingerprint before and after every mutation.
+Calls require the current session revision and single-writer lease, so a human
+change observed between agent actions invalidates the older action.
+
+The Bridge also exposes mesh face and edge display options through
+`mesh.configure`. For an opaque mesh, enable `Mesh.SurfaceFaces` and
+`Mesh.VolumeFaces`. Their GUI shortcuts are `Alt+Shift+D` and `Alt+Shift+B`.
+
 ## Second-order elements on small features
 
 By default Gmsh projects the mid-side nodes of second-order elements onto the

@@ -2,7 +2,10 @@ __pycache__/
 *.py[cod]
 *.FCBak
 bridge/test-output/
+*.omnicae.log
 .venv-mcp
+.venv-gmsh
 .evidence-data/
+.local-tools
 .claude/settings.local.json
 freecad/*.AppImage

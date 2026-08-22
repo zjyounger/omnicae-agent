@@ -2,11 +2,43 @@
   "mcpServers": {
     "freecad-bridge": {
       "type": "stdio",
-      "command": "${CLAUDE_PROJECT_DIR:-.}/.venv-mcp/bin/python",
-      "args": ["${CLAUDE_PROJECT_DIR:-.}/bridge/mcp_server.py"],
-      "env": {
-        "CAE_BRIDGE_SOCKET": "${CAE_BRIDGE_SOCKET:-}"
-      }
+      "command": "/bin/sh",
+      "args": [
+        "-c",
+        "project_dir=\"${CLAUDE_PROJECT_DIR:-$PWD}\"; exec \"$project_dir/.venv-mcp/bin/python\" \"$project_dir/bridge/mcp_server.py\""
+      ]
+    },
+    "evidence-library": {
+      "type": "stdio",
+      "command": "/bin/sh",
+      "args": [
+        "-c",
+        "project_dir=\"${CLAUDE_PROJECT_DIR:-$PWD}\"; exec \"$project_dir/.venv-mcp/bin/python\" \"$project_dir/evidence/mcp_server.py\""
+      ]
+    },
+    "gmsh-bridge": {
+      "type": "stdio",
+      "command": "/bin/sh",
+      "args": [
+        "-c",
+        "project_dir=\"${CLAUDE_PROJECT_DIR:-$PWD}\"; cd \"$project_dir\"; exec \"$project_dir/.venv-mcp/bin/python\" -m integrations.gmsh.mcp_server"
+      ]
+    },
+    "calculix-service": {
+      "type": "stdio",
+      "command": "/bin/sh",
+      "args": [
+        "-c",
+        "project_dir=\"${CLAUDE_PROJECT_DIR:-$PWD}\"; cd \"$project_dir\"; exec \"$project_dir/.venv-mcp/bin/python\" -m integrations.calculix.mcp_server"
+      ]
+    },
+    "cgx-bridge": {
+      "type": "stdio",
+      "command": "/bin/sh",
+      "args": [
+        "-c",
+        "project_dir=\"${CLAUDE_PROJECT_DIR:-$PWD}\"; cd \"$project_dir\"; exec \"$project_dir/.venv-mcp/bin/python\" -m integrations.cgx.mcp_server"
+      ]
     }
   }
 }

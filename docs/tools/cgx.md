@@ -45,8 +45,24 @@ boundary conditions in the same view, so a load applied to the wrong face is
 visible rather than inferred.
 
 Driven by a command language; command files (`.fbd`) make it scriptable, and
-`hcpy` writes an image. A working post-processing script, run as
-`cgx -b post.fbd` with `DISPLAY` set:
+`hcpy` writes an image.
+
+## Controlled GUI fallback
+
+No supported CGX socket or application API was found. The project therefore
+does not label live keyboard control as native. `integrations.cgx.server`
+binds one exact PID/window and reports interaction level `gui-fallback`.
+Each GUI command requires an exclusive write lease and records before/after
+window captures, console output available to the owned process, process
+survival, and an acknowledgement grade.
+
+Attaching an already running CGX process cannot recover its parent-terminal
+output, so acknowledgement may be `visual-only` or `uncertain`. That is a
+real limitation, not success. A person must receive the lease before using the
+same window and the agent must observe again after control returns.
+
+A working post-processing script, run as `cgx -b post.fbd` with `DISPLAY`
+set:
 
 ```
 read job.frd

@@ -1,8 +1,10 @@
 # Evidence contracts
 
-This package owns the backend-independent contracts used to inventory and
-validate source material before ingestion. R2R, RAGFlow, or another retrieval
-backend receives only validated project records.
+OmniCAE's implemented semantic knowledge backend is the open-source
+[R2R framework](https://github.com/SciPhi-AI/R2R). This package supplies the
+backend-independent CAE contracts used to inventory and validate source
+material before R2R ingestion. R2R remains an upstream project under its own
+licence; OmniCAE does not claim its retrieval framework as project-owned code.
 
 No retrieval service or SDK is required for this layer.
 
@@ -37,4 +39,23 @@ Run the contract tests with:
 
 ```bash
 python3 -m unittest discover -s evidence/tests -v
+```
+
+## Read-only MCP
+
+The repository registers `evidence-library` for both supported coding-agent
+hosts: `.mcp.json` is the Claude Code project configuration, while
+`.codex/config.toml` is the Codex project configuration. It exposes exact
+lookup, document navigation, authoritative source opening, and multi-need
+retrieval.
+The semantic route calls the local R2R service; it does not expose
+R2R's answer-generating `rag` operation.
+
+Set up and test it:
+
+```bash
+python3 -m venv .venv-mcp
+.venv-mcp/bin/pip install -r requirements-mcp.txt
+.venv-mcp/bin/python evidence/mcp_integration_test.py
+claude mcp list
 ```

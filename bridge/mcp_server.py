@@ -34,6 +34,14 @@ def _mcp_tool(spec):
 
 
 TOOLS = [_mcp_tool(spec) for spec in MCP_SPEC_BY_NAME.values()]
+SERVER = Server(
+    "opensource-cae-freecad",
+    version=ADAPTER_VERSION,
+    instructions=(
+        "Use these tools for FreeCAD document, CAD object, topology, file exchange, "
+        "and GUI operations. Start the FreeCAD Bridge before calling a tool."
+    ),
+)
 
 
 def _result(payload, is_error=False):
@@ -50,23 +58,21 @@ def _bridge_call(spec, arguments):
         return client.call(spec.name, arguments)
 
 
-async def list_tools(_context, _params):
-    return types.ListToolsResult(
-        tools=TOOLS,
-        ttlMs=300000,
-        cacheScope="private",
-    )
+@SERVER.list_tools()
+async def list_tools():
+    return TOOLS
 
 
-async def call_tool(_context, params):
-    spec = MCP_SPEC_BY_NAME.get(params.name)
+@SERVER.call_tool(validate_input=False)
+async def call_tool(name, arguments):
+    spec = MCP_SPEC_BY_NAME.get(name)
     if spec is None:
         return _result(
             {"error": {"type": "unknown_tool", "message": "Unknown FreeCAD tool"}},
             is_error=True,
         )
 
-    arguments = params.arguments or {}
+    arguments = arguments or {}
     errors = sorted(Draft202012Validator(spec.input_schema).iter_errors(arguments), key=str)
     if errors:
         error = errors[0]
@@ -109,23 +115,11 @@ async def call_tool(_context, params):
 
 
 async def serve():
-    server = Server(
-        "opensource-cae-freecad",
-        version=ADAPTER_VERSION,
-        title="Open Source CAE FreeCAD Bridge",
-        description="Dynamic, schema-backed MCP adapter for a local FreeCAD Bridge.",
-        instructions=(
-            "Use these tools for FreeCAD document, CAD object, topology, file exchange, "
-            "and GUI operations. Start the FreeCAD Bridge before calling a tool."
-        ),
-        on_list_tools=list_tools,
-        on_call_tool=call_tool,
-    )
     async with mcp.server.stdio.stdio_server() as (read_stream, write_stream):
-        await server.run(
+        await SERVER.run(
             read_stream,
             write_stream,
-            server.create_initialization_options(),
+            SERVER.create_initialization_options(),
         )
 
 

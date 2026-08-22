@@ -23,6 +23,7 @@ development machine's paths, windows, or desktop state.
 - Newline-delimited JSON-RPC 2.0.
 - Allowlisted FreeCAD document, CAD, FEM, and GUI operations.
 - Capability discovery, versioning, structured errors.
+- Per-request FreeCAD Report View message capture on success and failure.
 - File path allowlist.
 - External Python client and CLI.
 - A shared schema-backed method registry.
@@ -76,7 +77,7 @@ Request:
 Success:
 
 ```json
-{"jsonrpc":"2.0","id":1,"result":{"bridge_version":"0.5.0"}}
+{"jsonrpc":"2.0","id":1,"result":{"bridge_version":"0.6.0"}}
 ```
 
 Error:
@@ -150,6 +151,13 @@ without a per-type schema.
 `fem.solve` does not treat a failed solve as an exception: it returns `solved`,
 `solver_errors` extracted from the solver's stdout, and `warnings`. A failed
 solve has to be a diagnosable result.
+
+Every Bridge response also carries `host_messages`, the Report View text added
+during that exact request. This preserves `PrintMessage`, `PrintWarning`, and
+`PrintError` diagnostics emitted inside FreeCAD's FEM writers and mesh tools.
+If the Report View is disabled in the FreeCAD build, the field explicitly
+reports `capture_available: false`; an empty captured string is never used to
+claim that the host emitted nothing.
 
 **Write units on dimensional quantities**: `{"Force": "5000 N"}`. A bare number
 is interpreted in FreeCAD's internal units (mm–kg–s, so force is mN) and `5000`

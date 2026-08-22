@@ -1,0 +1,2 @@
+# Native Gmsh application and Python SDK in one cross-platform wheel.
+gmsh>=4.12,<5

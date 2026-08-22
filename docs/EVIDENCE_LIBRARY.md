@@ -55,6 +55,14 @@ source_version:
 license:
 content_hash:
 
+document_id:
+section_id:
+section_path:
+parent_id:
+previous_id:
+next_id:
+toc_order:
+
 solver:
 solver_version:
 language:
@@ -62,6 +70,7 @@ interface:
 
 page:
 bbox:
+source_anchor:
 asset_path:
 line_start:
 line_end:
@@ -83,13 +92,35 @@ The CAE agent depends on a project-owned interface:
 
 ```text
 search_evidence(query, filters)
+retrieve_evidence_task(information_needs, filters)
+get_document_map(document_id, parent_id)
+lookup_exact_term(application, term)
 get_evidence(evidence_id)
 get_artifact(artifact_id)
-open_source_location(evidence_id)
+open_source_location(evidence_id, scope)
 ```
 
 It returns structured evidence or `insufficient_evidence`. It does not return
 an unsupported synthesized answer in place of missing material.
+
+The document map is navigation, not a content score. It preserves the table of
+contents and section hierarchy independently of content chunks. An agent reads
+the map, selects a section, and opens the authoritative source at that location.
+It is never converted into a fixed weight and added to a lexical or vector
+score.
+
+Lexical and semantic search are discovery paths for cases where the exact term
+or section is not yet known. Their result must resolve back to the document map
+and authoritative source. The amount opened after resolution -- one chunk,
+neighbouring chunks, a subsection, or a complete page -- is a separate
+measurement.
+
+A task may require several independent sources. The calling agent states those
+information needs explicitly; each need runs through the applicable discovery
+routes and opens authoritative sources independently. Candidate sets may be
+unioned for coverage, but scores from different routes are not fused. Explicit
+cross-references in source content may lead to another source. Neighbouring TOC
+entries are not treated as evidence of relevance.
 
 Ingestion is a separate, controlled path. Sources pass provenance, licence,
 schema, and content-hash checks before entering an index. An agent does not
@@ -97,10 +128,13 @@ silently write conversation text into the library.
 
 ## Backend independence
 
-No retrieval product owns the corpus or its schema. A lightweight deployment
-may use a local index or R2R. An organisation may index the same artifacts in
-RAGFlow or another system. MCP may expose the stable query interface, while
-native APIs remain available to project code.
+The reference implementation uses the open-source
+[R2R framework](https://github.com/SciPhi-AI/R2R) for ingestion, embedding
+storage, and semantic retrieval. R2R is an upstream dependency, not a component
+developed or owned by OmniCAE. No retrieval product owns the corpus or its
+schema: an organisation may index the same artifacts in RAGFlow or another
+system. MCP exposes the stable query interface, while native APIs remain
+available to project code.
 
 Queries may continue while new artifacts are parsed and indexed. A new version
 becomes visible only after its ingestion succeeds; previously indexed evidence

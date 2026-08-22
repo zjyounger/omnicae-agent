@@ -1,0 +1,62 @@
+[
+  {
+    "id": "c3d20-node-numbering",
+    "category": "element_diagram",
+    "query": "diagram showing the node numbering of the twenty-node C3D20 brick element",
+    "expected_asset": "knowledge/calculix/CalculiX/ccx_2.23/doc/ccx/img297.png"
+  },
+  {
+    "id": "c3d10-node-numbering",
+    "category": "element_diagram",
+    "query": "diagram of the ten-node C3D10 tetrahedral element and its node numbering",
+    "expected_asset": "knowledge/calculix/CalculiX/ccx_2.23/doc/ccx/img300.png"
+  },
+  {
+    "id": "cgx-main-window",
+    "category": "gui_screenshot",
+    "query": "CGX main window diagram labeling the menu area, drawing area, coordinate system, colour map and file name",
+    "expected_asset": "knowledge/calculix/CalculiX/cgx_2.23/doc/cgx/img2.png"
+  },
+  {
+    "id": "cgx-main-menu",
+    "category": "gui_screenshot",
+    "query": "CGX main menu popup showing Datasets, Viewing, Animate, Frame, Zoom and Help",
+    "expected_asset": "knowledge/calculix/CalculiX/cgx_2.23/doc/cgx/img3.png"
+  },
+  {
+    "id": "furnace-temperature-contour",
+    "category": "contour",
+    "query": "temperature distribution contour of the furnace at time 3001 seconds",
+    "expected_asset": "knowledge/calculix/CalculiX/ccx_2.23/doc/ccx/img119.png"
+  },
+  {
+    "id": "furnace-temperature-history",
+    "category": "graph",
+    "query": "plot of temperature versus time at selected furnace positions A through E",
+    "expected_asset": "knowledge/calculix/CalculiX/ccx_2.23/doc/ccx/img120.png"
+  },
+  {
+    "id": "wrinkling-principal-strain",
+    "category": "contour",
+    "query": "minimum principal strain contour in the tension-only wrinkling simulation",
+    "expected_asset": "knowledge/calculix/CalculiX/ccx_2.23/doc/ccx/img228.png"
+  },
+  {
+    "id": "von-mises-equation",
+    "category": "equation",
+    "query": "equation for von Mises equivalent stress from the six stress components",
+    "expected_asset": "knowledge/calculix/CalculiX/cgx_2.23/doc/cgx/img18.png"
+  },
+  {
+    "id": "coarse-mesh-normal-stress",
+    "category": "contour",
+    "query": "normal stress in the z direction for the coarse curved cantilever mesh",
+    "expected_asset": "knowledge/calculix/CalculiX/ccx_2.23/doc/ccx/img237.png"
+  },
+  {
+    "id": "fine-mesh-error-estimator",
+    "category": "contour",
+    "query": "error estimator for the fine refined curved cantilever mesh",
+    "expected_asset": "knowledge/calculix/CalculiX/ccx_2.23/doc/ccx/img240.png"
+  }
+]

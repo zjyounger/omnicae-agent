@@ -394,7 +394,7 @@ artifact.
 | S2 | A client disconnecting during a slow GUI call segfaulted FreeCAD. `Gui.updateGui()` re-enters the event loop, and `deleteLater()` inside that nested loop freed a socket Qt was still delivering read notifications to | concurrency / lifetime |
 | S3 | `gui.fit_all` blocked for 11 s, longer than the 10 s default client timeout. Root cause was FreeCAD's `UseNavigationAnimations`, whose duration scales with camera travel. The Bridge now disables it around programmatic view changes and restores it, leaving the user's own setting untouched | host behaviour |
 | S4 | `objects.list` assumed a `Shape` property is always a TopoShape; on a FEM mesh object it is a link to the part being meshed | type assumption |
-| S5 | The Bridge does not capture FreeCAD's console, so `PrintError`/`PrintMessage` from the writer never reach the agent. FreeCAD stated the cause of G2 in plain language at the moment the deck was written, and it was lost. **Open** | missing channel |
+| S5 | The Bridge previously did not capture FreeCAD's console, so `PrintError`/`PrintMessage` from the writer never reached the agent. FreeCAD stated the cause of G2 in plain language at the moment the deck was written, and it was lost. The Bridge now returns the per-request Report View delta as `host_messages` on success and failure, and explicitly reports when that channel is unavailable. **Closed in Bridge 0.6.0; live FEM regression pending.** | missing channel |
 
 ---
 

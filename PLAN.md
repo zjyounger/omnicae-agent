@@ -62,6 +62,21 @@ nodes.
 
 ## Current front
 
+### Interactive application bridges
+
+The immediate architecture work is the cooperative application-control loop:
+one persistent application session, one atomic action at a time, native-state
+feedback after every action, and explicit handoff between a person and an
+agent. Gmsh, CalculiX, and CGX tasks and capability boundaries are tracked in
+[the interactive Bridge plan](docs/development/INTERACTIVE_APPLICATION_BRIDGES.md).
+
+This work was prompted by an observed failure of GUI keyboard automation during
+simultaneous human interaction. `xdotool` remains useful only as an explicitly
+declared, exclusively leased fallback where no native application channel
+exists.
+
+### Structural analysis and evidence
+
 Structural static, implicit, with CalculiX, starting from an existing mesh, and
 closing the loop against an analytical solution.
 
@@ -88,13 +103,20 @@ Three small things first:
 3. **An [Engineering Evidence Library](docs/EVIDENCE_LIBRARY.md) over official
    documentation**, CalculiX first. It is useful on its own: answering what a
    keyword means and why an error occurred already saves a great deal of time.
-   The interface is backend-independent; R2R is the initial lightweight
-   candidate and RAGFlow an optional enterprise adapter. Repository files
+   The reference implementation uses the open-source R2R framework; RAGFlow is
+   an optional enterprise adapter. The interface remains backend-independent,
+   and repository files
    remain authoritative, and code and visual evidence follow only after
    measured text retrieval works. Implementation details are in
    [the development plan](docs/development/EVIDENCE_LIBRARY.md).
-4. **A first benchmark**, starting from `calculix/cantilever.inp`, reporting the
-   deviation from the analytical answer.
+4. ~~**A first benchmark**, starting from `calculix/cantilever.inp`, reporting
+   the deviation from the analytical answer.~~ **Closed as an axial patch test
+   (2026-08-19).** The legacy filename was misleading: it contains one C3D8
+   cube in tension, not a bending cantilever. After replacing the fully clamped
+   face with minimal rigid-body restraints, axial displacement agrees with
+   `FL/(AE)` to below 0.00001% at printed precision, reaction closes exactly,
+   and FRD nodal stress differs by -0.004%. Definition and limits are in
+   [`cases/calculix_axial_patch/DEFINITION.md`](cases/calculix_axial_patch/DEFINITION.md).
 
 Two things fell out of that diagnosis and are worth doing before the next
 analysis, because both are about not losing information that already exists:
@@ -111,5 +133,17 @@ analysis, because both are about not losing information that already exists:
 
 ## Later
 
-Meshing, geometry pre-processing, other solvers, the procedure library, and
-autonomy levels all wait until the first loop closes.
+- **[Agentic meshing orchestrator](docs/development/AGENTIC_MESHING_ORCHESTRATOR.md).**
+  Evaluate whether capability discovery, independent validation, diagnosed
+  retries, and backend selection can make a portfolio of open-source meshers
+  outperform fixed single-tool recipes. The programme defines its own bounded
+  portfolio oracle, benchmark ladder, hard validity gates, and contribution
+  units before implementation begins.
+- **Cross-application RAG discovery.** Extend the R2R-based high-recall
+  retrieval layer for API and keyword references, code, ordinary documentation,
+  and captioned images so an agent does not have to know each application's
+  exact vocabulary in advance. Evaluate retrieval on each new application
+  corpus; preserve exact indexes and source verification alongside vector
+  retrieval.
+- Meshing, geometry pre-processing, other solvers, the procedure library, and
+  autonomy levels all wait until the first loop closes.

@@ -93,10 +93,18 @@ reliably. Not every integration is a Bridge:
 
 - FreeCAD requires an in-process Bridge because its GUI, Python runtime, and Qt
   lifecycle must be controlled from inside the host process.
-- CalculiX primarily requires an input reader, runner, result reader, and deck
-  inspectors.
-- Gmsh may require a geometry and meshing adapter.
-- cgx or ParaView may require post-processing and visual-evidence adapters.
+- Gmsh uses a persistent native Bridge around its official Python/FLTK API;
+  API calls and GUI events are serialized on the application's main thread.
+- CalculiX uses a batch job service, input/result readers, and deck inspectors;
+  it is not described as an interactive GUI Bridge.
+- cgx has no supported native command channel. Its controlled-process adapter
+  exposes the limitation and labels keyboard control as a gui-fallback.
+
+All interactive integrations use an observed state revision and a single-writer
+lease. A person can take the lease; an agent must observe native state again
+before resuming. Each mutation produces a step record with exact arguments,
+before/after state, acknowledgement, artifacts, and verification data. Details
+are in [the interactive Bridge plan](development/INTERACTIVE_APPLICATION_BRIDGES.md).
 
 Integrations are owned by application because compatibility, deployment,
 failure modes, and tests are application-specific. Engineering categories such

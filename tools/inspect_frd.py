@@ -69,8 +69,10 @@ def main(frd, deck=None):
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     from inspect_deck import parse as parse_deck
 
-    coords, nsets, _cload, _bc = parse_deck(deck)
-    constrained = {n for ids in nsets.values() for n in ids}
+    from inspect_deck import constrained_nodes
+
+    coords, nsets, _cload, boundary = parse_deck(deck)
+    constrained, _unresolved = constrained_nodes(nsets, boundary)
     print("frd: %s\nnodes %d | stress %d | disp %d\n" % (frd, len(coords), len(stress), len(disp)))
     if not stress:
         print("no stress results in file")

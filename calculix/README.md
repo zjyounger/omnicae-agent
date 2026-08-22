@@ -11,6 +11,11 @@ and output keywords need checking item by item.
 
 ## Running the verification example
 
+Despite its legacy filename, `cantilever.inp` is a one-element uniaxial patch
+test, not a bending cantilever. Its analytical reference, observed deviations,
+and applicability limits are recorded in
+[`../cases/calculix_axial_patch/DEFINITION.md`](../cases/calculix_axial_patch/DEFINITION.md).
+
 From this directory:
 
 ```bash
