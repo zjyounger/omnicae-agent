@@ -1,5 +1,10 @@
 # CalculiX: an open-source alternative to Abaqus
 
+Generated CAD, meshes, results and evidence files referenced here are local,
+Git-ignored artifacts. They are not included in a fresh clone; regenerate them
+where a procedure is provided, or obtain the preserved local case archive.
+Source scripts, authored inputs and this document remain versioned.
+
 The Ubuntu 24.04 repository version is installed on this machine:
 
 - `calculix-ccx` 2.21: finite element solver (`ccx` command)

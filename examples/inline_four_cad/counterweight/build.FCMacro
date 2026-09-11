@@ -1,0 +1,83 @@
+import sys,json,traceback
+from pathlib import Path
+import FreeCAD as App
+import FreeCADGui as Gui
+import Part,Import
+from PySide import QtCore
+ROOT=Path('/home/linuxjun/OpenSourceCAEtools/examples/inline_four_cad/counterweight')
+sys.path.insert(0,str(ROOT));sys.path.insert(0,str(ROOT.parent))
+import design,block
+try:
+    cfg=json.loads((ROOT/'design_parameters.json').read_text())
+    App.ParamGet('User parameter:BaseApp/Preferences/View').SetBool('UseNavigationAnimations',False)
+    doc=App.openDocument(str(ROOT.parent/'inline_four_short_block.FCStd'))
+    doc.Mechanism.CrankAngle=0;doc.recompute()
+    shaft=doc.Crankshaft
+    old=design.local(shaft)
+    changed=[]
+    for f in list(shaft.Group):
+        if f.TypeId=='PartDesign::Pad' and 'web and counterweight' in f.Label:
+            i=int(f.Label.split()[1]);sign=(1,-1,-1,1)[i-1]
+            sk=f.Profile[0] if isinstance(f.Profile,tuple) else f.Profile
+            for j in reversed(range(sk.GeometryCount)):sk.delGeometry(j)
+            sk.addGeometry(design.profile(cfg['radius_mm'],sign),False)
+            changed.append(sk.Name)
+    doc.recompute()
+    assert len(changed)==8 and shaft.Shape.isValid() and len(shaft.Shape.Solids)==1
+    for name,typ,value in [('MaterialGrade','App::PropertyString','42CrMo4 +QT'),
+                           ('DensityKgM3','App::PropertyFloat',7800.),
+                           ('CounterweightRadius','App::PropertyLength',cfg['radius_mm']),
+                           ('BalanceTarget','App::PropertyString','100% equivalent rotating mass; 0% reciprocating'),
+                           ('EquivalentRodBigEndKg','App::PropertyFloat',cfg['equivalent_big_end_kg'])]:
+        shaft.addProperty(typ,name,'Counterweight design');setattr(shaft,name,value)
+    shaft.setEditorMode('CounterweightRadius',1)
+    doc.Label='Inline four / mass-designed eight-counterweight crankshaft'
+    doc.recompute()
+    doc.saveAs(str(ROOT/'short_block.FCStd'))
+    # Export actually placed bodies without their hidden feature history.
+    exports=[]
+    for o in [o for o in doc.Objects if o.TypeId=='PartDesign::Body']:
+        f=doc.addObject('Part::Feature','Export_'+o.Name);f.Label=o.Label
+        f.Shape=block.world_shape(o);exports.append(f)
+    Import.export(exports,str(ROOT/'short_block.step'))
+    for f in exports:doc.removeObject(f.Name)
+    shaft.setExpression('Placement.Rotation.Angle',None);shaft.Placement=App.Placement()
+    native=App.newDocument('MassDesignedCrankshaft')
+    copied=native.copyObject(shaft,True);native.recompute()
+    assert copied.Shape.isValid() and len(copied.Shape.Solids)==1
+    native.Label='42CrMo4 / eight calculated counterweights'
+    native.saveAs(str(ROOT/'crankshaft.FCStd'))
+    Import.export([copied],str(ROOT/'crankshaft.step'))
+    view=Gui.activeDocument().activeView();block.orient(view,(.8,-1.5,1.2))
+    view.saveImage(str(ROOT/'crankshaft.png'),1800,1100,'White')
+    App.setActiveDocument(doc.Name)
+    shaft.Placement.Rotation.Axis=App.Vector(1,0,0)
+    shaft.setExpression('Placement.Rotation.Angle','Mechanism.CrankAngle')
+    doc.Mechanism.CrankAngle=35;doc.recompute()
+    block.copy_views(doc,ROOT)
+
+    # Separate inspection display: gold regions are precisely the negative
+    # half-disc of each web, not additional parts in the operating assembly.
+    display=App.newDocument('CounterweightInspection')
+    shape=design.local(shaft)
+    weights=[]
+    for i,(cx,sign) in enumerate(zip((-144,-48,48,144),(1,-1,-1,1)),1):
+        for side,x in enumerate((cx-34,cx+14)):
+            tool=Part.makeBox(20,180,90,App.Vector(x,-90,-90 if sign==1 else 0))
+            weights.append(shape.common(tool))
+    cw=Part.makeCompound(weights)
+    core=display.addObject('Part::Feature','Core');core.Shape=shape.cut(cw)
+    core.ViewObject.ShapeColor=(.43,.49,.55)
+    w=display.addObject('Part::Feature','CounterweightRegions');w.Shape=cw
+    w.ViewObject.ShapeColor=(.87,.60,.18)
+    for o in (core,w):o.ViewObject.DisplayMode='Flat Lines'
+    display.recompute();block.orient(Gui.activeDocument().activeView(),(.8,-1.5,1.2))
+    Gui.activeDocument().activeView().saveImage(str(ROOT/'counterweights_highlight.png'),1800,1100,'White')
+    display.saveAs(str(ROOT/'inspection_view.FCStd'))
+    report={'changed_sketches':changed,'valid_single_shaft':True,'radius_mm':cfg['radius_mm'],
+            'shaft_mass_kg':shape.Volume*design.RHO}
+    (ROOT/'build_report.json').write_text(json.dumps(report,indent=2))
+    for n in list(App.listDocuments()):App.closeDocument(n)
+    QtCore.QTimer.singleShot(0,QtCore.QCoreApplication.quit)
+except Exception:
+    (ROOT/'build_error.txt').write_text(traceback.format_exc());traceback.print_exc()

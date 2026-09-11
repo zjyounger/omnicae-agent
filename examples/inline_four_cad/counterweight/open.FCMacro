@@ -1,0 +1,20 @@
+import json,os,sys
+from pathlib import Path
+import FreeCAD as App
+import FreeCADGui as Gui
+from PySide import QtCore,QtWidgets
+ROOT=Path('/home/linuxjun/OpenSourceCAEtools/examples/inline_four_cad/counterweight')
+sys.path.insert(0,str(ROOT.parent))
+import block
+App.ParamGet('User parameter:BaseApp/Preferences/View').SetBool('UseNavigationAnimations',False)
+for name in ('crankshaft.FCStd','short_block_cutaway.FCStd','inspection_view.FCStd'):
+    App.openDocument(str(ROOT/name))
+Gui.activateWorkbench('PartWorkbench')
+window=Gui.getMainWindow();window.resize(1500,1000)
+block.orient(Gui.activeDocument().activeView(),(.8,-1.5,1.2))
+def ready():
+    for tabs in window.findChildren(QtWidgets.QTabBar):
+        for i in range(tabs.count()):
+            if 'inspection_view' in tabs.tabText(i):tabs.setCurrentIndex(i)
+    (ROOT/'window.json').write_text(json.dumps({'pid':os.getpid(),'window_id':int(window.winId())}))
+QtCore.QTimer.singleShot(2500,ready)

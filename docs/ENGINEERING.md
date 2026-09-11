@@ -30,6 +30,52 @@ cannot be checked afterwards.
 Check dimensions and volume against what they should be. Check it is one solid
 where you expect one solid.
 
+### Region identity and handoff
+
+**Preserve the physical meaning of a region through CAD, mesh and solver
+representations.** The orchestrator must carry that meaning across tool
+boundaries and require evidence that the receiving tool selected the intended
+entities. A readable name alone does not establish this correspondence.
+
+This applies to solid and fluid domains, faces, edges, points, material regions,
+contacts, interfaces and result-extraction regions, as appropriate to the
+analysis. Use these rules when preparing these regions or handing them off:
+
+- Give each referenced region an unambiguous name within its component and
+  model version. Prefer physical geometry names such as `shaft_main_01_journal`
+  over a transient index such as `Face17`. Keep geometric identity separate
+  from case-specific physics: a named surface does not imply a fixed support,
+  pressure value or thermal condition.
+- Record the actual entity references, source version, units and coordinate
+  frame. Retain enough geometric evidence to check the selection: entity count,
+  area or volume, position, extent, and orientation where relevant. These
+  measurements help discriminate regions; they are not guaranteed unique IDs.
+- Where all entities need an inventory, assign unique geometric fallback names
+  to those whose physical role is unknown. Distinguish these from reviewed
+  physical groups. Do not invent a boundary condition to make the names look
+  complete.
+- After geometry edits, defeaturing, export/import or remeshing, revalidate the
+  mapping. A region can split, merge or disappear. Do not silently reuse face
+  numbers or choose the nearest candidate when correspondence is ambiguous.
+  Resolve the ambiguity before assigning dependent conditions.
+- Inspect the receiving representation: named CAD references, mesh groups, then
+  the actual solver sets or patches. Check nonempty membership, location and
+  extent; check coverage and overlap against the intended partition. Check
+  interface sides and normals where direction matters. Names need not remain
+  identical if an explicit, verified mapping is retained.
+- Archive native geometry, required exchange files, region definitions,
+  generation steps, verification evidence and known limitations together.
+  Identify the baseline and experimental variants, and record file hashes.
+  A hash establishes file identity, not engineering validity or preservation of
+  names in another tool.
+
+Evidence so far: the [inline-four CAD reference](../examples/inline_four_cad/reference_v1/README.md)
+records 1,183 unique face names and 68 physical selection groups on 83 Bodies.
+Save/reopen checks verified references and unchanged solids. CAD-to-mesh and
+solver-set transfer have **not** been demonstrated by that example; they remain
+required checks at the corresponding future handoffs. CFD fluid-domain
+extraction and complete boundary partitioning are also separate work.
+
 ### Mesh
 
 Look at it. Check refinement where the answer is going to come from, not

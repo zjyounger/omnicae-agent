@@ -76,3 +76,47 @@ written as `*CONTACT PAIR` / `*SURFACE INTERACTION` / `*SURFACE BEHAVIOR` /
 **Not supported: bolt pre-tension.** There is no `PRE-TENSION` anywhere in the
 Fem module, so pre-loaded bolted joints cannot be expressed through the
 pre-processor alone.
+
+## Native CAD observations from the inline-four study
+
+- Check the running application's native IPC before attempting GUI input.
+  During the inline-four shutdown, `/tmp/FreeCAD` accepted a UTF-8 line
+  `OpenFile:/absolute/path/script.FCMacro\n`; the owning GUI instance executed
+  the macro, saved its live documents with `saveAs`, and exited normally.
+  Only the first of three instances owned this endpoint; it was not a broadcast
+  interface. Inspect the socket owner and require an in-process save receipt.
+  Evidence: `examples/inline_four_cad/session_close_20260911/freecad_1341644.json`.
+- An additive feature can refill an earlier hole. In
+  `examples/inline_four_cad/`, adding the rod-cap bolt seats after the annular
+  bearing bore introduced about 213 mm³ of bearing interference per cap. A
+  final bore pocket removed it. Check final solid intersections, including
+  components that appear to fit in an external view.
+- `Shape.BoundBox` can include display triangulation approximations. For a
+  geometric native/STEP comparison, use
+  `Shape.optimalBoundingBox(False, False)` and inspect both Boolean differences;
+  do not equate a small default-box or volume-summary discrepancy with a
+  demonstrated geometry change.
+- A Qt main-window `grab()` captured the OpenGL viewport incorrectly in this
+  session even though `activeView().saveImage()` rendered correctly. Use native
+  `saveImage()` for CAD views and an exact-window X11 capture for GUI evidence;
+  visually inspect either result before reporting it.
+- The inline-four document's `App::PropertyAngle` clamps requested values above
+  360 degrees to 360. This froze the second turn of the initial ignition export.
+  Keep the 720-degree four-stroke cycle separate and write its angle modulo 360
+  to the mechanical property. `ignition/freecad_angle_probe.json` records actual
+  stored values for requests 359, 360, 361, 540 and 720; cross-application motion
+  comparison caught the resulting 86 mm discrepancy before delivery.
+- Resetting `Placement` to identity also loses a previously configured rotation
+  axis. In the counterweight export, restoring only an angle expression made
+  the display shaft turn around the default axis. Restore the X axis explicitly
+  before restoring the angle expression; `counterweight/check_cutaway.py`
+  compares actual placed shaft solids against the uncut assembly at six angles.
+
+- Cross-assembly surface registries need `App::PropertyLinkSubGlobal` when
+  referencing Bodies inside other `App::Part` containers. Ordinary
+  `App::PropertyLinkSub` emitted out-of-scope warnings in the inline-four archive.
+  The global property removed those warnings;
+  `examples/inline_four_cad/reference_v1/verification.json` records successful
+  save/reopen of 68 selections and unchanged geometry for all 83 Bodies.
+  These references and archived face names are version-specific; CAD edits or
+  STEP reimport still require geometric revalidation.

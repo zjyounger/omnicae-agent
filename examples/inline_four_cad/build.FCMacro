@@ -1,0 +1,13 @@
+import os
+import sys
+
+ROOT = os.environ.get('INLINE_FOUR_ROOT', '/home/linuxjun/OpenSourceCAEtools/examples/inline_four_cad')
+sys.path.insert(0, ROOT)
+import model
+model.build(ROOT)
+if os.environ.get('INLINE_FOUR_CLOSE') == '1':
+    import FreeCAD as App
+    from PySide import QtCore
+    for name in list(App.listDocuments()):
+        App.closeDocument(name)
+    QtCore.QTimer.singleShot(0, QtCore.QCoreApplication.quit)

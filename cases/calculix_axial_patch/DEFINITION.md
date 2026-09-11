@@ -1,5 +1,10 @@
 # CalculiX axial patch benchmark
 
+Generated CAD, meshes, results and evidence files referenced here are local,
+Git-ignored artifacts. They are not included in a fresh clone; regenerate them
+where a procedure is provided, or obtain the preserved local case archive.
+Source scripts, authored inputs and this document remain versioned.
+
 ## Question
 
 Can the installed CalculiX solver reproduce the constant-strain solution for a

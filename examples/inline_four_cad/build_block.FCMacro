@@ -1,0 +1,8 @@
+import os
+import sys
+from pathlib import Path
+
+root=Path(os.environ.get('INLINE_FOUR_ROOT','/home/linuxjun/OpenSourceCAEtools/examples/inline_four_cad'))
+sys.path.insert(0,str(root))
+import block
+block.build(root)

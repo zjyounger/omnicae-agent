@@ -1,5 +1,10 @@
 # M12 pre-loaded bolted joint · static
 
+Generated CAD, meshes, results and evidence files referenced here are local,
+Git-ignored artifacts. They are not included in a fresh clone; regenerate them
+where a procedure is provided, or obtain the preserved local case archive.
+Source scripts, authored inputs and this document remain versioned.
+
 The first FEA case. The point is not to produce a number but to exercise the
 chain "problem definition → assumption register → solve → recheck assumptions
 against the result".

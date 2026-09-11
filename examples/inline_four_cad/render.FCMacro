@@ -1,0 +1,82 @@
+"""Native FreeCAD views and motion frames from the saved CAD document."""
+import json
+import math
+import os
+from pathlib import Path
+import FreeCAD as App
+import FreeCADGui as Gui
+import Part
+from PySide import QtCore
+
+root=Path(os.environ.get('INLINE_FOUR_ROOT','/home/linuxjun/OpenSourceCAEtools/examples/inline_four_cad'))
+try:
+    doc=App.openDocument(str(root/'inline_four_rotating_assembly.FCStd'))
+    Gui.activateWorkbench('PartDesignWorkbench')
+    Gui.getMainWindow().resize(1500,1000)
+    settings=App.ParamGet('User parameter:BaseApp/Preferences/View')
+    settings.SetBool('UseNavigationAnimations',False)
+    settings.SetBool('Simple',True)
+    settings.SetUnsigned('BackgroundColor',4294967295)
+    doc.Mechanism.CrankAngle=35
+    doc.recompute()
+    view=Gui.activeDocument().activeView()
+    eye=App.Vector(0.65,-2,1.1);eye.normalize()
+    right=App.Vector(0,0,1).cross(eye);right.normalize()
+    up=eye.cross(right);up.normalize()
+    view.setCameraOrientation(App.Rotation(right,up,eye,'ZXY').Q)
+    view.fitAll()
+    Gui.updateGui()
+    view.saveImage(str(root/'assembly.png'),1800,1200,'White')
+    camera=view.getCamera()
+    frames=root/'motion_frames';frames.mkdir(exist_ok=True)
+    for frame,angle in enumerate(range(0,360,5)):
+        doc.Mechanism.CrankAngle=angle
+        doc.recompute()
+        Gui.updateGui()
+        view.saveImage(str(frames/f'frame_{frame:03d}.png'),1200,800,'White')
+    doc.Mechanism.CrankAngle=35
+    doc.recompute()
+    view.viewFront();view.fitAll();Gui.updateGui()
+    view.saveImage(str(root/'front_elevation.png'),1800,1100,'White')
+
+    # Produce a geometric section of cylinder 1 from its actual component solids.
+    doc.Mechanism.CrankAngle=0;doc.recompute()
+    section=App.newDocument('PistonRodSection')
+    cutting=Part.makeBox(800,100,600,App.Vector(-400,-100,-150))
+    for obj in doc.Objects:
+        if obj.TypeId!='PartDesign::Body':continue
+        parent=obj.getParentGeoFeatureGroup()
+        if not parent or parent.Name not in ('RodAssembly1','PistonAssembly1'):continue
+        shape=obj.Shape.copy();shape.Placement=obj.getGlobalPlacement()
+        if obj.Name.startswith(('Piston','WristPin','SmallEndBush')):
+            shape=shape.cut(cutting)
+        f=section.addObject('Part::Feature','Section_'+obj.Name)
+        f.Label=obj.Label
+        f.Shape=shape
+        f.ViewObject.ShapeColor=obj.ViewObject.ShapeColor
+        f.ViewObject.LineColor=(0.1,0.12,0.15)
+        f.ViewObject.DisplayMode='Flat Lines'
+    section.recompute()
+    sv=Gui.activeDocument().activeView()
+    eye=App.Vector(0.8,-2,0.6);eye.normalize()
+    right=App.Vector(0,0,1).cross(eye);right.normalize()
+    up=eye.cross(right)
+    sv.setCameraOrientation(App.Rotation(right,up,eye,'ZXY').Q)
+    sv.fitAll();Gui.updateGui()
+    sv.saveImage(str(root/'piston_section.png'),1300,1500,'White')
+    section.saveAs(str(root/'piston_rod_section.FCStd'))
+    App.closeDocument(section.Name)
+    App.setActiveDocument(doc.Name)
+    doc.Mechanism.CrankAngle=35;doc.recompute()
+    view=Gui.activeDocument().activeView();view.setCamera(camera)
+    Gui.Selection.clearSelection()
+    Gui.updateGui()
+    # Capture the GUI separately through the exact X11 window: QWidget.grab()
+    # does not reliably capture this application's OpenGL viewport.
+    (root/'render_complete.json').write_text(json.dumps({'frames':72,'angle_step_deg':5,'source':'FreeCAD native view'}))
+    App.closeDocument(doc.Name)
+    QtCore.QTimer.singleShot(0,QtCore.QCoreApplication.quit)
+except Exception:
+    import traceback
+    (root/'render_error.txt').write_text(traceback.format_exc())
+    traceback.print_exc()

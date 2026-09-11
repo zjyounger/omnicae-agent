@@ -1,0 +1,28 @@
+"""Open the delivered assembly for human inspection; leave it running."""
+import json
+import os
+from pathlib import Path
+import FreeCAD as App
+import FreeCADGui as Gui
+from PySide import QtCore, QtWidgets
+
+root=Path(os.environ.get('INLINE_FOUR_ROOT','/home/linuxjun/OpenSourceCAEtools/examples/inline_four_cad'))
+doc=App.openDocument(str(root/'inline_four_rotating_assembly.FCStd'))
+Gui.activateWorkbench('PartDesignWorkbench')
+App.ParamGet('User parameter:BaseApp/Preferences/View').SetBool('UseNavigationAnimations',False)
+window=Gui.getMainWindow();window.resize(1500,1000)
+view=Gui.activeDocument().activeView()
+eye=App.Vector(0.65,-2,1.1);eye.normalize()
+right=App.Vector(0,0,1).cross(eye);right.normalize()
+up=eye.cross(right)
+view.setCameraOrientation(App.Rotation(right,up,eye,'ZXY').Q)
+view.fitAll()
+Gui.Selection.clearSelection()
+def ready():
+    for tabs in window.findChildren(QtWidgets.QTabBar):
+        for index in range(tabs.count()):
+            if 'inline_four_rotating_assembly' in tabs.tabText(index):
+                tabs.setCurrentIndex(index)
+    view.redraw()
+    (root/'window.json').write_text(json.dumps({'pid':os.getpid(),'window_id':int(window.winId())}))
+QtCore.QTimer.singleShot(2000,ready)

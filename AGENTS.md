@@ -9,6 +9,7 @@ Read before acting, not after.
 | Anything | this file |
 | Starting engineering work in a fresh session | `docs/AGENT_FAILURE_MODES.md` — how this agent gets things wrong, and what catches it |
 | Setting up or judging an analysis | `docs/ENGINEERING.md` |
+| Preparing, naming, or handing off analysis geometry and regions | `docs/ENGINEERING.md` — region identity and handoff |
 | Geometry or FEM setup in FreeCAD | `docs/tools/freecad.md` |
 | Meshing | `docs/tools/gmsh.md` |
 | Changing meshing orchestration or its evaluation | `docs/development/AGENTIC_MESHING_ORCHESTRATOR.md`, then `docs/ENGINEERING.md` |
@@ -53,6 +54,14 @@ So: think more, observe more, do less.
 
 ## Before any engineering action
 
+Plan generated files before launching the work: choose and create an ignored
+output directory (default `artifacts/<case>/<run>/`), separate reproducible
+source inputs from outputs, and verify the ignore rule. CAD, meshes, solver
+results, renders, logs and archives remain local by default. Before proposing
+a push, inspect the actual candidate files and sizes; include only material
+whose review or reuse value justifies versioning it. See `docs/DEVELOPMENT.md`
+for output handling. Ignoring evidence does not mean deleting it.
+
 Stop and reconstruct the real problem. What is physically happening in this
 system? What does the user actually want to know? Why would the model you are
 about to build answer that?
@@ -84,6 +93,13 @@ handoff, not as an end in itself. A screenshot is evidence of visible state,
 not proof of hidden model properties or engineering correctness.
 
 ## Everyday work
+
+**Use APIs and scripting for application operations by default.** The user's
+target is 99.9% of operations through these interfaces. Before using mouse or
+keyboard automation, inspect the available APIs, scripting entry points and
+running-session connections, and establish why they cannot perform the specific
+operation. An unavailable Bridge alone is not sufficient evidence. This applies
+to saving and closing applications as well as modelling.
 
 4. If an action depends on state, go and query the state. Do not rely on memory.
 5. Remember what you changed. Anything changed to isolate a problem gets a

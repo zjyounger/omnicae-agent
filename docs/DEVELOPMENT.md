@@ -91,6 +91,32 @@ console functions.
 
 ## Verification tooling
 
+### Generated CAE files
+
+Choose the output location before running CAD, meshing, solving or rendering.
+Create `artifacts/<case>/<run>/` for new workflows and check it with
+`git check-ignore`; pass that location explicitly through the application's
+output option or working directory. Keep source scripts and authored input
+decks outside it. Existing mixed case directories have ignore rules in place;
+do not move their files without updating and checking dependent paths.
+
+Native models, exported geometry, meshes, solver results, generated region
+catalogues, reports, screenshots, animation frames, videos, logs and archives
+stay local by default, regardless of whether their format is binary or text.
+Retain the evidence and reproducible instructions locally. A tracked document
+linking to local evidence must say that those files require regeneration or
+access to the local archive; a fresh clone will not contain them.
+
+Before proposing a push, inspect the candidate paths, diff and sizes. Reusable
+source, problem definitions and general engineering lessons normally justify
+versioning; large reproducible outputs do not. Small, deliberate benchmark
+fixtures may justify an explicit exception after review. Do not bypass ignore
+rules with `git add -f` merely to make an example look complete.
+
+An ignore rule does not affect files already tracked. When removing generated
+files from version control, use `git rm --cached` on the reviewed file list,
+verify that local copies remain, and do not rewrite history as part of cleanup.
+
 **Verification tools need verifying too.** Both deck inspectors written here had
 parsing bugs, and one of them nearly produced a false report that a load set was
 empty. **A wrong verification tool is worse than none**, because it manufactures
