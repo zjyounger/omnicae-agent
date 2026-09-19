@@ -1,14 +1,58 @@
 # OmniCAE Agent
 
-A fully open-source, self-hostable agent for computer-aided engineering. An
-engineer states the real problem; the system finds relevant evidence, chooses
-and operates suitable software, checks what actually happened, recovers from
-failures, and reports the conclusion together with its assumptions, confidence,
-and limits.
+OmniCAE aims to make reliable computer-aided engineering (CAE) accessible to
+more people, through an open-source, self-hostable agent and a community that
+shares engineering experience.
 
-The project is not another chat interface over manuals. Its durable assets are
-application integrations, engineering tools, procedures, failure diagnoses,
-validation rules, benchmarks, and records of people correcting the agent.
+## Who this is for
+
+- **Engineers who need an assistant.** Delegate software operation, modelling,
+  calculation, checking, and documentation while retaining engineering judgment.
+  An engineer should not need to master every software package to benefit from
+  analysis.
+- **Experienced engineers who want to contribute.** Share how to choose a
+  method, recognise a misleading result, investigate a failure, and establish
+  where a conclusion applies. Their experience helps people with less expertise
+  work effectively.
+- **Small companies and individuals without CAE resources.** The long-term aim
+  is a digital engineering consultant that helps turn a practical problem into
+  an appropriate analysis and an understandable recommendation, including when
+  further information or specialist involvement is needed.
+
+A structural engineer with a foundation in fluid dynamics, for example, may
+need help choosing and using CFD methods rather than learning an entire software
+stack first. Someone without that engineering background needs more help
+defining the problem and interpreting the answer. The assistance and the scope
+of conclusions must reflect those differences.
+
+These are project goals, not a claim that a general digital consultancy is
+already available. Current capabilities are listed below.
+
+## Engineering experience as an open contribution
+
+Sharing, examining, and improving engineering experience is part of the
+project's open-source purpose. We want engineers' experience and corrections
+from real work to help users with less expertise. Building a reliable way for
+that experience to inform the agent is central to making CAE accessible.
+
+You do not need to write code to contribute. An explained modelling decision,
+a failed approach with evidence, a correction to the agent, or an independent
+review of a result can all be valuable. Useful experience includes its context,
+reasoning, checks, and limits, so that advice from one case is not silently
+treated as a universal rule.
+
+The mechanisms for collecting, assessing, and using contributed experience
+remain to be designed. Duplicate, conflicting, outdated, or poorly supported
+advice must not accumulate unchecked and make the system worse. These are
+[design questions still to resolve](docs/PROJECT.md#experience-quality-direction-and-open-questions),
+not an established submission or review process.
+
+Success means engineers save useful time, contributed experience improves later
+work, and people with limited CAE resources can make better-supported decisions.
+
+The technical system serves that purpose: it finds relevant evidence, chooses
+and operates suitable software, inspects what happened, recovers from failures,
+and reports conclusions together with their assumptions, confidence, and limits.
 
 ## Direction
 
@@ -125,9 +169,15 @@ artifacts that a person can inspect.
 
 ## Contributions and licensing
 
-The intended contribution unit is small: one integration capability, reader,
-inspector, procedure, experience record, or benchmark should be useful without
-requiring a contributor to understand the whole system.
+Engineering contributions are as important as software contributions. We need
+domain experts to explain and review methods, users to describe real problems
+and report where the assistant misled them, and developers to make the tools
+reliable. One documented lesson, review, benchmark, or software improvement
+should be useful without requiring a contributor to understand the whole system.
+
+The [contribution direction](docs/PROJECT.md#contribution-units) describes the
+kinds of contributions we hope to enable. Experience submission and review
+procedures have not yet been agreed.
 
 Code and corpus licensing, and the choice between a DCO and CLA, are still open
 decisions. They must be settled before accepting outside contributions.

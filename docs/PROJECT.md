@@ -2,10 +2,22 @@
 
 ## Objective
 
-Build a fully open-source, self-hostable CAE agent that can understand an
-engineering problem, choose and operate suitable analysis software, inspect
-what actually happened, recover from failures, and report a conclusion with
-its assumptions, evidence, confidence, and limits.
+Make reliable engineering analysis accessible to people who lack the software
+skills, specialist experience, or resources to carry it out themselves.
+OmniCAE aims to be an assistant for engineers, a place where experienced
+engineers contribute reusable knowledge, and a digital engineering consultant
+for small companies and individuals without their own CAE capability.
+
+The intention is for these roles to support one another: engineers use and
+correct the assistant in real work, and contributors help make that experience
+reusable for users who could not perform the same analysis independently.
+Collecting, questioning, and improving engineering experience is itself part
+of the project's open-source purpose.
+
+The technical objective is a fully open-source, self-hostable CAE agent that
+can understand an engineering problem, choose and operate suitable analysis
+software, inspect what actually happened, recover from failures, and report a
+conclusion with its assumptions, evidence, confidence, and limits.
 
 The long-term aim is an open alternative to a closed CAE ecosystem: models are
 replaceable, applications are replaceable, and contributors can add support
@@ -14,6 +26,32 @@ for another solver or engineering field without changing the whole system.
 The agent is not finished when software produces a result. It is finished when
 the result is understood well enough for the decision at hand and the limits of
 that understanding are visible.
+
+## People and the assistance they need
+
+Software familiarity, engineering foundations, and domain experience are
+different things. The project should help with each without assuming that
+removing one barrier removes the others:
+
+- An engineer who knows the domain but not the software needs reliable
+  execution and a clear way to inspect and direct the work.
+- An engineer entering another domain needs help choosing methods, recognising
+  missing physics, and checking interpretations. A structural engineer who has
+  studied fluid dynamics may be able to undertake suitable CFD projects with
+  this assistance, while still needing specialist input for unfamiliar regimes.
+- A small company or individual with little CAE background may understand the
+  equipment and operating problem well. They need help translating that
+  knowledge into an analysis question, supplying relevant information, and
+  understanding what the result means for their decision.
+
+The digital consultant is a long-term goal. Build confidence in specific tasks
+through reviewed methods and cases, and expand their scope as evidence supports
+it. Do not imply that operating a solver establishes expertise across a field.
+
+Progress should be judged by useful time saved for engineers, whether a
+contributed lesson improves subsequent work, and whether users with fewer CAE
+resources can make better-supported decisions. Tool coverage and generated
+artifacts support these outcomes; they do not establish them on their own.
 
 ## The problem being solved
 
@@ -29,10 +67,12 @@ The project therefore has two equally important responsibilities:
 2. Prevent software operation from being mistaken for engineering
    understanding.
 
-People remain at the two ends: they define or approve the real question, and
-they decide whether the conclusion can be used. Autonomy is earned one
-procedure at a time from validation and override records; it is not declared
-for the agent as a whole.
+People remain involved in defining the real question and deciding how the
+conclusion will be used. The agent must help users understand those choices;
+user approval alone does not establish technical validity. Experienced
+contributors also help review methods, cases, and corrections. Autonomy is
+earned one procedure at a time from validation and override records; it is not
+declared for the agent as a whole.
 
 ## What compounds
 
@@ -55,8 +95,8 @@ evidence.
 ## System shape
 
 ```text
-engineer
-   │ defines the question and accepts or rejects the conclusion
+user (engineer, small company, or individual)
+   │ defines the question with assistance and decides how to use the conclusion
    ▼
 CAE agent core
    ├── problem definition and assumption register
@@ -133,29 +173,15 @@ post-processor without duplicating an application across directories.
 
 ## Engineering experience
 
-Experience is not stored as an unqualified tip. A reusable experience record
-must say what happened, how it was distinguished from alternatives, and where
-it stops applying. Its conceptual fields are:
+Engineering experience should retain the context, reasoning, evidence, and
+limits that make it useful. Observations, hypotheses, and supported conclusions
+need to remain distinguishable; unsuccessful attempts can also teach something
+valuable. The aim is to help another user or agent understand when a lesson
+applies and when to question it.
 
-```yaml
-context: software, version, analysis type, elements, model conditions
-trigger: error, warning, unexpected result, or human correction
-observation: concrete logs, files, images, and numbers
-hypothesis: proposed explanation
-test: observation that could refute the explanation
-action: change that was made
-outcome: what was observed after the change
-applicability: conditions required for reuse
-invalidation: conditions that make the record inapplicable
-artifacts: source files, scripts, results, figures, and benchmark links
-```
-
-Observed facts, derived claims, hypotheses, and superseded explanations remain
-distinguishable. A failed hypothesis is useful evidence and must not be erased
-when a later explanation succeeds.
-
-The exact record schema is a separate design task. It is more central than the
-choice between R2R, RAGFlow, or another retrieval system.
+The representation of that experience and the mechanisms for judging its
+quality remain to be designed. The [open design questions](#experience-quality-direction-and-open-questions)
+are more central to this goal than the choice of retrieval backend.
 
 ## Trust model
 
@@ -212,19 +238,49 @@ is a deployment decision, not a taxonomy mechanism.
 
 ## Contribution units
 
-A contributor should not need to understand the entire agent. Independently
-valuable contributions include:
+A contributor should not need to write code or understand the entire agent.
+We need engineers to contribute and challenge engineering judgment, users to
+explain real needs and report misleading assistance, and developers to improve
+execution and observation. Independently valuable contributions include:
 
+- one explanation of a modelling decision and the conditions that justify it;
+- one correction to an agent's reasoning, with the evidence that changed it;
+- one review or independent reproduction of someone else's analysis;
+- one practical problem that exposes missing information or capability;
+- one failure record, including unsuccessful attempts and unresolved questions;
+- one engineering procedure with applicability and invalidation conditions;
+- one public benchmark with a reference result and its uncertainty or limits;
 - one application method or capability;
 - one input or result reader;
 - one verified inspector or reusable script;
-- one engineering procedure with applicability and invalidation conditions;
-- one failure record with concrete evidence;
-- one public benchmark;
 - one retrieval or storage adapter.
 
 Every contribution must identify its evidence and how its behaviour was
-checked. For engineering claims, “the program ran” is not a verification.
+checked, or explicitly state what remains untested. An unresolved observation
+can be useful without being accepted as a verified method. For engineering
+claims, “the program ran” is not a verification.
+
+### Experience quality: direction and open questions
+
+The direction is to make engineering experience an open, reusable contribution
+that improves the assistance available to less experienced users. Contributing
+engineering judgment should not require software development skills.
+
+How to collect, assess, maintain, and authorise the agent's use of experience
+is still an open design problem. More records do not necessarily mean better
+guidance: duplicates, contradictions, outdated advice, and unsupported claims
+can degrade the system. Receiving an account of experience must not by itself
+make that account an accepted instruction for the agent.
+
+Further design needs to address how to distinguish duplicate advice from
+independent corroboration, recognise differences in applicability, assess
+evidence and conflicting judgments, and determine whether new guidance improves
+subsequent work without causing regressions. Review responsibilities and the
+handling of corrections or withdrawal also remain unresolved.
+
+These questions need iterative design and evaluation against concrete cases.
+This document establishes the purpose and quality concerns, not a submission
+format, review workflow, acceptance policy, or automatic learning mechanism.
 
 ## Replaceable infrastructure
 
