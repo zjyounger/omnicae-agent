@@ -1,0 +1,204 @@
+[
+  {
+    "id": "bolt-pretension-beam",
+    "scope": ["ccx"],
+    "query": "Can a single beam element represent a preloaded bolt, and what contact-surface restriction applies to the pre-tension section?",
+    "information_needs": [
+      {
+        "id": "pretension-beam-capability-and-restriction",
+        "query": "CalculiX pre-tension section single beam element bolt contact surface restriction",
+        "acceptable_sources": [{"manual": "ccx", "source_file": "node334.html"}]
+      }
+    ],
+    "origin": "docs/GAPS.md G5/G6",
+    "intent": "Recover the documented modelling capability and its silent-failure restriction.",
+    "acceptable_source_groups": [[{"manual": "ccx", "source_file": "node334.html"}]]
+  },
+  {
+    "id": "cgx-coordinate-surface-export",
+    "scope": ["cgx"],
+    "query": "In CGX, select every node on a coordinate plane, expand that set to complete element faces, and export an Abaqus surface.",
+    "information_needs": [
+      {
+        "id": "select-nodes-by-coordinate",
+        "query": "CGX command enquire select nodes by rectangular coordinates and tolerance",
+        "acceptable_sources": [{"manual": "cgx", "source_file": "node95.html"}]
+      },
+      {
+        "id": "complete-set-to-faces",
+        "query": "CGX command complete a set downwards from nodes to element faces",
+        "acceptable_sources": [{"manual": "cgx", "source_file": "node79.html"}]
+      },
+      {
+        "id": "export-abaqus-surface",
+        "query": "CGX command send export a set as an Abaqus surface",
+        "acceptable_sources": [{"manual": "cgx", "source_file": "node182.html"}]
+      }
+    ],
+    "origin": "docs/tools/cgx.md Building a deck properly",
+    "intent": "Find the command sequence used to construct a named load surface.",
+    "acceptable_source_groups": [
+      [{"manual": "cgx", "source_file": "node95.html"}],
+      [{"manual": "cgx", "source_file": "node79.html"}],
+      [{"manual": "cgx", "source_file": "node182.html"}]
+    ]
+  },
+  {
+    "id": "cgx-traction-compatibility",
+    "scope": ["ccx"],
+    "query": "Which CalculiX distributed-load form supports a tangential traction vector written by CGX, and is TRVEC a valid CCX load label?",
+    "information_needs": [
+      {
+        "id": "distributed-traction-label",
+        "query": "CalculiX DLOAD tangential traction vector load label TRVEC",
+        "acceptable_sources": [
+          {"manual": "ccx", "source_file": "node271.html"},
+          {"manual": "ccx", "source_file": "node415.html"}
+        ]
+      }
+    ],
+    "origin": "docs/GAPS.md G11",
+    "intent": "Check an apparent preprocessor/solver compatibility gap against the solver reference.",
+    "acceptable_source_groups": [[
+      {"manual": "ccx", "source_file": "node271.html"},
+      {"manual": "ccx", "source_file": "node415.html"}
+    ]]
+  },
+  {
+    "id": "total-reaction-print",
+    "scope": ["ccx"],
+    "query": "How do I print only the total reaction force for a named node set into the CalculiX dat file?",
+    "information_needs": [
+      {
+        "id": "total-reaction-output",
+        "query": "CalculiX print total reaction force named node set dat file TOTALS ONLY",
+        "acceptable_sources": [{"manual": "ccx", "source_file": "node326.html"}]
+      }
+    ],
+    "origin": "cases/bracket_static/cgx_proper/press.inp",
+    "intent": "Find the output keyword and data-line syntax used by the existing verification deck.",
+    "acceptable_source_groups": [[{"manual": "ccx", "source_file": "node326.html"}]]
+  },
+  {
+    "id": "cgx-displacement-animation",
+    "scope": ["cgx"],
+    "query": "How do I configure the number of frames and duration, then start a displacement animation in CGX?",
+    "information_needs": [
+      {
+        "id": "animation-controls",
+        "query": "CGX anim command number of frames duration start displacement animation",
+        "acceptable_sources": [{"manual": "cgx", "source_file": "node67.html"}]
+      }
+    ],
+    "origin": "docs/tools/cgx.md post-processing use",
+    "intent": "Find the CGX command and its control arguments.",
+    "acceptable_source_groups": [[{"manual": "cgx", "source_file": "node67.html"}]]
+  },
+  {
+    "id": "normal-face-pressure",
+    "scope": ["ccx"],
+    "query": "How is a pressure normal to selected element faces represented in a CalculiX input deck?",
+    "information_needs": [
+      {
+        "id": "normal-face-pressure-syntax",
+        "query": "CalculiX DLOAD pressure normal to element face label sign convention",
+        "acceptable_sources": [{"manual": "ccx", "source_file": "node271.html"}]
+      }
+    ],
+    "origin": "docs/GAPS.md G2/G11",
+    "intent": "Find the supported solver keyword, face label, and sign convention.",
+    "acceptable_source_groups": [[{"manual": "ccx", "source_file": "node271.html"}]]
+  },
+  {
+    "id": "frd-field-output",
+    "scope": ["ccx"],
+    "query": "Which CalculiX keywords request nodal displacement and element stress fields in the frd result file?",
+    "information_needs": [
+      {
+        "id": "nodal-displacement-frd",
+        "query": "CalculiX keyword request nodal displacement field in frd file",
+        "acceptable_sources": [{"manual": "ccx", "source_file": "node324.html"}]
+      },
+      {
+        "id": "element-stress-frd",
+        "query": "CalculiX keyword request element stress field in frd file",
+        "acceptable_sources": [{"manual": "ccx", "source_file": "node279.html"}]
+      }
+    ],
+    "origin": "docs/tools/cgx.md post-processing role",
+    "intent": "Find the field-output cards needed for an independently viewable result.",
+    "acceptable_source_groups": [
+      [{"manual": "ccx", "source_file": "node324.html"}],
+      [{"manual": "ccx", "source_file": "node279.html"}]
+    ]
+  },
+  {
+    "id": "cgx-mises-display",
+    "scope": ["cgx"],
+    "query": "How does CGX calculate and display von Mises equivalent stress from a loaded result dataset?",
+    "information_needs": [
+      {
+        "id": "calculate-mises",
+        "query": "CGX predefined calculation von Mises equivalent stress from stress components",
+        "acceptable_sources": [{"manual": "cgx", "source_file": "node228.html"}]
+      },
+      {
+        "id": "display-result-entity",
+        "query": "CGX command select and display a dataset result entity component ds",
+        "acceptable_sources": [{"manual": "cgx", "source_file": "node88.html"}]
+      }
+    ],
+    "origin": "docs/tools/cgx.md post-processing role",
+    "intent": "Find the command/calculation references required to show the derived stress field.",
+    "acceptable_source_groups": [
+      [{"manual": "cgx", "source_file": "node228.html"}],
+      [{"manual": "cgx", "source_file": "node88.html"}]
+    ]
+  },
+  {
+    "id": "nonuniform-load-subroutine",
+    "scope": ["ccx"],
+    "query": "Which user subroutine supplies a spatially varying pressure load, and what arguments does CalculiX pass to it?",
+    "information_needs": [
+      {
+        "id": "nonuniform-pressure-keyword",
+        "query": "CalculiX DLOAD nonuniform pressure user load label",
+        "acceptable_sources": [{"manual": "ccx", "source_file": "node271.html"}]
+      },
+      {
+        "id": "dload-subroutine-interface",
+        "query": "CalculiX dload.f user subroutine arguments spatially varying distributed load",
+        "acceptable_sources": [{"manual": "ccx", "source_file": "node381.html"}]
+      }
+    ],
+    "origin": "docs/GAPS.md G2 and solver-extension requirement",
+    "intent": "Locate both the load keyword and callable Fortran interface.",
+    "acceptable_source_groups": [
+      [{"manual": "ccx", "source_file": "node271.html"}],
+      [{"manual": "ccx", "source_file": "node381.html"}]
+    ]
+  },
+  {
+    "id": "force-driven-submodel",
+    "scope": ["ccx"],
+    "query": "How can boundary forces from a previous submodel run drive a new submodel, and what mesh restriction applies?",
+    "information_needs": [
+      {
+        "id": "force-boundary-interpolation",
+        "query": "CalculiX CLOAD interpolate boundary forces from previous submodel results mesh restriction",
+        "acceptable_sources": [{"manual": "ccx", "source_file": "node242.html"}]
+      },
+      {
+        "id": "submodel-source-definition",
+        "query": "CalculiX SUBMODEL keyword previous result file global local model nodes",
+        "acceptable_sources": [{"manual": "ccx", "source_file": "node353.html"}]
+      }
+    ],
+    "origin": "project need for reusable solver workflows",
+    "intent": "Recover the cross-referenced keyword procedure and its validity condition.",
+    "acceptable_source_groups": [
+      [{"manual": "ccx", "source_file": "node242.html"}],
+      [{"manual": "ccx", "source_file": "node353.html"}]
+    ]
+  }
+]

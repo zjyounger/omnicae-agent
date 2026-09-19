@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/zjyounger/omnicae-agent/evidence/schemas/source-manifest.schema.json",
+  "title": "OmniCAE Agent source manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "path_or_url",
+    "source_version",
+    "license",
+    "redistribution",
+    "content_hash",
+    "authority"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._:/-]*$"
+    },
+    "path_or_url": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "license": {
+      "type": "string",
+      "minLength": 1
+    },
+    "redistribution": {
+      "enum": ["allowed", "fetch_only"]
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "authority": {
+      "enum": ["official", "project", "community", "third-party"]
+    },
+    "metadata": {
+      "type": "object"
+    }
+  }
+}

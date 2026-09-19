@@ -4,9 +4,9 @@ from dataclasses import dataclass
 from typing import Any, Dict
 
 
-BRIDGE_VERSION = "0.5.0"
-BRIDGE_PROTOCOL_VERSION = "1.4"
-CONTRACT_VERSION = "1.4"
+BRIDGE_VERSION = "0.6.0"
+BRIDGE_PROTOCOL_VERSION = "1.5"
+CONTRACT_VERSION = "1.5"
 
 
 @dataclass(frozen=True)

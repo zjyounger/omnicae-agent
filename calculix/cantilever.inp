@@ -1,6 +1,6 @@
-** Minimal CalculiX verification model: one C3D8 element cantilever
+** Minimal CalculiX verification model: one C3D8 axial patch test
 *HEADING
-CalculiX installation verification - unit cube in tension
+CalculiX installation verification - unit cube in uniaxial tension
 *NODE
 1, 0., 0., 0.
 2, 1., 0., 0.
@@ -16,12 +16,20 @@ CalculiX installation verification - unit cube in tension
 1, 4, 5, 8
 *NSET, NSET=LOADED
 2, 3, 6, 7
+*NSET, NSET=ANCHOR
+1
+*NSET, NSET=ROLL
+4
 *MATERIAL, NAME=STEEL
 *ELASTIC
 210000., 0.3
 *SOLID SECTION, ELSET=SOLID, MATERIAL=STEEL
 *BOUNDARY
-FIXED, 1, 3, 0.
+** Restrain axial motion on x=0 while allowing Poisson contraction.
+FIXED, 1, 1, 0.
+** Remove the remaining rigid translations and rotation about x.
+ANCHOR, 2, 3, 0.
+ROLL, 3, 3, 0.
 *STEP
 *STATIC
 *CLOAD
@@ -32,4 +40,6 @@ U, RF
 S, E
 *NODE PRINT, NSET=LOADED
 U
+*NODE PRINT, NSET=FIXED, TOTALS=ONLY, GLOBAL=YES
+RF
 *END STEP

@@ -4,9 +4,11 @@ import json
 import os
 
 import FreeCAD as App
+import FreeCADGui as Gui
 from PySide import QtCore, QtNetwork
 
 from .api import FreeCADAPI
+from .console_capture import ConsoleCapture, report_view_text
 from .errors import (
     BridgeError,
     INTERNAL_ERROR,
@@ -182,6 +184,7 @@ class BridgeServer(QtCore.QObject):
 
     def _dispatch_message(self, connection, raw):
         request_id = None
+        console = ConsoleCapture(lambda: report_view_text(Gui))
         try:
             try:
                 request = json.loads(raw.decode("utf-8"))
@@ -200,9 +203,22 @@ class BridgeServer(QtCore.QObject):
                 raise BridgeError(INVALID_PARAMS, "params must be an object")
             result = self.api.dispatch(method, params)
             if "id" in request:
-                self._write(connection, {"jsonrpc": "2.0", "id": request_id, "result": result})
+                self._write(
+                    connection,
+                    {
+                        "jsonrpc": "2.0",
+                        "id": request_id,
+                        "result": self._with_host_messages(result, console.finish()),
+                    },
+                )
         except BridgeError as exc:
-            self._write_error(connection, request_id, exc.code, exc.message, exc.data)
+            self._write_error(
+                connection,
+                request_id,
+                exc.code,
+                exc.message,
+                self._with_error_messages(exc.data, console.finish()),
+            )
         except Exception as exc:
             App.Console.PrintError("Bridge internal error: {}\n".format(exc))
             self._write_error(
@@ -210,8 +226,29 @@ class BridgeServer(QtCore.QObject):
                 request_id,
                 INTERNAL_ERROR,
                 "Internal error",
-                {"type": type(exc).__name__},
+                self._with_error_messages(
+                    {"type": type(exc).__name__}, console.finish()
+                ),
             )
+
+    @staticmethod
+    def _with_host_messages(result, host_messages):
+        if not isinstance(result, dict):
+            return {"value": result, "host_messages": host_messages}
+        result = dict(result)
+        result["host_messages"] = host_messages
+        return result
+
+    @staticmethod
+    def _with_error_messages(data, host_messages):
+        if data is None:
+            result = {}
+        elif isinstance(data, dict):
+            result = dict(data)
+        else:
+            result = {"detail": data}
+        result["host_messages"] = host_messages
+        return result
 
     def _write_error(self, connection, request_id, code, message, data=None):
         error = {"code": int(code), "message": str(message)}

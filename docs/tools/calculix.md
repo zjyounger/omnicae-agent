@@ -4,6 +4,18 @@ Solver. `ccx 2.21` from the distribution; FreeCAD bundles 2.23 and that is the
 one actually used through the FEM workbench. Interface is a keyword deck, not
 an API.
 
+## Job service
+
+`integrations.calculix.server` is deliberately a batch job service, not a
+fake interactive Bridge. It starts `ccx` without blocking control requests
+and reports the exact deck, command, PID, terminal state, return code, solver
+error lines, and hashes of output files. Cancellation targets one recorded PID;
+process-name pattern killing is not used.
+
+Output discovery is relative to a snapshot taken immediately before the job
+starts. Files left by an earlier run with the same job name are not reported as
+current evidence unless this run creates or changes them.
+
 ## Documentation
 
 The distribution package ships **no manual at all** — only a changelog and a

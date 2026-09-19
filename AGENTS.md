@@ -9,11 +9,14 @@ Read before acting, not after.
 | Anything | this file |
 | Starting engineering work in a fresh session | `docs/AGENT_FAILURE_MODES.md` — how this agent gets things wrong, and what catches it |
 | Setting up or judging an analysis | `docs/ENGINEERING.md` |
+| Preparing, naming, or handing off analysis geometry and regions | `docs/ENGINEERING.md` — region identity and handoff |
 | Geometry or FEM setup in FreeCAD | `docs/tools/freecad.md` |
 | Meshing | `docs/tools/gmsh.md` |
+| Changing meshing orchestration or its evaluation | `docs/development/AGENTIC_MESHING_ORCHESTRATOR.md`, then `docs/ENGINEERING.md` |
 | Writing or editing a CalculiX deck | the keyword card in `knowledge/calculix/`, then `docs/tools/calculix.md` |
 | Looking at a mesh, boundary conditions, or results | `docs/tools/cgx.md` |
-| Changing the Bridge or its interface | `docs/DEVELOPMENT.md`, then `docs/BRIDGE.md` |
+| Designing or changing an interactive application integration | `docs/DEVELOPMENT.md`, then `docs/development/INTERACTIVE_APPLICATION_BRIDGES.md` |
+| Changing the FreeCAD Bridge or its protocol | `docs/DEVELOPMENT.md`, then `docs/BRIDGE.md` |
 | Changing application integration boundaries or repository structure | `docs/PROJECT.md`, then `docs/DEVELOPMENT.md` |
 | Changing retrieval, corpus ingestion, or evidence metadata | `docs/EVIDENCE_LIBRARY.md`, then `docs/development/EVIDENCE_LIBRARY.md` |
 | Asking what the project is for | `README.md`, then `docs/PROJECT.md`, then `PLAN.md` |
@@ -51,6 +54,14 @@ So: think more, observe more, do less.
 
 ## Before any engineering action
 
+Plan generated files before launching the work: choose and create an ignored
+output directory (default `artifacts/<case>/<run>/`), separate reproducible
+source inputs from outputs, and verify the ignore rule. CAD, meshes, solver
+results, renders, logs and archives remain local by default. Before proposing
+a push, inspect the actual candidate files and sizes; include only material
+whose review or reuse value justifies versioning it. See `docs/DEVELOPMENT.md`
+for output handling. Ignoring evidence does not mean deleting it.
+
 Stop and reconstruct the real problem. What is physically happening in this
 system? What does the user actually want to know? Why would the model you are
 about to build answer that?
@@ -74,7 +85,21 @@ original understanding of the problem.
    actual numbers in the deck.
 3. "The program ran" is not evidence.
 
+**Evidence is mandatory; a Bridge is optional.** Every action that changes
+engineering state must produce inspectable evidence through the most reliable
+available channel: native state, artifacts, logs, measurements, or rendered
+images. Use a live GUI Bridge when it materially improves observation or human
+handoff, not as an end in itself. A screenshot is evidence of visible state,
+not proof of hidden model properties or engineering correctness.
+
 ## Everyday work
+
+**Use APIs and scripting for application operations by default.** The user's
+target is 99.9% of operations through these interfaces. Before using mouse or
+keyboard automation, inspect the available APIs, scripting entry points and
+running-session connections, and establish why they cannot perform the specific
+operation. An unavailable Bridge alone is not sufficient evidence. This applies
+to saving and closing applications as well as modelling.
 
 4. If an action depends on state, go and query the state. Do not rely on memory.
 5. Remember what you changed. Anything changed to isolate a problem gets a
@@ -107,3 +132,7 @@ original understanding of the problem.
     listing the mistakes.
 16. Take a correction at the scope it was given. Do not inflate it into a
     system of your own.
+17. Any architectural change invented during implementation requires explicit
+    human approval before changing code, schemas, storage, dependencies,
+    repository boundaries, or deployment. An instruction to continue or fix an
+    existing task is not approval for a newly invented architecture.

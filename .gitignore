@@ -2,7 +2,67 @@ __pycache__/
 *.py[cod]
 *.FCBak
 bridge/test-output/
+*.omnicae.log
 .venv-mcp
+.venv-gmsh
 .evidence-data/
+.local-tools
 .claude/settings.local.json
 freecad/*.AppImage
+
+# Local CAE runs: choose this destination before starting an application.
+/artifacts/
+
+# Native CAD, exchanges, meshes and solver output (not authored input decks).
+*.[Ff][Cc][Ss][Tt][Dd]
+*.FCStd1
+*.FCStd.*
+*.step
+*.stp
+*.iges
+*.igs
+*.brep
+*.stl
+*.msh
+*.unv
+*.geo_unrolled
+*.frd
+*.vtu
+*.vtk
+*.vtm
+*.pvd
+*.blend
+*.blend[0-9]*
+
+# Existing case directories mix authored inputs with generated evidence.
+/cases/**/*.png
+/cases/**/*.jpg
+/cases/**/*.dat
+/cases/**/*.sta
+/cases/**/*.cvg
+/cases/**/*.12d
+/cases/**/*.out
+/cases/**/*.log
+/cases/**/FemMesh.inp
+/cases/**/*.nam
+/cases/**/*.bou
+/cases/**/*.dlo
+/cases/**/*.sur
+/cases/**/*.trk
+/calculix/*.dat
+/calculix/*.sta
+/calculix/*.cvg
+/calculix/*.12d
+/calculix/*.out
+/calculix/*.log
+
+# Legacy inline-four layout: version source/docs only, including subdirectories.
+# Generated reports, images, video, render frames, CAD and archives stay local.
+/examples/inline_four_cad/**
+!/examples/inline_four_cad/**/
+!/examples/inline_four_cad/**/*.py
+!/examples/inline_four_cad/**/*.FCMacro
+!/examples/inline_four_cad/**/*.md
+/examples/inline_four_cad/**/__pycache__/
+/examples/inline_four_cad/archive/
+/examples/inline_four_cad/session_close_*/

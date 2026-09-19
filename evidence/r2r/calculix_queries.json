@@ -1,0 +1,106 @@
+[
+  {
+    "id": "exact-cload",
+    "category": "exact_api",
+    "query": "*CLOAD parameters and input format",
+    "expected_manual": "ccx",
+    "expected_source": "node242.html",
+    "expected_kind": "text"
+  },
+  {
+    "id": "fuzzy-cload",
+    "category": "fuzzy_api",
+    "query": "How do I apply a concentrated point force to selected nodes?",
+    "expected_manual": "ccx",
+    "expected_source": "node242.html",
+    "expected_kind": "text"
+  },
+  {
+    "id": "fuzzy-pressure",
+    "category": "fuzzy_api",
+    "query": "Which input option applies distributed pressure over element faces?",
+    "expected_manual": "ccx",
+    "expected_source": "node271.html",
+    "expected_kind": "text"
+  },
+  {
+    "id": "pretension-toc-title",
+    "category": "toc_title",
+    "query": "Input deck format for a bolt pre-tension section",
+    "expected_manual": "ccx",
+    "expected_source": "node334.html",
+    "expected_kind": "text"
+  },
+  {
+    "id": "static-step",
+    "category": "ordinary_text",
+    "query": "How is a static analysis step defined?",
+    "expected_manual": "ccx",
+    "expected_source": "node350.html",
+    "expected_kind": "text"
+  },
+  {
+    "id": "hourglass-explanation",
+    "category": "ordinary_text",
+    "query": "Why does the reduced integration twenty-node brick rarely exhibit hourglassing?",
+    "expected_manual": "ccx",
+    "expected_source": "node32.html",
+    "expected_kind": "text"
+  },
+  {
+    "id": "dload-subroutine",
+    "category": "code",
+    "query": "Fortran user subroutine arguments for a spatially distributed load",
+    "expected_manual": "ccx",
+    "expected_source": "node381.html",
+    "expected_kind": "code"
+  },
+  {
+    "id": "film-subroutine",
+    "category": "code",
+    "query": "Fortran arguments passed to the user heat convection film routine",
+    "expected_manual": "ccx",
+    "expected_source": "node382.html",
+    "expected_kind": "code"
+  },
+  {
+    "id": "submodel-force",
+    "category": "cross_reference",
+    "query": "force-driven submodel using interpolated boundary forces from a previous submodel run",
+    "expected_manual": "ccx",
+    "expected_source": "node242.html",
+    "expected_kind": "text"
+  },
+  {
+    "id": "c3d20-figure",
+    "category": "figure",
+    "query": "diagram showing node numbering and integration points of the twenty-node C3D20 brick",
+    "expected_manual": "ccx",
+    "expected_source": "node31.html",
+    "expected_kind": "figure"
+  },
+  {
+    "id": "refinement-figure",
+    "category": "figure",
+    "query": "figure showing mesh refinement of a curved cantilever beam",
+    "expected_manual": "ccx",
+    "expected_source": "node24.html",
+    "expected_kind": "figure"
+  },
+  {
+    "id": "cgx-animation",
+    "category": "exact_api",
+    "query": "CGX anim command for a result sequence",
+    "expected_manual": "cgx",
+    "expected_source": "node67.html",
+    "expected_kind": "text"
+  },
+  {
+    "id": "cgx-mises",
+    "category": "ordinary_text",
+    "query": "display the von Mises equivalent stress result in CalculiX GraphiX",
+    "expected_manual": "cgx",
+    "expected_source": "node228.html",
+    "expected_kind": "text"
+  }
+]

@@ -1,0 +1,28 @@
+"""Open standalone block and movable cutaway for human inspection."""
+import json
+import os
+from pathlib import Path
+import FreeCAD as App
+import FreeCADGui as Gui
+from PySide import QtCore,QtWidgets
+
+root=Path(os.environ.get('INLINE_FOUR_ROOT','/home/linuxjun/OpenSourceCAEtools/examples/inline_four_cad'))
+App.ParamGet('User parameter:BaseApp/Preferences/View').SetBool('UseNavigationAnimations',False)
+standalone=App.openDocument(str(root/'cylinder_block.FCStd'))
+doc=App.openDocument(str(root/'short_block_cutaway.FCStd'))
+Gui.activateWorkbench('PartWorkbench')
+window=Gui.getMainWindow();window.resize(1500,1000)
+doc.Mechanism.CrankAngle=35;doc.recompute()
+view=Gui.activeDocument().activeView()
+eye=App.Vector(0.65,-2,0.8);eye.normalize()
+right=App.Vector(0,0,1).cross(eye);right.normalize()
+up=eye.cross(right)
+view.setCameraOrientation(App.Rotation(right,up,eye,'ZXY').Q)
+view.fitAll()
+def ready():
+    for tabs in window.findChildren(QtWidgets.QTabBar):
+        for i in range(tabs.count()):
+            if 'short_block_cutaway' in tabs.tabText(i):tabs.setCurrentIndex(i)
+    view.redraw()
+    (root/'block_window.json').write_text(json.dumps({'pid':os.getpid(),'window_id':int(window.winId())}))
+QtCore.QTimer.singleShot(2500,ready)

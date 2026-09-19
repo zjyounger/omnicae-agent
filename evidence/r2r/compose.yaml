@@ -1,0 +1,43 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: omnicae-local
+      POSTGRES_DB: postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    volumes:
+      - r2r-postgres:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"
+
+  r2r:
+    image: sciphiai/r2r:3.6.5
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      R2R_CONFIG_PATH: /app/user_configs/omnicae.toml
+      R2R_HOST: 127.0.0.1
+      R2R_PORT: 7272
+      R2R_POSTGRES_USER: postgres
+      R2R_POSTGRES_PASSWORD: omnicae-local
+      R2R_POSTGRES_HOST: 127.0.0.1
+      R2R_POSTGRES_PORT: 5432
+      R2R_POSTGRES_DBNAME: postgres
+      OLLAMA_API_BASE: http://127.0.0.1:11434
+    network_mode: host
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7272/v3/health"]
+      interval: 6s
+      timeout: 5s
+      retries: 20
+    volumes:
+      - ./r2r.local.toml:/app/user_configs/omnicae.toml:ro
+
+volumes:
+  r2r-postgres:

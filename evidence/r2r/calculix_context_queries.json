@@ -1,0 +1,58 @@
+[
+  {
+    "id": "cload-format",
+    "query": "What is the *CLOAD input format and what belongs on its data line?",
+    "manual": "ccx",
+    "source_file": "node242.html",
+    "required": [
+      ["*cload"],
+      ["node number or node set label"],
+      ["degree of freedom"],
+      ["magnitude of the load"]
+    ]
+  },
+  {
+    "id": "cload-discovery",
+    "query": "How do I apply a concentrated point force to selected nodes?",
+    "manual": "ccx",
+    "source_file": "node242.html",
+    "required": [
+      ["concentrated forces"],
+      ["node"]
+    ]
+  },
+  {
+    "id": "dload-pressure",
+    "query": "How is distributed pressure applied to element faces?",
+    "manual": "ccx",
+    "source_file": "node271.html",
+    "required": [
+      ["distributed loads"],
+      ["pressure loading"],
+      ["element faces"]
+    ]
+  },
+  {
+    "id": "static-step",
+    "query": "How is a static analysis step defined and which solver can it use?",
+    "manual": "ccx",
+    "source_file": "node350.html",
+    "required": [
+      ["static analysis"],
+      ["solver"],
+      ["direct"]
+    ]
+  },
+  {
+    "id": "cgx-animation",
+    "query": "How do I configure and start a CGX displacement animation?",
+    "manual": "cgx",
+    "source_file": "node67.html",
+    "required": [
+      ["manipulate the animation"],
+      ["steps"],
+      ["time"],
+      ["start"]
+    ]
+  }
+]

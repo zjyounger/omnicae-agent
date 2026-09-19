@@ -1,0 +1,45 @@
+import os
+import sys
+import json
+from pathlib import Path
+import FreeCAD as App
+import FreeCADGui as Gui
+import Part
+from PySide import QtCore
+
+root=Path(os.environ.get('INLINE_FOUR_ROOT','/home/linuxjun/OpenSourceCAEtools/examples/inline_four_cad'))
+sys.path.insert(0,str(root))
+import block
+
+try:
+    App.ParamGet('User parameter:BaseApp/Preferences/View').SetBool('UseNavigationAnimations',False)
+    doc=App.openDocument(str(root/'inline_four_short_block.FCStd'))
+    doc.Mechanism.CrankAngle=35;doc.recompute()
+    block.copy_views(doc,root)
+    view=Gui.activeDocument().activeView()
+    frames=root/'block_motion_frames';frames.mkdir(exist_ok=True)
+    for frame,angle in enumerate(range(0,360,10)):
+        doc.Mechanism.CrankAngle=angle;doc.recompute();Gui.updateGui()
+        view.saveImage(str(frames/f'frame_{frame:03d}.png'),1200,850,'White')
+    doc.Mechanism.CrankAngle=35;doc.recompute()
+
+    transverse=App.newDocument('CylinderWaterJacketSection')
+    tool=Part.makeBox(156,300,400,App.Vector(-300,-150,-120))
+    shape=doc.CylinderBlock.Shape.cut(tool)
+    obj=transverse.addObject('Part::Feature','TransverseBlockSection')
+    obj.Label='Transverse section through cylinder 1 / water jacket'
+    obj.Shape=shape
+    obj.ViewObject.ShapeColor=block.COLORS['block']
+    obj.ViewObject.DisplayMode='Flat Lines'
+    transverse.recompute()
+    block.orient(Gui.activeDocument().activeView(),(-2,-1,0.8))
+    Gui.activeDocument().activeView().saveImage(str(root/'water_jacket_section.png'),1800,1300,'White')
+    transverse.saveAs(str(root/'water_jacket_section.FCStd'))
+    App.closeDocument(transverse.Name)
+    App.closeDocument(doc.Name)
+    (root/'block_render_complete.json').write_text(json.dumps({'frames':36,'step_degrees':10,'source':'native FreeCAD viewport'}))
+    QtCore.QTimer.singleShot(0,QtCore.QCoreApplication.quit)
+except Exception:
+    import traceback
+    (root/'block_render_error.txt').write_text(traceback.format_exc())
+    traceback.print_exc()

@@ -1,5 +1,10 @@
 # Flanged bearing bracket · static · first FEA run to completion
 
+Generated CAD, meshes, results and evidence files referenced here are local,
+Git-ignored artifacts. They are not included in a fresh clone; regenerate them
+where a procedure is provided, or obtain the preserved local case archive.
+Source scripts, authored inputs and this document remain versioned.
+
 ## 1. Engineering problem
 
 A flanged bearing bracket bolted to a base through four Ø10 holes in its base

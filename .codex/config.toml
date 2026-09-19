@@ -1,0 +1,38 @@
+[mcp_servers."freecad-bridge"]
+command = "/bin/sh"
+args = [
+  "-c",
+  'project_dir="$(git rev-parse --show-toplevel)"; exec "$project_dir/.venv-mcp/bin/python" "$project_dir/bridge/mcp_server.py"',
+]
+env_vars = ["XDG_RUNTIME_DIR", "CAE_BRIDGE_SOCKET"]
+
+[mcp_servers."evidence-library"]
+command = "/bin/sh"
+args = [
+  "-c",
+  'project_dir="$(git rev-parse --show-toplevel)"; exec "$project_dir/.venv-mcp/bin/python" "$project_dir/evidence/mcp_server.py"',
+]
+
+[mcp_servers."gmsh-bridge"]
+command = "/bin/sh"
+args = [
+  "-c",
+  'project_dir="$(git rev-parse --show-toplevel)"; cd "$project_dir"; exec "$project_dir/.venv-mcp/bin/python" -m integrations.gmsh.mcp_server',
+]
+env_vars = ["XDG_RUNTIME_DIR", "CAE_GMSH_BRIDGE_SOCKET"]
+
+[mcp_servers."calculix-service"]
+command = "/bin/sh"
+args = [
+  "-c",
+  'project_dir="$(git rev-parse --show-toplevel)"; cd "$project_dir"; exec "$project_dir/.venv-mcp/bin/python" -m integrations.calculix.mcp_server',
+]
+env_vars = ["XDG_RUNTIME_DIR", "CAE_CALCULIX_BRIDGE_SOCKET"]
+
+[mcp_servers."cgx-bridge"]
+command = "/bin/sh"
+args = [
+  "-c",
+  'project_dir="$(git rev-parse --show-toplevel)"; cd "$project_dir"; exec "$project_dir/.venv-mcp/bin/python" -m integrations.cgx.mcp_server',
+]
+env_vars = ["DISPLAY", "XDG_RUNTIME_DIR", "CAE_CGX_BRIDGE_SOCKET"]
